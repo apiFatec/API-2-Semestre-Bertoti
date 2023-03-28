@@ -13,19 +13,23 @@
 - [Relatório das sprints](#relatório-das-sprints)
 
 ## O que é
-
+ A API é um projeto idealizado pela Fatec de São José dos Campos que visa a integração da grade curricular ao desenvolvimento do aluno através de um projeto real de tecnologia. Nesse sentido, a API do segundo semestre de Análise e Desenvolvimento de Sistemas é voltada para a criação de um sistema java desktop, cujo propósito é facilitar o controle de rendimento do corpo discente de um colégio.
 <p></p>
 
 
 ## Solução de proposta
-
+A problemática, sobretudo, é esboçar o meio mais intuitivo de interação do usuário dentro do sistema. Pensando nisso, propusemos um sistema com navegação lateral (sidebar), dashboard, manuseio de notas e atividades dos alunos da instituição. 
+### features
 <ul>
-  <li></li>
+  <li>navegação via sidebar</li>
+  <li>Dashboard para demontrar médias gerais</li>
+  <li>Manuseio de notas dos alunos</li>
+  <li>Manuseio das entregas de atividade dos alunos</li>
 
 </ul>
 
 ## Benefícios
-
+O sistema facilitará o controle de rendimento, vínculado a possibilidade de visualizar os aspectos gerais de uma classe ou de um aluno.  
 <ul>
   <li></li>
 
