@@ -55,7 +55,7 @@ O sistema facilitará o controle de rendimento, vínculado a possibilidade de vi
     style="display: inline-block; margin: 0 auto; width: 60px"></th>
   </thead>
   <tbody>
-    <td>JavaFX</td>
+    <td>MySQL</td>
     <td>JavaFX</td>
    
   </tbody>
