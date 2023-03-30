@@ -54,7 +54,7 @@ O sistema facilitará o controle de rendimento, vínculado a possibilidade de vi
     title="Optional title"
     style="display: inline-block; margin: 0 auto; width: 60px"></th>
     <th><img
-    src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FJavaFX&psig=AOvVaw2FHVEjJ2karwmnuzreJVps&ust=1680267535078000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCOiyrMDag_4CFQAAAAAdAAAAABAD"
+    src="https://user-images.githubusercontent.com/112170274/228851590-eed20d78-d1ed-475f-a41e-633acb03b46f.png"
     alt="Alt text"
     title="Optional title"
     style="display: inline-block; margin: 0 auto; width: 60px"></th>
