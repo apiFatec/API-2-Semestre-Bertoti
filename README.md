@@ -53,8 +53,18 @@ O sistema facilitará o controle de rendimento, vínculado a possibilidade de vi
     alt="Alt text"
     title="Optional title"
     style="display: inline-block; margin: 0 auto; width: 60px"></th>
+    <th><img
+    src="https://user-images.githubusercontent.com/89823203/190718687-f627ce18-9b3e-4ce1-bc9c-ddc3521a7705.png"
+    alt="Alt text"
+    title="Optional title"
+    style="display: inline-block; margin: 0 auto; width: 60px"></th>
+    <th><img
+    src="https://user-images.githubusercontent.com/89823203/190718687-f627ce18-9b3e-4ce1-bc9c-ddc3521a7705.png"
+    alt="Alt text"
+    title="Optional title"
+    style="display: inline-block; margin: 0 auto; width: 60px"></th>
   </thead>
-  
+
   <tbody>
     <td>MySQL</td>
     <td>JavaFX</td>
