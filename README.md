@@ -59,7 +59,7 @@ O sistema facilitará o controle de rendimento, vínculado a possibilidade de vi
     title="Optional title"
     style="display: inline-block; margin: 0 auto; width: 60px"></th>
     <th><img
-    src="https://user-images.githubusercontent.com/89823203/190718687-f627ce18-9b3e-4ce1-bc9c-ddc3521a7705.png"
+    src="https://user-images.githubusercontent.com/89823203/190877360-8c7f93cf-5f62-4f49-8641-3b605deb513e.png"
     alt="Alt text"
     title="Optional title"
     style="display: inline-block; margin: 0 auto; width: 60px"></th>
@@ -71,17 +71,6 @@ O sistema facilitará o controle de rendimento, vínculado a possibilidade de vi
     <td>Figma</td>
   </tbody>
 
-  <thead>
-    <th><img
-    src="https://user-images.githubusercontent.com/89823203/190877360-8c7f93cf-5f62-4f49-8641-3b605deb513e.png"
-    alt="figma icon"
-    title="Optional title"
-    style="display: inline-block; margin: 0 auto; width: 60px"></th>
-  </thead>
-  <tbody>
-    <td>Figma</td>
-    
-  </tbody>
 </table>
 
 ## Time
