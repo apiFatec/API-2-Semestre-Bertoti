@@ -13,25 +13,29 @@
 - [Relatório das sprints](#relatório-das-sprints)
 
 ## O que é
- A API é um projeto idealizado pela Fatec de São José dos Campos que visa a integração da grade curricular ao desenvolvimento do aluno através de um projeto real de tecnologia. Nesse sentido, a API do segundo semestre de Análise e Desenvolvimento de Sistemas é voltada para a criação de um sistema java desktop, cujo propósito é facilitar o controle de rendimento do corpo discente de um colégio.
+ O API é um projeto idealizado pela Fatec de São José dos Campos que visa a integração da grade curricular ao desenvolvimento do aluno através de um projeto real de tecnologia. Nesse sentido, a API do segundo semestre de Análise e Desenvolvimento de Sistemas é voltada para a criação de um sistema java desktop, cujo propósito é facilitar o controle de rendimento do corpo discente de um colégio.
 <p></p>
 
 
 ## Solução de proposta
-A problemática, sobretudo, é esboçar o meio mais intuitivo de interação do usuário dentro do sistema. Pensando nisso, propusemos um sistema com navegação lateral (sidebar), dashboard, manuseio de notas e atividades dos alunos da instituição. 
+ A problemática é esboçar o meio mais intuitivo de interação do usuário dentro do sistema. Pensando nisso, propusemos um sistema com navegação lateral (sidebar), dashboard, manuseio de notas e atividades dos alunos da instituição. 
+
 ### features
 <ul>
-  <li>navegação via sidebar</li>
-  <li>Dashboard para demontrar médias gerais</li>
-  <li>Manuseio de notas dos alunos</li>
-  <li>Manuseio das entregas de atividade dos alunos</li>
+  <li>Navegação via sidebar.</li>
+  <li>Dashboard para demontrar médias gerais.</li>
+  <li>Manuseio de notas dos alunos.</li>
+  <li>Manuseio das entregas de atividade dos alunos.</li>
 
 </ul>
 
 ## Benefícios
-O sistema facilitará o controle de rendimento, vínculado a possibilidade de visualizar os aspectos gerais de uma classe ou de um aluno.  
-<ul>
-  <li></li>
+ <ul>
+
+  <li>Acesso rápido e fácil as informações.</li>
+  <li>Cadastro simplificado de alunos e salas.</li>
+  <li>Aplicação offline.</li>
+  <li>Controle simplificado de notas e tarefas.</li>
 
 </ul>
 
@@ -63,12 +67,18 @@ O sistema facilitará o controle de rendimento, vínculado a possibilidade de vi
     alt="Alt text"
     title="Optional title"
     style="display: inline-block; margin: 0 auto; width: 60px"></th>
+    <th><img
+    src="https://user-images.githubusercontent.com/112170274/229099588-dac6db0c-ef9c-418a-b18c-0f4f962a487a.png"
+    alt="Alt text"
+    title="Optional title"
+    style="display: inline-block; margin: 0 auto; width: 60px"></th>
   </thead>
 
   <tbody>
     <td>MySQL</td>
     <td>JavaFX</td>
     <td>Figma</td>
+    <td>Java</td>
   </tbody>
 
 </table>
@@ -119,8 +129,8 @@ O sistema facilitará o controle de rendimento, vínculado a possibilidade de vi
     </tr>
     <tr>
     <td>Gisele Alves dos Reis</td>
-    <td><a href="#">Github</a></td>
-    <td><a href="#">LinkedIn</a></td>
+    <td><a href="https://github.com/gisele-reis">Github</a></td>
+    <td><a href="https://www.linkedin.com/in/giselealvesreis">LinkedIn</a></td>
     </tr>
   </tbody>
 </table>
@@ -135,8 +145,8 @@ O sistema facilitará o controle de rendimento, vínculado a possibilidade de vi
 ## Relatório das sprints
 
 <ol>
-  <li><a href="#">Sprint 01 - 02/04/2023</a></li>
-  <li><a href="#">Sprint 02 - 23/04/2023</a></li>
-  <li><a href="#">Sprint 03 - 14/05/2023</a></li>
-  <li><a href="#">Sprint 04 - 04/06/2023</a></li>
+  <li><a href="./relatorios/Sprint-01.md">Sprint 01 - 02/04/2023</a></li>
+  <li><a href="./relatorios/Sprint-02.md">Sprint 02 - 23/04/2023</a></li>
+  <li><a href="./relatorios/Sprint-03.md">Sprint 03 - 14/05/2023</a></li>
+  <li><a href="./relatorios/Sprint-04.md">Sprint 04 - 04/06/2023</a></li>
 </ol>
