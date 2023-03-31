@@ -145,8 +145,8 @@
 ## Relatório das sprints
 
 <ol>
-  <li><a href="./relatorios/Sprint-01.md">Sprint 01 - 02/04/2023</a></li>
-  <li><a href="./relatorios/Sprint-02.md">Sprint 02 - 23/04/2023</a></li>
-  <li><a href="./relatorios/Sprint-03.md">Sprint 03 - 14/05/2023</a></li>
-  <li><a href="./relatorios/Sprint-04.md">Sprint 04 - 04/06/2023</a></li>
+  <li><a href="./Relatórios/Sprint_01.md">Sprint 01 - 02/04/2023</a></li>
+  <li><a href="./Relatórios/Sprint_02.md">Sprint 02 - 23/04/2023</a></li>
+  <li><a href="./Relatórios/Sprint_03.md">Sprint 03 - 14/05/2023</a></li>
+  <li><a href="./Relatórios/Sprint_04.md">Sprint 04 - 04/06/2023</a></li>
 </ol>
