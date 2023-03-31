@@ -39,6 +39,9 @@
 
 </ul>
 
+## Protótipo
+
+(link do video)
 
 ## Planejamento das sprints
 
