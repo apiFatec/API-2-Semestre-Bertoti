@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  *
  * @author Mateus
  */
-public class ConecctionFactory {
+public class ConnectionFactory {
    public Connection getConnection(){
         String url = "jdbc:mysql://localhost/weclass";
         try {

@@ -11,6 +11,15 @@ package models;
 public class Aluno {
     private int RA;
     private String nome;
+    private int turma;
+
+    public void setTurma(int turma) {
+        this.turma = turma;
+    }
+
+    public int getTurma() {
+        return turma;
+    }
 
     public void setRA(int RA) {
         this.RA = RA;
