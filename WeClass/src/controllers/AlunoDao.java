@@ -53,4 +53,17 @@ public class AlunoDao {
         }
     }
     
+    public void delAluno(int id){
+        String sql = "Delete weclass.aluno where RA = ?";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+            stmt.close();
+            JOptionPane.showMessageDialog(null, "Aluno deletado com sucesso!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao deletar o aluno "+e.getMessage());
+        }
+    }
+    
 }
