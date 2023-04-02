@@ -2,7 +2,8 @@
 
 # Relatório Sprint 01 (02/04/2023)
 
-Esta primeira sprint foi dedicada ao planejamento do projeto. Primeiramente definimos o escopo do projeto, a partir disto levantamos informações para construir o backlog total do produto. Com o backlog em mãos, começamos as tarefas de estudo e prototipação do projeto.
+A primeira sprint foi dedica ao escopo estrutural do projeto. A priori, definimos os alicerces que consolidam a aplicação e, sequencialmente, as informações necessárias para o esboço do backlog total do produto. Com as orientações definidas no backlog, iniciamos os estudos e prototipagem do projeto. 
+
 
 ## Atividades desenvolvidas durante a Sprint:
 
