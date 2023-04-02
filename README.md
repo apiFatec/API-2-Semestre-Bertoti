@@ -47,11 +47,13 @@ Sabe-se que o controle de rendimento de qualquer objeto é uma tarefa complexa. 
 
 ## Planejamento das sprints
 
-  <img src= alt="planejamento sprints"/>
+![Untitled (3)](https://user-images.githubusercontent.com/112128418/229379136-36476f09-913b-4caf-96ce-820836e154e5.png)
+
   
 ## Backlog do projeto
+![backlogtotal (1)](https://user-images.githubusercontent.com/112128418/229377033-4b580304-8879-42bf-b32a-08989be9bf18.jpg)
 
-  <img src=alt="backlog-produto"/>
+
 
 ## Tecnologias utilizadas
 
