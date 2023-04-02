@@ -47,7 +47,8 @@ Sabe-se que o controle de rendimento de qualquer objeto é uma tarefa complexa. 
 
 ## Planejamento das sprints
 
-![Untitled (3)](https://user-images.githubusercontent.com/112128418/229379136-36476f09-913b-4caf-96ce-820836e154e5.png)
+![Untitled (4)](https://user-images.githubusercontent.com/112128418/229379231-41a15faf-a3e5-40be-aa63-c3bfe15cd7d0.png)
+
 
   
 ## Backlog do projeto
