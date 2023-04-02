@@ -19,7 +19,7 @@
 
 ## Solução de proposta
  
-Sabe-se que o controle de rendimento de qualquer objeto é uma tarefa complexa. Sob essa ótica, propomos a criação de uma aplicação de fácil consulta, intuitivo e efetivo. À vista disso, o projeto abriga um sistema de navegação lateral (sidebar), dashboard, gerenciamento de notas, atividades e alunos da instituição.
+Sabe-se que o controle de rendimento de qualquer objeto é uma tarefa complexa. Sob essa ótica, propomos a criação de uma aplicação de fácil consulta, intuitiva e efetiva. À vista disso, o projeto abriga um sistema de navegação lateral (sidebar), dashboard, gerenciamento de notas, atividades e alunos da instituição.
 
 
 ### features
