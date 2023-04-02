@@ -43,6 +43,7 @@ Sabe-se que o controle de rendimento de qualquer objeto é uma tarefa complexa. 
 
 ## Protótipo
 ![giffatec](https://user-images.githubusercontent.com/112128418/229379893-c1b6dad3-675a-4d1e-9046-973c1842a30b.gif)
+<a href="https://www.youtube.com/watch?v=zVpzRRMtF34" target="_blank">Ver visualização mais detalhada do protótipo</a>
 
 ## Planejamento das sprints
 
