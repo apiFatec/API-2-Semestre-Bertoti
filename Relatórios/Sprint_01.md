@@ -18,4 +18,4 @@ Esta primeira sprint foi dedicada ao planejamento do projeto. Primeiramente defi
 
 ## Burndown:
 
-<img src="" />
+<img src="https://user-images.githubusercontent.com/112170274/229329453-7edb0a4e-8ad3-4cfe-ac61-15fef83b834e.png" />
