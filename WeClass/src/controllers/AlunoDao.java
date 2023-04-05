@@ -4,7 +4,7 @@
  */
 package controllers;
 import java.sql.Connection;
-import factory.ConecctionFactory;
+import factory.ConnectionFactory;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -15,11 +15,11 @@ import models.Aluno;
  * @author Mateus
  */
 public class AlunoDao {
-    ConecctionFactory conexao; ;
+    ConnectionFactory conexao; ;
     Connection conn;
     
     public AlunoDao(){
-        conexao = new ConecctionFactory();
+        conexao = new ConnectionFactory();
         conn = conexao.getConnection();
     }
      
@@ -28,8 +28,8 @@ public class AlunoDao {
        
        try {
            PreparedStatement stmt = conn.prepareStatement(sql);
-           stmt.setString(2, aluno.getNome());
            stmt.setInt(3, aluno.getTurma());
+           stmt.setString(2, aluno.getNome());
            stmt.setInt(1, aluno.getRA());
            stmt.execute();
            stmt.close();
@@ -50,6 +50,19 @@ public class AlunoDao {
             JOptionPane.showMessageDialog(null, "Aluno atualizado com sucesso!");
         } catch (SQLException e) {
              JOptionPane.showMessageDialog(null,"Erro ao atualizar aluno"+ e.getMessage());
+        }
+    }
+    
+    public void delAluno(int id){
+        String sql = "Delete weclass.aluno where RA = ?";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+            stmt.close();
+            JOptionPane.showMessageDialog(null, "Aluno deletado com sucesso!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao deletar o aluno "+e.getMessage());
         }
     }
     

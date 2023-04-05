@@ -10,7 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import factory.ConecctionFactory;
+import factory.ConnectionFactory;
 
 
 
@@ -25,7 +25,7 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        ConecctionFactory conn = new ConecctionFactory();
+        ConnectionFactory conn = new ConnectionFactory();
         conn.getConnection();
         
     }
