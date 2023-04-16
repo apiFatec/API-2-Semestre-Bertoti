@@ -9,31 +9,39 @@ package models;
  * @author Mateus
  */
 public class Aluno {
-    private int RA;
+
+    private int ra;
     private String nome;
     private int turma;
-
-    public void setTurma(int turma) {
+    
+    public Aluno(int ra, String nome, int turma) {
+        this.ra = ra;
+        this.nome = nome;
         this.turma = turma;
     }
 
-    public int getTurma() {
-        return turma;
+    public int getRa() {
+        return ra;
     }
 
-    public void setRA(int RA) {
-        this.RA = RA;
+    public void setRa(int ra) {
+        this.ra = ra;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public int getRA() {
-        return RA;
+    public int getTurma() {
+        return turma;
     }
 
-    public String getNome() {
-        return nome;
+    public void setTurma(int turma) {
+        this.turma = turma;
     }
+    
 }

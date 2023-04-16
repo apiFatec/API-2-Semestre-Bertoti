@@ -6,35 +6,36 @@ package models;
 
 /**
  *
- * @author Mateus
+ * @author willi
  */
 public class Turma {
-    private int id_turma;
-    private String nome_turma;
-    private String escola;
+    private int idTurma;
+    private String Nome;
+    private String Escola;
 
-    public int getId_turma() {
-        return id_turma;
-    }
-
-    public String getNome_turma() {
-        return nome_turma;
+    public String getNome() {
+        return Nome;
     }
 
     public String getEscola() {
-        return escola;
+        return Escola;
     }
 
-    public void setId_turma(int id_turma) {
-        this.id_turma = id_turma;
+    public int getIdTurma() {
+        return idTurma;
     }
 
-    public void setNome_turma(String nome_turma) {
-        this.nome_turma = nome_turma;
+    public void setIdTurma(int idTurma) {
+        this.idTurma = idTurma;
     }
 
-    public void setEscola(String escola) {
-        this.escola = escola;
+    public void setNome(String Nome) {
+        this.Nome = Nome;
     }
+
+    public void setEscola(String Escola) {
+        this.Escola = Escola;
+    }
+    
     
 }
