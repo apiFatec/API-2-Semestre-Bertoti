@@ -4,10 +4,11 @@
  */
 package dao;
 import models.Turma;
-import factory.ConecctionFactory;
+import factory.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -16,11 +17,11 @@ import javax.swing.JOptionPane;
  * @author willi
  */
 public class TurmaDao {
-    ConecctionFactory Factory;
+    ConnectionFactory Factory;
     Connection con; 
     
     public TurmaDao()   {
-        Factory=new ConecctionFactory();
+        Factory=new ConnectionFactory();
         con=Factory.getConnection();
         
     }
@@ -33,7 +34,7 @@ public class TurmaDao {
             stmt.setString(2,turma.getEscola());
             stmt.execute();
             stmt.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,"Erro ao adcionar Turma" + e.getMessage());
             }
     }
@@ -46,7 +47,7 @@ public class TurmaDao {
             stmt.setInt(3,turma.getIdTurma());
             stmt.execute();
             stmt.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,"Erro ao atualizar Turma" +e.getMessage());
             
         }
@@ -58,14 +59,14 @@ public class TurmaDao {
             stmt.setInt(1,id);
             stmt.execute();
             stmt.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,"Erro ao Exluir Turma"+ e.getMessage());
            
         }
     }
     public ArrayList<Turma> listTurma() {
         String sql="SELECT * FROM 'weclass'.'turma'";
-        ArrayList<Turma> list =new ArrayList<Turma>(); 
+        ArrayList<Turma> list =new ArrayList<>(); 
         try {
             PreparedStatement stmt=con.prepareStatement(sql);
             ResultSet rs=stmt.executeQuery();
@@ -85,7 +86,7 @@ public class TurmaDao {
             
                  
            
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,"Erro ao Buscar Turma" + e.getMessage());
         }
         return null;
