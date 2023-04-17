@@ -65,7 +65,7 @@ public class TurmaDao {
         }
     }
     public ArrayList<Turma> listTurma() {
-        String sql="SELECT * FROM 'weclass'.'turma'";
+        String sql="SELECT * FROM weclass.turma;";
         ArrayList<Turma> list =new ArrayList<>(); 
         try {
             PreparedStatement stmt=con.prepareStatement(sql);
