@@ -10,14 +10,14 @@ public class Tarefa {
     private int id;
     private String nomeTarefa;
     private String descricao;
-    private float nota;
+    private int nota;
     private Date dataInicio;
     private Date dataFim;
     private int idTurma;
 
     public Tarefa() {}
 
-    public Tarefa(int id, String nomeTarefa, String descricao, float nota, Date dataInicio, Date dataFim, int idTurma) {
+    public Tarefa(int id, String nomeTarefa, String descricao, int nota, Date dataInicio, Date dataFim, int idTurma) {
         this.id = id;
         this.nomeTarefa = nomeTarefa;
         this.descricao = descricao;
@@ -51,13 +51,14 @@ public class Tarefa {
         this.descricao = descricao;
     }
 
-    public float getNota() {
+    public void setNota(int nota) {
+        this.nota = nota;
+    }
+
+    public int getNota() {
         return nota;
     }
 
-    public void setNota(float nota) {
-        this.nota = nota;
-    }
 
     public Date getDataInicio() {
         return dataInicio;

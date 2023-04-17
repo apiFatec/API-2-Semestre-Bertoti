@@ -4,12 +4,16 @@
  */
 package models;
 
+import javafx.scene.control.CheckBox;
+
+
+
 /**
  *
  * @author willi
  */
 public class Turma {
-    private boolean select;
+    private CheckBox select;
     private int idTurma;
     private String Nome;
     private String Escola;
@@ -19,17 +23,16 @@ public class Turma {
     }
 
     public Turma(String nome, String escola){
-        this.select = false;
         this.Nome = nome;
         this.Escola = escola;
     }
 
-    public void setSelect(boolean select) {
-        this.select = select;
+    public CheckBox getSelect() {
+        return select;
     }
 
-    public boolean isSelect() {
-        return select;
+    public void setSelect(CheckBox select) {
+        this.select = select;
     }
     
     public String getNome() {

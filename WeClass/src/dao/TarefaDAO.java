@@ -16,93 +16,74 @@ import models.Tarefa;
 
 public class TarefaDAO {
 
-    private String jdbcURL;
-    private String jdbcUsername;
-    private String jdbcPassword;
-    private Connection jdbcConnection;
+    private ConnectionFactory factory;
+    private Connection conn;
 
-    public TarefaDAO(String jdbcURL, String jdbcUsername, String jdbcPassword) {
-        this.jdbcURL = jdbcURL;
-        this.jdbcUsername = jdbcUsername;
-        this.jdbcPassword = jdbcPassword;
+    
+    
+    public TarefaDAO() {
+        factory = new ConnectionFactory();
+        conn = factory.getConnection();
     }
 
-    protected void connect() throws SQLException {
-        if (jdbcConnection == null || jdbcConnection.isClosed()) {
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch (ClassNotFoundException e) {
-                throw new SQLException(e);
-            }
-            jdbcConnection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+    public void inserirTarefa(Tarefa tarefa) throws SQLException {
+        String sql = "INSERT INTO `weclass`.`tarefa` (`nomeTarefa`, `desc`, `nota`, `data_inicio`, `data_fim`, `Turma_idTurma`) VALUES (?, ?, ?, ?, ?, ?);";
+        try {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, tarefa.getNomeTarefa());
+            statement.setString(2, tarefa.getDescricao());
+            statement.setFloat(3, tarefa.getNota());
+            statement.setDate(4, (Date) tarefa.getDataInicio());
+            statement.setDate(5, (Date) tarefa.getDataFim());
+            statement.setInt(6, tarefa.getIdTurma());
+            statement.execute();
+            statement.close();           
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Erro ao adicionar tarefa "+ e.getMessage());
         }
+        
+
     }
 
-    protected void disconnect() throws SQLException {
-        if (jdbcConnection != null && !jdbcConnection.isClosed()) {
-            jdbcConnection.close();
-        }
-    }
-
-    public boolean inserirTarefa(Tarefa tarefa) throws SQLException {
-        String sql = "INSERT INTO tarefa (nomeTarefa, desc, nota, data_inicio, data_fim, Turma_idTurma) "
-                     + "VALUES (?, ?, ?, ?, ?, ?)";
-        connect();
-
-        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
-        statement.setString(1, tarefa.getNomeTarefa());
-        statement.setString(2, tarefa.getDescricao());
-        statement.setFloat(3, tarefa.getNota());
-        statement.setDate(4, (Date) tarefa.getDataInicio());
-        statement.setDate(5, (Date) tarefa.getDataFim());
-        statement.setInt(6, tarefa.getIdTurma());
-
-        boolean rowInserted = statement.executeUpdate() > 0;
-        statement.close();
-        disconnect();
-        return rowInserted;
-    }
-
-    public boolean atualizarTarefa(Tarefa tarefa) throws SQLException {
+    public void atualizarTarefa(Tarefa tarefa) throws SQLException {
         String sql = "UPDATE tarefa SET nomeTarefa = ?, desc = ?, nota = ?, "
                      + "data_inicio = ?, data_fim = ?, Turma_idTurma = ? WHERE idTarefa = ?";
-        connect();
-
-        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
-        statement.setString(1, tarefa.getNomeTarefa());
-        statement.setString(2, tarefa.getDescricao());
-        statement.setFloat(3, tarefa.getNota());
-        statement.setDate(4, (Date) tarefa.getDataInicio());
-        statement.setDate(5, (Date) tarefa.getDataFim());
-        statement.setInt(6, tarefa.getIdTurma());
-        statement.setInt(7, tarefa.getId());
-
-        boolean rowUpdated = statement.executeUpdate() > 0;
-        statement.close();
-        disconnect();
-        return rowUpdated;
+        try {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, tarefa.getNomeTarefa());
+            statement.setString(2, tarefa.getDescricao());
+            statement.setInt(3, tarefa.getNota());
+            statement.setDate(4, (Date) tarefa.getDataInicio());
+            statement.setDate(5, (Date) tarefa.getDataFim());
+            statement.setInt(6, tarefa.getIdTurma());
+            statement.setInt(7, tarefa.getId());
+            statement.execute();
+            statement.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Erro ao Atualizar Tarefa "+ e.getMessage());
+        }
+        
     }
 
-    public boolean excluirTarefa(Tarefa tarefa) throws SQLException {
+    public void excluirTarefa(Tarefa tarefa) throws SQLException {
         String sql = "DELETE FROM tarefa WHERE idTarefa = ?";
-        connect();
-
-        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
-        statement.setInt(1, tarefa.getId());
-
-        boolean rowDeleted = statement.executeUpdate() > 0;
-        statement.close();
-        disconnect();
-        return rowDeleted;
+        try {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, tarefa.getId());
+            statement.execute();
+            statement.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Erro ao deletar tarefa"+ e);
+        }
+        
     }
 
     public Tarefa buscarTarefa(int id) throws SQLException {
         Tarefa tarefa = null;
         String sql = "SELECT * FROM tarefa WHERE idTarefa = ?";
 
-        connect();
 
-        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        PreparedStatement statement = conn.prepareStatement(sql);
         statement.setInt(1, id);
 
         ResultSet resultSet = statement.executeQuery();
@@ -110,7 +91,7 @@ public class TarefaDAO {
         if (resultSet.next()) {
             String nomeTarefa = resultSet.getString("nomeTarefa");
             String descricao = resultSet.getString("desc");
-            float nota = resultSet.getFloat("nota");
+            int nota = resultSet.getInt("nota");
             Date dataInicio = resultSet.getDate("data_inicio");
             Date dataFim = resultSet.getDate("data_fim");
             int idTurma = resultSet.getInt  ("Turma_idTurma");
@@ -129,16 +110,15 @@ public List<Tarefa> listarTarefas() throws SQLException {
 
     String sql = "SELECT * FROM tarefa";
 
-    connect();
 
-    Statement statement = jdbcConnection.createStatement();
+    Statement statement = conn.createStatement();
     ResultSet resultSet = statement.executeQuery(sql);
 
     while (resultSet.next()) {
         int id = resultSet.getInt("idTarefa");
         String nomeTarefa = resultSet.getString("nomeTarefa");
         String descricao = resultSet.getString("desc");
-        float nota = resultSet.getFloat("nota");
+        int nota = resultSet.getInt("nota");
         Date dataInicio = resultSet.getDate("data_inicio");
         Date dataFim = resultSet.getDate("data_fim");
         int idTurma = resultSet.getInt("Turma_idTurma");
@@ -150,7 +130,6 @@ public List<Tarefa> listarTarefas() throws SQLException {
     resultSet.close();
     statement.close();
 
-    disconnect();
 
     return listaTarefas;
 }
