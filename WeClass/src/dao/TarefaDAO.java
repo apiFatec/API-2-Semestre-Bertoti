@@ -6,12 +6,13 @@ package dao;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import factory.ConecctionFactory;
+import factory.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import models.Tarefa;
 
 public class TarefaDAO {
 
@@ -52,8 +53,8 @@ public class TarefaDAO {
         statement.setString(1, tarefa.getNomeTarefa());
         statement.setString(2, tarefa.getDescricao());
         statement.setFloat(3, tarefa.getNota());
-        statement.setDate(4, tarefa.getDataInicio());
-        statement.setDate(5, tarefa.getDataFim());
+        statement.setDate(4, (Date) tarefa.getDataInicio());
+        statement.setDate(5, (Date) tarefa.getDataFim());
         statement.setInt(6, tarefa.getIdTurma());
 
         boolean rowInserted = statement.executeUpdate() > 0;
@@ -71,8 +72,8 @@ public class TarefaDAO {
         statement.setString(1, tarefa.getNomeTarefa());
         statement.setString(2, tarefa.getDescricao());
         statement.setFloat(3, tarefa.getNota());
-        statement.setDate(4, tarefa.getDataInicio());
-        statement.setDate(5, tarefa.getDataFim());
+        statement.setDate(4, (Date) tarefa.getDataInicio());
+        statement.setDate(5, (Date) tarefa.getDataFim());
         statement.setInt(6, tarefa.getIdTurma());
         statement.setInt(7, tarefa.getId());
 
@@ -152,4 +153,5 @@ public List<Tarefa> listarTarefas() throws SQLException {
     disconnect();
 
     return listaTarefas;
+}
 }

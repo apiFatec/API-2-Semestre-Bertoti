@@ -4,6 +4,8 @@
  */
 package models;
 
+import java.util.Date;
+
 public class Tarefa {
     private int id;
     private String nomeTarefa;

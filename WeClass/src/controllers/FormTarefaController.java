@@ -4,9 +4,15 @@
  */
 package controllers;
 
+import dao.TurmaDao;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import models.Turma;
 
 /**
  * FXML Controller class
@@ -18,6 +24,28 @@ public class FormTarefaController implements Initializable {
     /**
      * Initializes the controller class.
      */
+        @FXML
+    private Button btnSalvar;
+
+    @FXML
+    private TextField txtEscola;
+
+    @FXML
+    private TextField txtNome;
+
+    @FXML
+    void btnSalvar(ActionEvent event) {
+        String nome = txtNome.getText();
+        String escola = txtEscola.getText();
+        
+        Turma turma = new Turma(nome, escola);
+        TurmaDao dao = new TurmaDao();
+        dao.addTurma(turma);
+        
+        txtNome.setText("");
+        txtEscola.setText("");
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
