@@ -9,10 +9,29 @@ package models;
  * @author willi
  */
 public class Turma {
+    private boolean select;
     private int idTurma;
     private String Nome;
     private String Escola;
+    
+    public Turma(){
+        
+    }
 
+    public Turma(String nome, String escola){
+        this.select = false;
+        this.Nome = nome;
+        this.Escola = escola;
+    }
+
+    public void setSelect(boolean select) {
+        this.select = select;
+    }
+
+    public boolean isSelect() {
+        return select;
+    }
+    
     public String getNome() {
         return Nome;
     }
