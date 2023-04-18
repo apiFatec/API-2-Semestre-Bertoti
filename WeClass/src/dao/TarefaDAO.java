@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import models.Aluno;
 import models.Tarefa;
 
 public class TarefaDAO {
@@ -105,6 +106,21 @@ public class TarefaDAO {
     return tarefa;
 }
 
+public int ultimaTarefa(){
+    String sql = "SELECT idTarefa FROM weclass.tarefa order by idTarefa desc limit 1;";
+    try {
+        int id = 0;
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+        while(rs.next()){
+        id = rs.getInt("idTarefa");
+        }
+        return id;
+    } catch (SQLException e) {
+    }
+        return 0;
+}     
+    
 public List<Tarefa> listarTarefas() throws SQLException {
     List<Tarefa> listaTarefas = new ArrayList<>();
 
@@ -132,5 +148,20 @@ public List<Tarefa> listarTarefas() throws SQLException {
 
 
     return listaTarefas;
+}
+
+public void tarefaAluno(Aluno aluno, int id){
+    String sql = "INSERT INTO `weclass`.`alunotarefa` (`nota`, `Aluno_idAluno`, `Tarefa_idTarefa`) VALUES (?, ?, ?);";
+    try {
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, 0);
+        stmt.setInt(2, aluno.getRa());
+        stmt.setInt(3, id);
+        stmt.execute();
+        stmt.close();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null,"Erro ao atribuir tarefa aos alunos "+ e.getMessage());
+    }
+        
 }
 }

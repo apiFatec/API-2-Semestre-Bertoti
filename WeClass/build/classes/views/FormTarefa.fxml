@@ -69,7 +69,7 @@
       </Pane>
       <TableView fx:id="tableTurma" layoutX="153.0" layoutY="388.0" prefHeight="163.0" prefWidth="735.0" style="-fx-background-color: #fff;">
         <columns>
-          <TableColumn fx:id="selectCol" prefWidth="50.0" style="-fx-background-color: #fff;" text="select"/>
+          <TableColumn fx:id="selectCol" prefWidth="50.0" style="-fx-background-color: #fff;" text="select" />
           <TableColumn fx:id="nomeCol" prefWidth="209.0" style="-fx-background-color: #fff;" text="Nome" />
           <TableColumn fx:id="escolaCol" prefWidth="475.0" style="-fx-background-color: #fff;" text="Escola" />
         </columns>

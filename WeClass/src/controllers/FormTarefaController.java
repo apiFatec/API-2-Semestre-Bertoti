@@ -4,6 +4,7 @@
  */
 package controllers;
 
+import dao.AlunoDao;
 import dao.TarefaDAO;
 import dao.TurmaDao;
 import java.net.URL;
@@ -32,6 +33,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import models.Aluno;
 import models.Turma;
 import models.Tarefa;
 
@@ -95,7 +97,15 @@ public class FormTarefaController implements Initializable {
                 TarefaDAO dao = new TarefaDAO();
                 dao.inserirTarefa(tarefa);
                 
-            }}
+                AlunoDao alunodao = new AlunoDao();
+                ArrayList<Aluno> ls = new ArrayList();
+                ls = alunodao.listSala(tarefa.getIdTurma());
+                int id = dao.ultimaTarefa();
+                for(int i = 0; i<ls.size(); i++ ){
+                    dao.tarefaAluno(ls.get(i), id );
+                }   
+            }
+        }
         txtDesc.setText("");
         txtNome.setText("");
         pickerEnt.setValue(LocalDate.now());        

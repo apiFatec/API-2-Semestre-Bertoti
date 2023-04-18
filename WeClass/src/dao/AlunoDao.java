@@ -85,4 +85,25 @@ public class AlunoDao {
         }
 
     }
+    
+    public ArrayList<Aluno> listSala(int id){
+        String sql = "SELECT * FROM weclass.aluno where Turma_idTurma = ?";
+        ArrayList<Aluno> list = new ArrayList();
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                String nome = rs.getString("nome");
+                int ra = rs.getInt("RA");
+                int turma = rs.getInt("Turma_idTurma");
+                Aluno aluno = new Aluno(ra,nome,turma);
+                list.add(aluno);
+            }
+            return list;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Erro ao retornar lista de alunos da sala "+ e.getMessage());
+        }
+        return null;
+    }
 }
