@@ -4,14 +4,14 @@
 
 <h2>Atividades realizadas durante a 2º Sprint </h2>
   <ul>
-      Criação do Banco de dados;
-      Criação da tela home;
-      Criação do formulário de tarefa;
-      Criação do formulário de turma;
-      Criação do formulário de aluno;
-      Criação da classes de modelo Aluno, Tarefa, Turma;
-      Criação das classes de acesso ao banco de dados AlunoDao, TarefaDao, TurmaDao;
-      Implementação das classes DAO nas interface;
+      <li>Criação do Banco de dados;</li>
+      <li>Criação da tela home;</li>
+      <li>Criação do formulário de tarefa;</li>
+      <li>Criação do formulário de turma;</li>
+      <li>Criação do formulário de aluno;</li>
+      <li>Criação da classes de modelo Aluno, Tarefa, Turma;</li>
+      <li>Criação das classes de acesso ao banco de dados AlunoDao, TarefaDao, TurmaDao;</li>
+      <li>Implementação das classes DAO nas interface;</li>
   </ul>
 
 <h2>Backlog da Sprint </h2>
