@@ -17,6 +17,8 @@
 <h2>Backlog da Sprint </h2>
 <img style="width: 800px; height:400px" src="https://user-images.githubusercontent.com/111647763/232899194-0e7617d3-5a23-4ce3-b1aa-814d1683f346.jpg"</img>
 
+<h2>Burndown</h2>
+
 <h2>Tecnologias Utilizadas</h2>
 <table>
   <thead>
