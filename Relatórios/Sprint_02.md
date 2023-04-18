@@ -15,7 +15,7 @@
   </ul>
 
 <h2>Backlog da Sprint </h2>
-<img src="https://user-images.githubusercontent.com/111647763/232899194-0e7617d3-5a23-4ce3-b1aa-814d1683f346.jpg"
+<img style="width: 800px; height:600px" src="https://user-images.githubusercontent.com/111647763/232899194-0e7617d3-5a23-4ce3-b1aa-814d1683f346.jpg"
 
 <h2>Tecnologias Utilizadas</h2>
 <table>
