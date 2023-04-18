@@ -111,12 +111,12 @@ Sabe-se que o controle de rendimento de qualquer objeto é uma tarefa complexa. 
     <td><a href="https://www.linkedin.com/in/giovani-carvalho-avila-80593a224/">LinkedIn</a></td>
     </tr>
     <tr>
-    <td>Mateus Raimundo</td>
+    <td>Mateus Raimundo  (Scrum Master)</td>
     <td><a href="https://github.com/MateusdiSousa">Github</a></td>
     <td><a href="https://www.linkedin.com/in/mateus-sousa-ba976423a">LinkedIn</a></td>
     </tr>
     <tr>
-    <td>Phelipe Pinheiro  (Scrum Master)</td>
+    <td>Phelipe Pinheiro</td>
     <td><a href="https://github.com/Phelipepinheiro">Github</a></td>
     <td><a href="https://www.linkedin.com/in/phelipe-pinheiro-da-silva-28320824a/">LinkedIn</a></td>
     </tr>
