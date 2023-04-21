@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #86CEE5;" BorderPane.alignment="CENTER">
          <children>
@@ -66,41 +67,50 @@
          <children>
             <Pane prefHeight="600.0" prefWidth="800.0">
                <children>
-                  <Label fx:id="lblTurmas" layoutX="30.0" layoutY="30.0" text="Turmas">
+                  <TableView layoutX="60.0" layoutY="70.0" prefHeight="272.0" prefWidth="663.0">
+                    <columns>
+                      <TableColumn prefWidth="210.0" text="Nome" />
+                      <TableColumn prefWidth="215.0" text="status" />
+                        <TableColumn prefWidth="226.0" text="atividades entregues" />
+                    </columns>
+                  </TableView>
+                  <ComboBox layoutX="60.0" layoutY="34.0" prefWidth="150.0" promptText="Selecionar atividade" style="-fx-background-color: #86CEE5;" />
+                  <Button layoutX="60.0" layoutY="351.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #1590c4;" text="ADICIONAR" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="9.0" />
                      </font>
-                  </Label>
-                  <Label fx:id="lblAtividade" layoutX="30.0" layoutY="317.0" text="Atividades próximas da data de entrega">
+                  </Button>
+                  <Button layoutX="145.0" layoutY="351.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #1590c4;" text="REMOVER" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="9.0" />
                      </font>
-                  </Label>
-                  <ScrollPane layoutX="30.0" layoutY="65.0" prefHeight="170.0" prefWidth="250.0">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="170.0" prefWidth="235.0" />
-                    </content>
-                  </ScrollPane>
-                  <Button fx:id="btnTurma" layoutX="30.0" layoutY="243.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #1590C5;" text="Criar Nova Turma" textFill="WHITE" />
-                  <ScrollPane layoutX="30.0" layoutY="350.0" prefHeight="170.0" prefWidth="250.0">
-                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="170.0" prefWidth="235.0" />
-                     </content>
-                  </ScrollPane>
-                  <Button fx:id="btnTarefa" layoutX="30.0" layoutY="530.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #1590C5;" text="Criar Nova Tarefa" textFill="WHITE" />
-                  <Label layoutX="351.0" layoutY="304.0" text="Frequência de Entregas">
+                  </Button>
+                  <StackedBarChart layoutX="60.0" layoutY="444.0" prefHeight="141.0" prefWidth="181.0">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </StackedBarChart>
+                  <StackedBarChart layoutX="485.0" layoutY="444.0" prefHeight="141.0" prefWidth="181.0">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </StackedBarChart>
+                  <Text layoutX="95.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Média de nota das avaliações" wrappingWidth="174.669921875">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="13.0" />
                      </font>
-                  </Label>
-                  <BarChart layoutX="351.0" layoutY="337.0" prefHeight="233.0" prefWidth="405.0">
-                    <xAxis>
-                      <CategoryAxis side="BOTTOM" />
-                    </xAxis>
-                    <yAxis>
-                      <NumberAxis side="LEFT" />
-                    </yAxis>
-                  </BarChart>
+                  </Text>
+                  <Text layoutX="494.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nota em relação ao prazo de entrega" wrappingWidth="228.669921875">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
                </children>
             </Pane>
          </children>
