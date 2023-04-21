@@ -18,7 +18,7 @@ public class WeClass extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FormTarefa.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("alunosView.fxml"));
         
         Scene scene = new Scene(root);
         
