@@ -118,7 +118,7 @@
                      <children>
                         <ComboBox fx:id="cbTurma" layoutX="61.0" layoutY="6.0" onAction="#select" prefHeight="30.0" prefWidth="137.0" promptText="selecionar turma" style="-fx-background-color: #86CEE5;" />
                         <ComboBox fx:id="cbTarefa" layoutX="198.0" layoutY="6.0" onAction="#showTarefas" prefHeight="30.0" prefWidth="145.0" promptText="selecionar Tarefa" style="-fx-background-color: #86CEE5;" />
-                        <Button fx:id="btnEntrega" layoutX="596.0" layoutY="3.0" mnemonicParsing="false" onAction="#btnEntrega" prefHeight="35.0" prefWidth="146.0" style="-fx-background-color: #fff; -fx-background-radius: 3px;" text="Salvar" />
+                        <Button fx:id="btnEntrega" layoutX="596.0" layoutY="3.0" mnemonicParsing="false" onAction="#btnEntrega" prefHeight="35.0" prefWidth="146.0" style="-fx-background-color: #fff; -fx-background-radius: 3px;" text="Entregar" />
                         <Button fx:id="att" layoutX="14.0" layoutY="2.0" mnemonicParsing="false" onAction="#att" prefHeight="38.0" prefWidth="46.0" style="-fx-background-color: #86CEE5;" text="🔄" />
                      </children>
                   </Pane>

@@ -150,11 +150,11 @@ public List<Tarefa> listarTarefas() throws SQLException {
     return listaTarefas;
 }
 
-public void tarefaAluno(Aluno aluno, int id){
+public void tarefaAluno(Aluno aluno, int id, Tarefa tarefa){
     String sql = "INSERT INTO `weclass`.`alunotarefa` (`nota`, `Aluno_idAluno`, `Tarefa_idTarefa`, NomeAluno) VALUES (?, ?, ?, ?);";
     try {
         PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, 0);
+        stmt.setInt(1, tarefa.getNota());
         stmt.setInt(2, aluno.getRa());
         stmt.setInt(3, id);
         stmt.setString(4, aluno.getNome());

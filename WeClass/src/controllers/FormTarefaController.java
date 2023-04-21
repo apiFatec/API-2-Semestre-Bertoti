@@ -100,10 +100,10 @@ public class FormTarefaController implements Initializable {
                 
                 AlunoDao alunodao = new AlunoDao();
                 ArrayList<Aluno> ls = new ArrayList();
-                ls = alunodao.listSala(tarefa.getIdTurma());
+                ls = alunodao.listSala(a.getIdTurma());
                 int id = dao.ultimaTarefa();
                 for(int i = 0; i<ls.size(); i++ ){
-                    dao.tarefaAluno(ls.get(i), id );
+                    dao.tarefaAluno(ls.get(i), id , tarefa);
                 }   
             }
         }
