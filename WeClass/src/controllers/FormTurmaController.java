@@ -27,7 +27,7 @@ public class FormTurmaController implements Initializable {
      * Initializes the controller class.
      */
       
-    @FXML
+        @FXML
     private Button btnTurma;
 
     @FXML
@@ -46,16 +46,6 @@ public class FormTurmaController implements Initializable {
     private TextField txtTurma;
 
     @FXML
-    void hlClasses(ActionEvent event) {
-        WeClass.mudarTela("viewAlunos");
-    }
-
-    @FXML
-    void hlHome(ActionEvent event) {
-        WeClass.mudarTela("main");
-    }
-
-        @FXML
     void btnSalvar(ActionEvent event) {
         String nome = txtTurma.getText();
         String escola =txtEscola.getText();
@@ -65,6 +55,17 @@ public class FormTurmaController implements Initializable {
 
         txtTurma.setText("");
         txtEscola.setText("");
+    }
+
+    @FXML
+    void hlClasses(ActionEvent event) {
+        WeClass.mudarTela("viewAlunos");
+    }
+
+    @FXML
+    void hlHome(ActionEvent event) {
+
+         WeClass.mudarTela("main");
     }
     
     @Override

@@ -31,7 +31,7 @@
          </font></TextField>
       <Spinner fx:id="spNota" layoutX="380.0" layoutY="194.0" prefHeight="39.0" prefWidth="153.0" style="-fx-background-color: #fff; -fx-border-color: #86CEE5; -fx-border-width: 2px; -fx-border-radius: 5px;" />
       <DatePicker fx:id="pickerEnt" layoutX="116.0" layoutY="194.0" prefHeight="39.0" prefWidth="160.0" style="-fx-border-color: #86CEE5; -fx-border-width: 2px;" />
-      <Button layoutX="152.0" layoutY="563.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="265.0" style="-fx-background-color: #fff; -fx-border-color: #1590C5; -fx-border-radius: 3px; -fx-border-width: 2px;" text="Cancelar">
+      <Button fx:id="btnVoltar" layoutX="152.0" layoutY="563.0" mnemonicParsing="false" onAction="#btnVoltar" prefHeight="51.0" prefWidth="265.0" style="-fx-background-color: #fff; -fx-border-color: #1590C5; -fx-border-radius: 3px; -fx-border-width: 2px;" text="Voltar">
          <font>
             <Font size="18.0" />
          </font>

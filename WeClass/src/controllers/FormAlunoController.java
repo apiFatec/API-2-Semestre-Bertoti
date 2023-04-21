@@ -16,9 +16,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import models.Aluno;
 import models.Turma;
+import views.WeClass;
 
 /**
  * FXML Controller class
@@ -27,11 +29,23 @@ import models.Turma;
  */
 public class FormAlunoController implements Initializable {
     
-    @FXML
+@FXML
     private Button btnCriar;
 
     @FXML
+    private Button btnVoltar;
+
+    @FXML
     private ComboBox<Turma> cbTurma;
+
+    @FXML
+    private Hyperlink hlCalendar;
+
+    @FXML
+    private Hyperlink hlClasses;
+
+    @FXML
+    private Hyperlink hlHome;
 
     @FXML
     private TextField txtNome;
@@ -51,6 +65,21 @@ public class FormAlunoController implements Initializable {
         
         txtNome.setText("");
         txtRa.setText("");
+    }
+    
+        @FXML
+    void btnvVoltar(ActionEvent event) {
+            WeClass.mudarTela("viewAlunos");
+    }
+
+    @FXML
+    void hlClasses(ActionEvent event) {
+           WeClass.mudarTela("viewAlunos");
+    }
+
+    @FXML
+    void hlHome(ActionEvent event) {
+            WeClass.mudarTela("main");
     }
     
     ObservableList<Turma> list;

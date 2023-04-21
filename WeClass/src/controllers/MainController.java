@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import views.WeClass;
+import controllers.alunosViewController;
 
 
 
@@ -51,11 +52,17 @@ public class MainController implements Initializable {
     @FXML
     void hlHome(ActionEvent event) {
          WeClass.mudarTela("main");
+        
     }
     
     @FXML
     void btnTurma(ActionEvent event) {
         WeClass.mudarTela("formTurma");
+    }
+    
+    @FXML
+    void btnTarefa(ActionEvent event) {
+        WeClass.mudarTela("formTarefa");
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {

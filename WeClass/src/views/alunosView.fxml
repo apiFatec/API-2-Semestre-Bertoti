@@ -68,12 +68,12 @@
          <children>
             <Pane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;">
                <children>
-                  <Button layoutX="21.0" layoutY="334.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="374.0" style="-fx-background-color: #1590c4;" text="Cadastrar Novo Aluno" textFill="WHITE">
+                  <Button fx:id="btnNovoAluno" layoutX="21.0" layoutY="334.0" mnemonicParsing="false" onAction="#btnNovoAluno" prefHeight="39.0" prefWidth="374.0" style="-fx-background-color: #1590c4;" text="Cadastrar Novo Aluno" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button layoutX="403.0" layoutY="334.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="374.0" style="-fx-background-color: #1590c4;" text="Criar Nova Tarefa" textFill="WHITE">
+                  <Button fx:id="btnNovaTarefa" layoutX="403.0" layoutY="334.0" mnemonicParsing="false" onAction="#btnNovaTarefa" prefHeight="39.0" prefWidth="374.0" style="-fx-background-color: #1590c4;" text="Criar Nova Tarefa" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -116,18 +116,21 @@
                   </Label>
                   <Pane layoutX="21.0" layoutY="89.0" prefHeight="41.0" prefWidth="756.0" style="-fx-background-color: #86CEE5; -fx-background-radius: 4px;">
                      <children>
-                        <ComboBox fx:id="cbTurma" layoutX="14.0" layoutY="6.0" onAction="#select" prefHeight="30.0" prefWidth="137.0" promptText="selecionar turma" style="-fx-background-color: #86CEE5;" />
-                        <ComboBox fx:id="cbTarefa" layoutX="158.0" layoutY="6.0" onAction="#showTarefas" prefHeight="30.0" prefWidth="145.0" promptText="selecionar Tarefa" style="-fx-background-color: #86CEE5;" />
+                        <ComboBox fx:id="cbTurma" layoutX="61.0" layoutY="6.0" onAction="#select" prefHeight="30.0" prefWidth="137.0" promptText="selecionar turma" style="-fx-background-color: #86CEE5;" />
+                        <ComboBox fx:id="cbTarefa" layoutX="198.0" layoutY="6.0" onAction="#showTarefas" prefHeight="30.0" prefWidth="145.0" promptText="selecionar Tarefa" style="-fx-background-color: #86CEE5;" />
+                        <Button fx:id="btnEntrega" layoutX="596.0" layoutY="3.0" mnemonicParsing="false" onAction="#btnEntrega" prefHeight="35.0" prefWidth="146.0" style="-fx-background-color: #fff; -fx-background-radius: 3px;" text="Entregar" />
+                        <Button fx:id="att" layoutX="14.0" layoutY="2.0" mnemonicParsing="false" onAction="#att" prefHeight="38.0" prefWidth="46.0" style="-fx-background-color: #86CEE5;" text="🔄" />
                      </children>
                   </Pane>
                   <TableView fx:id="table" layoutX="21.0" layoutY="130.0" prefHeight="200.0" prefWidth="756.0">
                     <columns>
-                      <TableColumn fx:id="nomeCol" prefWidth="431.0" style="-fx-background-color: #fff;" text="Nome" />
-                      <TableColumn fx:id="statusCol" prefWidth="156.0" style="-fx-background-color: #fff;" text="Status" />
-                        <TableColumn fx:id="entregaCol" prefWidth="167.0" style="-fx-background-color: #fff;" text="Data de Entrega" />
+                      <TableColumn fx:id="selectCol" prefWidth="51.0" style="-fx-background-color: #fff;" text="" />
+                      <TableColumn fx:id="nomeCol" prefWidth="355.0" style="-fx-background-color: #fff;" text="Nome" />
+                      <TableColumn fx:id="statusCol" prefWidth="154.0" style="-fx-background-color: #fff;" text="Status" />
+                      <TableColumn fx:id="entregaCol" prefWidth="195.0" style="-fx-background-color: #fff;" text="Data de Entrega" />
                     </columns>
                   </TableView>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="41.0" text="escola">
+                  <Label fx:id="lbEscola" alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="41.0" text="escola">
                      <font>
                         <Font size="18.0" />
                      </font>

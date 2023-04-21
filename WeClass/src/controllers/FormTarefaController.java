@@ -32,6 +32,7 @@ import javafx.scene.layout.AnchorPane;
 import models.Aluno;
 import models.Turma;
 import models.Tarefa;
+import views.WeClass;
 
 /**
  * FXML Controller class
@@ -61,6 +62,10 @@ public class FormTarefaController implements Initializable {
     @FXML
     private TableColumn<Turma, String> nomeCol;
 
+    
+    @FXML
+    private Button btnVoltar;
+    
     @FXML
     private DatePicker pickerEnt;
 
@@ -117,7 +122,7 @@ public class FormTarefaController implements Initializable {
         CheckBox ch = new CheckBox("");
         turmas.get(i).setSelect(ch);
         }
-        
+         
         tableTurma.setItems(turmas);
         
         selectCol.setCellValueFactory(new PropertyValueFactory<Turma, CheckBox>("select"));
@@ -130,6 +135,11 @@ public class FormTarefaController implements Initializable {
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(1,10,1);
          spNota.setValueFactory(valueFactory);
         
+    }
+    
+    @FXML
+    void btnVoltar(ActionEvent event) {
+        WeClass.mudarTela("main");
     }
         
         

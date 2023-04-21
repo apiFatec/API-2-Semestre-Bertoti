@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import models.TarefaAluno;
@@ -35,15 +37,29 @@ public class TarefaAlunoDao {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
+                int serial = rs.getInt("serial");
                 String nome = rs.getString("NomeAluno");
                 String status = rs.getString("status");
                 Date data = rs.getDate("DataEntrega");
-                TarefaAluno tarefaAluno = new TarefaAluno(nome, status, (java.sql.Date) data);
+                TarefaAluno tarefaAluno = new TarefaAluno(serial,nome, status, (java.sql.Date) data);
                 list.add(tarefaAluno);
             }
             return list;
         } catch (SQLException e) {
         }
         return null;
+    }
+    
+    public void entregarTarefa(int id){
+        String sql = "UPDATE `weclass`.`alunotarefa` SET `status` = 'Entregue', `DataEntrega` = ? WHERE (`serial` = ? );";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            LocalDate data= LocalDate.now();
+            stmt.setDate(1, java.sql.Date.valueOf(data));
+            stmt.setInt(2, id);
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException e) {
+        }
     }
 }
