@@ -18,7 +18,7 @@
 <img style="width: 800px; height:400px" src="https://user-images.githubusercontent.com/111647763/232899194-0e7617d3-5a23-4ce3-b1aa-814d1683f346.jpg"</img>
 
 <h2>Burndown</h2>
-<img style="width: 800px; height:400px" src="![Captura de tela 2023-04-21 125005](https://user-images.githubusercontent.com/111647763/233680483-85d12897-3861-4c6d-a1e6-d9ec749628ed.png)
+<img style="width: 800px; height:400px" src="https://user-images.githubusercontent.com/111647763/233680483-85d12897-3861-4c6d-a1e6-d9ec749628ed.png)
 "</img>
 
 <h2>Tecnologias Utilizadas</h2>
