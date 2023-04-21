@@ -151,17 +151,43 @@ public List<Tarefa> listarTarefas() throws SQLException {
 }
 
 public void tarefaAluno(Aluno aluno, int id){
-    String sql = "INSERT INTO `weclass`.`alunotarefa` (`nota`, `Aluno_idAluno`, `Tarefa_idTarefa`) VALUES (?, ?, ?);";
+    String sql = "INSERT INTO `weclass`.`alunotarefa` (`nota`, `Aluno_idAluno`, `Tarefa_idTarefa`, NomeAluno) VALUES (?, ?, ?, ?);";
     try {
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setInt(1, 0);
         stmt.setInt(2, aluno.getRa());
         stmt.setInt(3, id);
+        stmt.setString(4, aluno.getNome());
         stmt.execute();
         stmt.close();
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null,"Erro ao atribuir tarefa aos alunos "+ e.getMessage());
     }
         
+}
+
+public ArrayList<Tarefa> tarefaPorTurma(int id){
+    String sql = "SELECT * FROM weclass.tarefa where Turma_idTurma = ?";
+    ArrayList<Tarefa> list = new ArrayList<>();
+    try {
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, id);
+        ResultSet rs = stmt.executeQuery();
+        while(rs.next()){
+            int idTarefa = rs.getInt("idTarefa");
+            String nomeTarefa = rs.getString("nomeTarefa");
+            String descricao = rs.getString("desc");
+            int nota = rs.getInt("nota");
+            Date dataInicio = rs.getDate("data_inicio");
+            Date dataFim = rs.getDate("data_fim");
+            int idTurma = rs.getInt("Turma_idTurma");
+            Tarefa tarefa = new Tarefa(idTarefa, nomeTarefa, descricao, nota, dataInicio, dataFim, idTurma);
+            list.add(tarefa);
+        }
+        return list;
+    } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Erro ao listar tarefas pela turma "+ e.getMessage());
+    }
+        return null;
 }
 }

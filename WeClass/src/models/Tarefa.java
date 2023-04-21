@@ -86,7 +86,6 @@ public class Tarefa {
 
     @Override
     public String toString() {
-        return "Tarefa [id=" + id + ", nomeTarefa=" + nomeTarefa + ", descricao=" + descricao + ", nota=" + nota
-                + ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + ", idTurma=" + idTurma + "]";
+        return nomeTarefa;
     }
 }
