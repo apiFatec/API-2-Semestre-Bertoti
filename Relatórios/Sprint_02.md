@@ -66,7 +66,7 @@
 <h2>Tela de adição de novo aluno </h2>
   <img  src="https://user-images.githubusercontent.com/111647763/233884517-906c7d97-5e70-4964-ad48-3caeb319a966.png"</img>
  
- <h2>Tela de adição de noava turma</h2>
+ <h2>Tela de adição de nova turma</h2>
   <img  src="https://user-images.githubusercontent.com/111647763/233884592-49c284cb-39e8-4736-a34d-da986f50ef3d.png"</img>
  
  
