@@ -55,20 +55,18 @@
 </table>
 
 <h2>Tela Home </h2>
-<img style="width: 800px; height:400px" src="https://user-images.githubusercontent.com/111647763/233884173-e60d8fd5-c9f5-4977-b603-edf39474702d.png
-"</img>
+<img  src="https://user-images.githubusercontent.com/111647763/233884755-97f3a3ab-6e93-4fcb-bee6-0d2d0b090236.png"</img>
 
 <h2> tela de Tarefas </h2>
-  <img style="width: 800px; height:400px" src="https://user-images.githubusercontent.com/111647763/233884339-64af5709-7f35-4ada-8615-2ddd069d46e1.png"</img>
+  <img  src="https://user-images.githubusercontent.com/111647763/233884339-64af5709-7f35-4ada-8615-2ddd069d46e1.png"</img>
 
 <h2>Nova Tarefa </h2>
-  <img style="width: 800px; height:400px" src="https://user-images.githubusercontent.com/111647763/233884420-ffef59d7-bfcb-4818-be86-65e5eeba4de8.png"</img>
+  <img  src="https://user-images.githubusercontent.com/111647763/233884420-ffef59d7-bfcb-4818-be86-65e5eeba4de8.png"</img>
 
 <h2>Novo Aluno </h2>
-  <img style="width: 800px; height:400px" src="https://user-images.githubusercontent.com/111647763/233884517-906c7d97-5e70-4964-ad48-3caeb319a966.png"</img>
+  <img  src="https://user-images.githubusercontent.com/111647763/233884517-906c7d97-5e70-4964-ad48-3caeb319a966.png"</img>
  
- <h2>Nova Turma
-  <img style="width: 800px; height:400px" src="https://user-images.githubusercontent.com/111647763/233884592-49c284cb-39e8-4736-a34d-da986f50ef3d.png
-"</img>
+ <h2>Nova Turma</h2>
+  <img  src="https://user-images.githubusercontent.com/111647763/233884592-49c284cb-39e8-4736-a34d-da986f50ef3d.png"</img>
  
  
