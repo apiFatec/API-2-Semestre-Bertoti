@@ -9,12 +9,8 @@ import dao.TarefaDAO;
 import dao.TurmaDao;
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,6 +32,7 @@ import javafx.scene.layout.AnchorPane;
 import models.Aluno;
 import models.Turma;
 import models.Tarefa;
+import views.WeClass;
 
 /**
  * FXML Controller class
@@ -65,6 +62,10 @@ public class FormTarefaController implements Initializable {
     @FXML
     private TableColumn<Turma, String> nomeCol;
 
+    
+    @FXML
+    private Button btnVoltar;
+    
     @FXML
     private DatePicker pickerEnt;
 
@@ -99,10 +100,10 @@ public class FormTarefaController implements Initializable {
                 
                 AlunoDao alunodao = new AlunoDao();
                 ArrayList<Aluno> ls = new ArrayList();
-                ls = alunodao.listSala(tarefa.getIdTurma());
+                ls = alunodao.listSala(a.getIdTurma());
                 int id = dao.ultimaTarefa();
                 for(int i = 0; i<ls.size(); i++ ){
-                    dao.tarefaAluno(ls.get(i), id );
+                    dao.tarefaAluno(ls.get(i), id , tarefa);
                 }   
             }
         }
@@ -121,7 +122,7 @@ public class FormTarefaController implements Initializable {
         CheckBox ch = new CheckBox("");
         turmas.get(i).setSelect(ch);
         }
-        
+         
         tableTurma.setItems(turmas);
         
         selectCol.setCellValueFactory(new PropertyValueFactory<Turma, CheckBox>("select"));
@@ -134,6 +135,11 @@ public class FormTarefaController implements Initializable {
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(1,10,1);
          spNota.setValueFactory(valueFactory);
         
+    }
+    
+    @FXML
+    void btnVoltar(ActionEvent event) {
+        WeClass.mudarTela("main");
     }
         
         

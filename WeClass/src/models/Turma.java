@@ -47,6 +47,11 @@ public class Turma {
         return idTurma;
     }
 
+    @Override
+    public String toString() {
+        return Nome+" | "+Escola;
+    }
+
     public void setIdTurma(int idTurma) {
         this.idTurma = idTurma;
     }

@@ -13,51 +13,51 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="btnCancelar" onDragDetected="#btnCancel" prefHeight="651.0" prefWidth="993.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FormTarefaController">
+<AnchorPane id="AnchorPane" fx:id="btnCancelar" onDragDetected="#btnCancel" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FormTarefaController">
    <children>
-      <Label layoutX="417.0" layoutY="29.0" text="Nova Tarefa">
+      <Label layoutX="460.0" layoutY="68.0" text="Nova Tarefa">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label layoutX="118.0" layoutY="86.0" text="Nome da tarefa">
+      <Label layoutX="161.0" layoutY="125.0" text="Nome da tarefa">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="txtNome" layoutX="118.0" layoutY="113.0" prefHeight="38.0" prefWidth="413.0" promptText="Digite o nome da tarefa" style="-fx-background-color: #fff; -fx-border-color: #86CEE5; -fx-border-radius: 3px; -fx-border-width: 2px;">
+      <TextField fx:id="txtNome" layoutX="161.0" layoutY="152.0" prefHeight="38.0" prefWidth="413.0" promptText="Digite o nome da tarefa" style="-fx-background-color: #fff; -fx-border-color: #86CEE5; -fx-border-radius: 3px; -fx-border-width: 2px;">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <Spinner fx:id="spNota" layoutX="382.0" layoutY="248.0" style="-fx-background-color: #fff; -fx-border-color: #86CEE5; -fx-border-width: 2px; -fx-border-radius: 5px;" />
-      <DatePicker fx:id="pickerEnt" layoutX="118.0" layoutY="248.0" prefHeight="25.0" prefWidth="160.0" style="-fx-border-color: #86CEE5; -fx-border-width: 2px;" />
-      <Button layoutX="156.0" layoutY="570.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="197.0" style="-fx-background-color: #fff; -fx-border-color: #1590C5; -fx-border-radius: 3px; -fx-border-width: 2px;" text="Cancelar">
+      <Spinner fx:id="spNota" layoutX="423.0" layoutY="233.0" prefHeight="39.0" prefWidth="153.0" style="-fx-background-color: #fff; -fx-border-color: #86CEE5; -fx-border-width: 2px; -fx-border-radius: 5px;" />
+      <DatePicker fx:id="pickerEnt" layoutX="159.0" layoutY="233.0" prefHeight="39.0" prefWidth="160.0" style="-fx-border-color: #86CEE5; -fx-border-width: 2px;" />
+      <Button fx:id="btnVoltar" layoutX="161.0" layoutY="600.0" mnemonicParsing="false" onAction="#btnVoltar" prefHeight="51.0" prefWidth="265.0" style="-fx-background-color: #fff; -fx-border-color: #1590C5; -fx-border-radius: 3px; -fx-border-width: 2px;" text="Voltar">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnSalvar" layoutX="689.0" layoutY="572.0" mnemonicParsing="false" onAction="#btnSalvar" prefHeight="38.0" prefWidth="197.0" style="-fx-background-color: #1590C5;" text="Salvar" textFill="WHITE">
+      <Button fx:id="btnSalvar" layoutX="659.0" layoutY="600.0" mnemonicParsing="false" onAction="#btnSalvar" prefHeight="51.0" prefWidth="265.0" style="-fx-background-color: #1590C5;" text="Salvar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Label layoutX="118.0" layoutY="221.0" text="Data de entrega">
+      <Label layoutX="159.0" layoutY="206.0" text="Data de entrega">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="382.0" layoutY="221.0" text="Nota máxima">
+      <Label layoutX="423.0" layoutY="206.0" text="Nota máxima">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="413.0" layoutY="302.0" prefHeight="30.0" prefWidth="168.0" text="Selecionar Turma">
+      <Label layoutX="456.0" layoutY="301.0" prefHeight="30.0" prefWidth="168.0" text="Selecionar Turma">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Line endX="771.0" layoutX="163.0" layoutY="294.0" startX="-45.0" />
-      <Pane layoutX="153.0" layoutY="343.0" prefHeight="45.0" prefWidth="735.0" style="-fx-background-color: #86CEE5; -fx-background-radius: 2px; -fx-border-color: #86CEE5;">
+      <Line endX="771.0" layoutX="177.0" layoutY="291.0" startX="-45.0" />
+      <Pane layoutX="159.0" layoutY="342.0" prefHeight="45.0" prefWidth="765.0" style="-fx-background-color: #86CEE5; -fx-background-radius: 2px; -fx-border-color: #86CEE5;">
          <children>
             <Pane layoutX="25.0" layoutY="8.0" prefHeight="30.0" prefWidth="385.0" style="-fx-background-color: D9D9D0; -fx-background-radius: 2px;">
                <children>
@@ -67,19 +67,19 @@
             </Pane>
          </children>
       </Pane>
-      <TableView fx:id="tableTurma" layoutX="153.0" layoutY="388.0" prefHeight="163.0" prefWidth="735.0" style="-fx-background-color: #fff;">
+      <TableView fx:id="tableTurma" layoutX="159.0" layoutY="387.0" prefHeight="199.0" prefWidth="765.0" style="-fx-background-color: #fff;">
         <columns>
-          <TableColumn fx:id="selectCol" prefWidth="50.0" style="-fx-background-color: #fff;" text="select" />
-          <TableColumn fx:id="nomeCol" prefWidth="209.0" style="-fx-background-color: #fff;" text="Nome" />
-          <TableColumn fx:id="escolaCol" prefWidth="475.0" style="-fx-background-color: #fff;" text="Escola" />
+          <TableColumn fx:id="selectCol" prefWidth="60.0" style="-fx-background-color: #fff;" text="select" />
+          <TableColumn fx:id="nomeCol" prefWidth="225.0" style="-fx-background-color: #fff;" text="Nome" />
+          <TableColumn fx:id="escolaCol" prefWidth="480.0" style="-fx-background-color: #fff;" text="Escola" />
         </columns>
       </TableView>
-      <Label layoutX="581.0" layoutY="86.0" text="Descrição">
+      <Label layoutX="624.0" layoutY="125.0" text="Descrição">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextArea fx:id="txtDesc" layoutX="581.0" layoutY="113.0" prefHeight="102.0" prefWidth="305.0" promptText="Digite a descrição da tarefa" style="-fx-border-color: #86CEE5; -fx-border-radius: 2px; -fx-background-color: #ffff; -fx-border-width: 2px;">
+      <TextArea fx:id="txtDesc" layoutX="624.0" layoutY="152.0" prefHeight="121.0" prefWidth="305.0" promptText="Digite a descrição da tarefa" style="-fx-border-color: #86CEE5; -fx-border-radius: 2px; -fx-background-color: #ffff; -fx-border-width: 2px;">
          <font>
             <Font size="18.0" />
          </font></TextArea>

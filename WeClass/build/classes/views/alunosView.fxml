@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -16,13 +17,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.alunosViewController">
    <left>
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #86CEE5;" BorderPane.alignment="CENTER">
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Hyperlink fx:id="hlClasses" layoutX="70.0" layoutY="156.0" text="Classes" textFill="WHITE">
+                  <Hyperlink fx:id="hlClasses" layoutX="70.0" layoutY="156.0" onAction="#hlClasses" text="Classes" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -42,17 +43,7 @@
                         <Image url="@../img/classe.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="35.0" layoutY="200.0">
-                     <image>
-                        <Image url="@../img/calendário.png" />
-                     </image>
-                  </ImageView>
-                  <Hyperlink fx:id="hlHome" layoutX="70.0" layoutY="114.0" text="Início" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Hyperlink>
-                  <Hyperlink fx:id="hlCalendar" layoutX="70.0" layoutY="196.0" text="Calendário" textFill="WHITE">
+                  <Hyperlink fx:id="hlHome" layoutX="70.0" layoutY="114.0" onAction="#hlHome" text="Início" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -65,52 +56,75 @@
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #f5f5f5;" BorderPane.alignment="CENTER">
          <children>
-            <Pane prefHeight="600.0" prefWidth="800.0">
+            <Pane prefHeight="720.0" prefWidth="880.0" style="-fx-background-color: #f5f5f5;">
                <children>
-                  <TableView layoutX="60.0" layoutY="70.0" prefHeight="272.0" prefWidth="663.0">
+                  <Button fx:id="btnNovoAluno" layoutX="65.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnNovoAluno" prefHeight="39.0" prefWidth="374.0" style="-fx-background-color: #1590c4;" text="Cadastrar Novo Aluno" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnNovaTarefa" layoutX="447.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnNovaTarefa" prefHeight="39.0" prefWidth="374.0" style="-fx-background-color: #1590c4;" text="Criar Nova Tarefa" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <StackedBarChart layoutX="65.0" layoutY="436.0" prefHeight="230.0" prefWidth="350.0">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </StackedBarChart>
+                  <StackedBarChart layoutX="479.0" layoutY="436.0" prefHeight="230.0" prefWidth="350.0">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </StackedBarChart>
+                  <Text layoutX="65.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Média de nota das avaliações" wrappingWidth="255.669921875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="479.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nota em relação ao prazo de entrega" wrappingWidth="289.669921875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="lbTurma" alignment="CENTER" contentDisplay="CENTER" layoutX="400.7" layoutY="10.0" text="Turma">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="65.0" layoutY="70.0" text="Alunos">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="65.0" layoutY="105.0" prefHeight="41.0" prefWidth="756.0" style="-fx-background-color: #86CEE5; -fx-background-radius: 4px;">
+                     <children>
+                        <ComboBox fx:id="cbTurma" layoutX="61.0" layoutY="6.0" onAction="#select" prefHeight="30.0" prefWidth="137.0" promptText="selecionar turma" style="-fx-background-color: #86CEE5;" />
+                        <ComboBox fx:id="cbTarefa" layoutX="198.0" layoutY="6.0" onAction="#showTarefas" prefHeight="30.0" prefWidth="145.0" promptText="selecionar Tarefa" style="-fx-background-color: #86CEE5;" />
+                        <Button fx:id="btnEntrega" layoutX="596.0" layoutY="3.0" mnemonicParsing="false" onAction="#btnEntrega" prefHeight="35.0" prefWidth="146.0" style="-fx-background-color: #fff; -fx-background-radius: 3px;" text="Entregar" />
+                        <Button fx:id="att" layoutX="14.0" layoutY="2.0" mnemonicParsing="false" onAction="#att" prefHeight="38.0" prefWidth="46.0" style="-fx-background-color: #86CEE5;" text="🔄" />
+                     </children>
+                  </Pane>
+                  <TableView fx:id="table" layoutX="65.0" layoutY="146.0" prefHeight="200.0" prefWidth="756.0">
                     <columns>
-                      <TableColumn prefWidth="210.0" text="Nome" />
-                      <TableColumn prefWidth="215.0" text="status" />
-                        <TableColumn prefWidth="226.0" text="atividades entregues" />
+                      <TableColumn fx:id="selectCol" prefWidth="51.0" style="-fx-background-color: #fff;" text="" />
+                      <TableColumn fx:id="nomeCol" prefWidth="355.0" style="-fx-background-color: #fff;" text="Nome" />
+                      <TableColumn fx:id="statusCol" prefWidth="154.0" style="-fx-background-color: #fff;" text="Status" />
+                      <TableColumn fx:id="entregaCol" prefWidth="195.0" style="-fx-background-color: #fff;" text="Data de Entrega" />
                     </columns>
                   </TableView>
-                  <ComboBox layoutX="60.0" layoutY="34.0" prefWidth="150.0" promptText="Selecionar atividade" style="-fx-background-color: #86CEE5;" />
-                  <Button layoutX="60.0" layoutY="351.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #1590c4;" text="ADICIONAR" textFill="WHITE">
+                  <Label fx:id="lbEscola" alignment="CENTER" contentDisplay="CENTER" layoutX="415.25" layoutY="45.0" text="escola">
                      <font>
-                        <Font name="System Bold" size="9.0" />
+                        <Font size="18.0" />
                      </font>
-                  </Button>
-                  <Button layoutX="145.0" layoutY="351.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #1590c4;" text="REMOVER" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="9.0" />
-                     </font>
-                  </Button>
-                  <StackedBarChart layoutX="60.0" layoutY="444.0" prefHeight="141.0" prefWidth="181.0">
-                     <xAxis>
-                        <CategoryAxis side="BOTTOM" />
-                     </xAxis>
-                     <yAxis>
-                        <NumberAxis side="LEFT" />
-                     </yAxis>
-                  </StackedBarChart>
-                  <StackedBarChart layoutX="485.0" layoutY="444.0" prefHeight="141.0" prefWidth="181.0">
-                     <xAxis>
-                        <CategoryAxis side="BOTTOM" />
-                     </xAxis>
-                     <yAxis>
-                        <NumberAxis side="LEFT" />
-                     </yAxis>
-                  </StackedBarChart>
-                  <Text layoutX="95.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Média de nota das avaliações" wrappingWidth="174.669921875">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="494.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nota em relação ao prazo de entrega" wrappingWidth="228.669921875">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Text>
+                  </Label>
                </children>
             </Pane>
          </children>

@@ -7,21 +7,22 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
    <left>
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #86CEE5;" BorderPane.alignment="CENTER">
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Hyperlink fx:id="hlClasses" layoutX="70.0" layoutY="156.0" text="Classes" textFill="WHITE">
+                  <Hyperlink fx:id="hlClasses" layoutX="70.0" layoutY="156.0" onAction="#hlClasses" text="Classes" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -41,17 +42,7 @@
                         <Image url="@../img/classe.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="35.0" layoutY="200.0">
-                     <image>
-                        <Image url="@../img/calendário.png" />
-                     </image>
-                  </ImageView>
-                  <Hyperlink fx:id="hlHome" layoutX="70.0" layoutY="114.0" text="Início" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Hyperlink>
-                  <Hyperlink fx:id="hlCalendar" layoutX="70.0" layoutY="196.0" text="Calendário" textFill="WHITE">
+                  <Hyperlink fx:id="hlHome" layoutX="70.0" layoutY="114.0" onAction="#hlHome" text="Início" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -64,36 +55,51 @@
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #f5f5f5;" BorderPane.alignment="CENTER">
          <children>
-            <Pane prefHeight="600.0" prefWidth="800.0">
+            <Pane prefHeight="720.0" prefWidth="883.0">
                <children>
-                  <Label fx:id="lblTurmas" layoutX="30.0" layoutY="30.0" text="Turmas">
+                  <Label fx:id="lblTurmas" layoutX="65.0" layoutY="30.0" text="Turmas">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblAtividade" layoutX="30.0" layoutY="317.0" text="Atividades próximas da data de entrega">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <ScrollPane layoutX="30.0" layoutY="65.0" prefHeight="170.0" prefWidth="250.0">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="170.0" prefWidth="235.0" />
-                    </content>
-                  </ScrollPane>
-                  <Button fx:id="btnTurma" layoutX="30.0" layoutY="243.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #1590C5;" text="Criar Nova Turma" textFill="WHITE" />
-                  <ScrollPane layoutX="30.0" layoutY="350.0" prefHeight="170.0" prefWidth="250.0">
-                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="170.0" prefWidth="235.0" />
-                     </content>
-                  </ScrollPane>
-                  <Button fx:id="btnTarefa" layoutX="30.0" layoutY="530.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #1590C5;" text="Criar Nova Tarefa" textFill="WHITE" />
-                  <Label layoutX="351.0" layoutY="304.0" text="Frequência de Entregas">
+                  <Label fx:id="lblAtividade" layoutX="65.0" layoutY="373.0" text="Atividades próximas da data de entrega">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <BarChart layoutX="351.0" layoutY="337.0" prefHeight="233.0" prefWidth="405.0">
+                  <ScrollPane layoutX="65.0" layoutY="65.0" prefHeight="230.0" prefWidth="318.0">
+                     <content>
+                        <TableView fx:id="tableTurma" prefHeight="230.0" prefWidth="318.0" style="-fx-font-size: 15px;">
+                           <columns>
+                              <TableColumn fx:id="TurmaCol" prefWidth="287.0" style="-fx-wrap-text: 2px; -fx-font-size: 15px;" />
+                           </columns>
+                        </TableView>
+                     </content>
+                  </ScrollPane>
+                  <Button fx:id="btnTurma" layoutX="65.0" layoutY="308.0" mnemonicParsing="false" onAction="#btnTurma" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #1590C5;" text="Criar Nova Turma" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Button>
+                  <ScrollPane layoutX="65.0" layoutY="405.0" prefHeight="230.0" prefWidth="320.0">
+                     <content>
+                        <TableView fx:id="tableAtividade" prefHeight="229.0" prefWidth="320.0" style="-fx-font-size: 15px;">
+                          <columns>
+                            <TableColumn fx:id="AtividadeCol" prefWidth="198.0" />
+                            <TableColumn fx:id="entregaCol" prefWidth="105.0" />
+                          </columns>
+                        </TableView>
+                     </content>
+                  </ScrollPane>
+                  <Button fx:id="btnTarefa" layoutX="65.0" layoutY="650.0" mnemonicParsing="false" onAction="#btnTarefa" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #1590C5;" text="Criar Nova Tarefa" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Button>
+                  <Label layoutX="415.0" layoutY="370.0" text="Frequência de Entregas">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <BarChart layoutX="415.0" layoutY="415.0" prefHeight="275.0" prefWidth="400.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
