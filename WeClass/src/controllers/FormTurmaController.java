@@ -27,11 +27,12 @@ public class FormTurmaController implements Initializable {
      * Initializes the controller class.
      */
       
-        @FXML
-    private Button btnTurma;
-
     @FXML
-    private Hyperlink hlCalendar;
+    private Button btnTurma;
+        
+    @FXML
+    private Button btnVoltar;
+
 
     @FXML
     private Hyperlink hlClasses;
@@ -72,4 +73,9 @@ public class FormTurmaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     } 
+    
+    @FXML
+    void btnVoltar(ActionEvent event) {
+        WeClass.mudarTela("main");
+    }
 }

@@ -43,17 +43,7 @@
                         <Image url="@../img/classe.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="35.0" layoutY="200.0">
-                     <image>
-                        <Image url="@../img/calendário.png" />
-                     </image>
-                  </ImageView>
                   <Hyperlink fx:id="hlHome" layoutX="70.0" layoutY="114.0" onAction="#hlHome" text="Início" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Hyperlink>
-                  <Hyperlink fx:id="hlCalendar" layoutX="70.0" layoutY="196.0" text="Calendário" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>

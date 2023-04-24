@@ -19,6 +19,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import models.Aluno;
+import models.Tarefa;
 import models.Turma;
 import views.WeClass;
 
@@ -38,8 +39,6 @@ public class FormAlunoController implements Initializable {
     @FXML
     private ComboBox<Turma> cbTurma;
 
-    @FXML
-    private Hyperlink hlCalendar;
 
     @FXML
     private Hyperlink hlClasses;

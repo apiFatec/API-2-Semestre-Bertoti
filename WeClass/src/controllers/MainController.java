@@ -14,6 +14,19 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import views.WeClass;
 import controllers.alunosViewController;
+import dao.TarefaDAO;
+import dao.TurmaDao;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import models.Tarefa;
+import models.Turma;
 
 
 
@@ -30,8 +43,19 @@ public class MainController implements Initializable {
     private Button btnTurma;
 
     @FXML
-    private Hyperlink hlCalendar;
+    private TableView<Tarefa> tableAtividade;
 
+    @FXML
+    private TableView<Turma> tableTurma;
+    
+    @FXML
+    private TableColumn<Tarefa, String> AtividadeCol;
+    
+    @FXML
+    private TableColumn<Tarefa, Date> entregaCol;
+
+    @FXML
+    private TableColumn<Turma, String> TurmaCol;
     @FXML
     private Hyperlink hlClasses;
 
@@ -64,9 +88,35 @@ public class MainController implements Initializable {
     void btnTarefa(ActionEvent event) {
         WeClass.mudarTela("formTarefa");
     }
+    
+    ObservableList<Turma> listTurma;
+    ObservableList<Tarefa> listTarefa;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        listarTurma();
+         try {
+             listarTarefa();
+         } catch (SQLException ex) {
+             Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        AtividadeCol.setCellValueFactory(new PropertyValueFactory<>("nomeTarefa"));
+        entregaCol.setCellValueFactory(new PropertyValueFactory<>("dataFim"));
+        
+        tableAtividade.setItems(listTarefa);
+        
+        TurmaCol.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+        tableTurma.setItems(listTurma);
+       
     }    
     
+    public void listarTurma(){
+        TurmaDao dao = new TurmaDao();
+        this.listTurma = FXCollections.observableArrayList(dao.listTurma());
+    }
+        public void listarTarefa() throws SQLException{
+        TarefaDAO dao = new TarefaDAO();
+        this.listTarefa = FXCollections.observableArrayList(dao.listarTarefas());
+    }
+
 }

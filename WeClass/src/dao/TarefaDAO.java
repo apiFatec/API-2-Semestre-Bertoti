@@ -121,13 +121,12 @@ public int ultimaTarefa(){
         return 0;
 }     
     
-public List<Tarefa> listarTarefas() throws SQLException {
-    List<Tarefa> listaTarefas = new ArrayList<>();
-
+public ArrayList<Tarefa> listarTarefas() throws SQLException {
+    ArrayList<Tarefa> listaTarefas = new ArrayList<Tarefa>();
     String sql = "SELECT * FROM tarefa";
-
-
-    Statement statement = conn.createStatement();
+    
+    try {
+            Statement statement = conn.createStatement();
     ResultSet resultSet = statement.executeQuery(sql);
 
     while (resultSet.next()) {
@@ -140,14 +139,16 @@ public List<Tarefa> listarTarefas() throws SQLException {
         int idTurma = resultSet.getInt("Turma_idTurma");
 
         Tarefa tarefa = new Tarefa(id, nomeTarefa, descricao, nota, dataInicio, dataFim, idTurma);
-        listaTarefas.add(tarefa);
+        listaTarefas.add(tarefa);}
+        
+        resultSet.close();
+        statement.close();
+        return listaTarefas;
+    } catch (SQLException e) {
+    
+
     }
-
-    resultSet.close();
-    statement.close();
-
-
-    return listaTarefas;
+        return null;
 }
 
 public void tarefaAluno(Aluno aluno, int id, Tarefa tarefa){

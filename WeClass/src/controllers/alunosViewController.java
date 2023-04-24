@@ -51,8 +51,7 @@ public class alunosViewController implements Initializable{
 
     @FXML
     private ComboBox<Turma> cbTurma;
-    @FXML
-    private Hyperlink hlCalendar;
+
 
     @FXML
     private Hyperlink hlClasses;

@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.alunosViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.alunosViewController">
    <left>
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #86CEE5;" BorderPane.alignment="CENTER">
          <children>
@@ -43,17 +43,7 @@
                         <Image url="@../img/classe.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="35.0" layoutY="200.0">
-                     <image>
-                        <Image url="@../img/calendário.png" />
-                     </image>
-                  </ImageView>
                   <Hyperlink fx:id="hlHome" layoutX="70.0" layoutY="114.0" onAction="#hlHome" text="Início" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Hyperlink>
-                  <Hyperlink fx:id="hlCalendar" layoutX="70.0" layoutY="196.0" text="Calendário" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -66,19 +56,19 @@
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #f5f5f5;" BorderPane.alignment="CENTER">
          <children>
-            <Pane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;">
+            <Pane prefHeight="720.0" prefWidth="880.0" style="-fx-background-color: #f5f5f5;">
                <children>
-                  <Button fx:id="btnNovoAluno" layoutX="21.0" layoutY="334.0" mnemonicParsing="false" onAction="#btnNovoAluno" prefHeight="39.0" prefWidth="374.0" style="-fx-background-color: #1590c4;" text="Cadastrar Novo Aluno" textFill="WHITE">
+                  <Button fx:id="btnNovoAluno" layoutX="65.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnNovoAluno" prefHeight="39.0" prefWidth="374.0" style="-fx-background-color: #1590c4;" text="Cadastrar Novo Aluno" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="16.0" />
+                        <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnNovaTarefa" layoutX="403.0" layoutY="334.0" mnemonicParsing="false" onAction="#btnNovaTarefa" prefHeight="39.0" prefWidth="374.0" style="-fx-background-color: #1590c4;" text="Criar Nova Tarefa" textFill="WHITE">
+                  <Button fx:id="btnNovaTarefa" layoutX="447.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnNovaTarefa" prefHeight="39.0" prefWidth="374.0" style="-fx-background-color: #1590c4;" text="Criar Nova Tarefa" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="16.0" />
+                        <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <StackedBarChart layoutX="60.0" layoutY="444.0" prefHeight="141.0" prefWidth="181.0">
+                  <StackedBarChart layoutX="65.0" layoutY="436.0" prefHeight="230.0" prefWidth="350.0">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
@@ -86,7 +76,7 @@
                         <NumberAxis side="LEFT" />
                      </yAxis>
                   </StackedBarChart>
-                  <StackedBarChart layoutX="485.0" layoutY="444.0" prefHeight="141.0" prefWidth="181.0">
+                  <StackedBarChart layoutX="479.0" layoutY="436.0" prefHeight="230.0" prefWidth="350.0">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
@@ -94,27 +84,27 @@
                         <NumberAxis side="LEFT" />
                      </yAxis>
                   </StackedBarChart>
-                  <Text layoutX="95.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Média de nota das avaliações" wrappingWidth="174.669921875">
+                  <Text layoutX="65.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Média de nota das avaliações" wrappingWidth="255.669921875">
                      <font>
-                        <Font size="13.0" />
+                        <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text layoutX="494.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nota em relação ao prazo de entrega" wrappingWidth="228.669921875">
+                  <Text layoutX="479.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nota em relação ao prazo de entrega" wrappingWidth="289.669921875">
                      <font>
-                        <Font size="13.0" />
+                        <Font size="14.0" />
                      </font>
                   </Text>
-                  <Label fx:id="lbTurma" alignment="CENTER" contentDisplay="CENTER" layoutX="356.0" text="Turma">
+                  <Label fx:id="lbTurma" alignment="CENTER" contentDisplay="CENTER" layoutX="400.7" layoutY="10.0" text="Turma">
                      <font>
                         <Font size="28.0" />
                      </font>
                   </Label>
-                  <Label layoutX="24.0" layoutY="54.0" text="Alunos">
+                  <Label layoutX="65.0" layoutY="70.0" text="Alunos">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Pane layoutX="21.0" layoutY="89.0" prefHeight="41.0" prefWidth="756.0" style="-fx-background-color: #86CEE5; -fx-background-radius: 4px;">
+                  <Pane layoutX="65.0" layoutY="105.0" prefHeight="41.0" prefWidth="756.0" style="-fx-background-color: #86CEE5; -fx-background-radius: 4px;">
                      <children>
                         <ComboBox fx:id="cbTurma" layoutX="61.0" layoutY="6.0" onAction="#select" prefHeight="30.0" prefWidth="137.0" promptText="selecionar turma" style="-fx-background-color: #86CEE5;" />
                         <ComboBox fx:id="cbTarefa" layoutX="198.0" layoutY="6.0" onAction="#showTarefas" prefHeight="30.0" prefWidth="145.0" promptText="selecionar Tarefa" style="-fx-background-color: #86CEE5;" />
@@ -122,7 +112,7 @@
                         <Button fx:id="att" layoutX="14.0" layoutY="2.0" mnemonicParsing="false" onAction="#att" prefHeight="38.0" prefWidth="46.0" style="-fx-background-color: #86CEE5;" text="🔄" />
                      </children>
                   </Pane>
-                  <TableView fx:id="table" layoutX="21.0" layoutY="130.0" prefHeight="200.0" prefWidth="756.0">
+                  <TableView fx:id="table" layoutX="65.0" layoutY="146.0" prefHeight="200.0" prefWidth="756.0">
                     <columns>
                       <TableColumn fx:id="selectCol" prefWidth="51.0" style="-fx-background-color: #fff;" text="" />
                       <TableColumn fx:id="nomeCol" prefWidth="355.0" style="-fx-background-color: #fff;" text="Nome" />
@@ -130,7 +120,7 @@
                       <TableColumn fx:id="entregaCol" prefWidth="195.0" style="-fx-background-color: #fff;" text="Data de Entrega" />
                     </columns>
                   </TableView>
-                  <Label fx:id="lbEscola" alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="41.0" text="escola">
+                  <Label fx:id="lbEscola" alignment="CENTER" contentDisplay="CENTER" layoutX="415.25" layoutY="45.0" text="escola">
                      <font>
                         <Font size="18.0" />
                      </font>
