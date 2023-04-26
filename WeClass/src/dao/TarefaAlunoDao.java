@@ -50,6 +50,17 @@ public class TarefaAlunoDao {
         return null;
     }
     
+    public void reverterTarefa(TarefaAluno tarefaAluno){
+        String sql = "UPDATE `weclass`.`alunotarefa` SET `status` = 'Não entregue', `DataEntrega` = NULL WHERE (`serial` = ?);";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, tarefaAluno.getSerial());
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException e) {
+        }
+    }
+    
     public void entregarTarefa(int id){
         String sql = "UPDATE `weclass`.`alunotarefa` SET `status` = 'Entregue', `DataEntrega` = ? WHERE (`serial` = ? );";
         try {

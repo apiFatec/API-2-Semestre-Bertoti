@@ -1,0 +1,90 @@
+#btnTarefa{
+    -fx-background-color:  #1590c4;
+}
+
+#btnTarefa:hover{
+    -fx-background-color: #fff;
+    -fx-text-fill:  #1590c4;
+    -fx-border-color:  #1590c4;
+}
+
+#btnTarefa{
+    -fx-background-color:  #1590c4;
+}
+
+#btnTarefa:hover{
+    -fx-background-color: #fff;
+    -fx-text-fill:  #1590c4;
+    -fx-border-color:  #1590c4;
+    -fx-border-width: 3px;
+    -fx-border-radius: 5px;
+}
+
+#btnAluno{
+    -fx-background-color:  #1590c4;
+}
+
+#btnAluno:hover{
+    -fx-background-color: #fff;
+    -fx-text-fill:  #1590c4;
+    -fx-border-color:  #1590c4;
+    -fx-border-width: 3px;
+    -fx-border-radius: 5px;
+}
+
+#btnEntrega{
+   -fx-background-color:  #fff;
+   -fx-text-fill:  #1590c4;
+   -fx-border-color: #1590c4;
+   -fx-border-radius: 10px;
+   -fx-border-width: 2px;
+   -fx-background-radius: 10px;
+}
+
+#btnEntrega:hover{
+-fx-background-color:  #1590c4;
+-fx-background-radius: 10px;
+-fx-text-fill: #fff;
+
+}
+
+#hlHome{
+    -fx-text-fill: #fff;
+}
+
+#hlHome:hover{
+    -fx-background-color:#1590c4;
+}
+
+#hlClasse{
+    -fx-text-fill: #fff;
+}
+
+#hlClasse:hover{
+    -fx-background-color:#1590c4;
+
+}
+
+#btnAtt{
+
+    -fx-background-color:  #86CEE5;
+}
+
+#btnAtt:hover{
+    -fx-background-color: #1590c4;
+
+}
+
+#cbTurma{
+    -fx-background-color:  #86CEE5;
+}
+#cbTurma:hover{
+    -fx-background-color: #1590c4;
+}
+
+#cbTarefa{
+    -fx-background-color:  #86CEE5;
+}
+#cbTarefa:hover{
+    -fx-background-color: #1590c4;
+}
