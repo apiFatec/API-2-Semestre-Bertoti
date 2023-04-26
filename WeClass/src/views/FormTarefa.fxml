@@ -31,12 +31,12 @@
          </font></TextField>
       <Spinner fx:id="spNota" layoutX="423.0" layoutY="233.0" prefHeight="39.0" prefWidth="153.0" style="-fx-background-color: #fff; -fx-border-color: #86CEE5; -fx-border-width: 2px; -fx-border-radius: 5px;" />
       <DatePicker fx:id="pickerEnt" layoutX="159.0" layoutY="233.0" prefHeight="39.0" prefWidth="160.0" style="-fx-border-color: #86CEE5; -fx-border-width: 2px;" />
-      <Button fx:id="btnVoltar" layoutX="161.0" layoutY="600.0" mnemonicParsing="false" onAction="#btnVoltar" prefHeight="51.0" prefWidth="265.0" style="-fx-background-color: #fff; -fx-border-color: #1590C5; -fx-border-radius: 3px; -fx-border-width: 2px;" text="Voltar">
+      <Button id="btnEntrega" fx:id="btnVoltar" layoutX="161.0" layoutY="600.0" mnemonicParsing="false" onAction="#btnVoltar" prefHeight="51.0" prefWidth="265.0" stylesheets="@../styles/alunosView.css" text="Voltar">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnSalvar" layoutX="659.0" layoutY="600.0" mnemonicParsing="false" onAction="#btnSalvar" prefHeight="51.0" prefWidth="265.0" style="-fx-background-color: #1590C5;" text="Salvar" textFill="WHITE">
+      <Button id="btnTarefa" fx:id="btnSalvar" layoutX="659.0" layoutY="600.0" mnemonicParsing="false" onAction="#btnSalvar" prefHeight="51.0" prefWidth="265.0" stylesheets="@../styles/alunosView.css" text="Salvar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -69,7 +69,7 @@
       </Pane>
       <TableView fx:id="tableTurma" layoutX="159.0" layoutY="387.0" prefHeight="199.0" prefWidth="765.0" style="-fx-background-color: #fff;">
         <columns>
-          <TableColumn fx:id="selectCol" prefWidth="60.0" style="-fx-background-color: #fff;" text="select" />
+          <TableColumn fx:id="selectCol" prefWidth="60.0" style="-fx-background-color: #fff;" />
           <TableColumn fx:id="nomeCol" prefWidth="225.0" style="-fx-background-color: #fff;" text="Nome" />
           <TableColumn fx:id="escolaCol" prefWidth="480.0" style="-fx-background-color: #fff;" text="Escola" />
         </columns>

@@ -14,7 +14,11 @@ import javafx.scene.control.CheckBox;
  */
 public class TarefaAluno {
     private int serial;
-
+    private Date entrega;
+    private CheckBox select;
+    private String nomeAluno;
+    private String status;
+    
     public int getSerial() {
         return serial;
     }
@@ -22,9 +26,7 @@ public class TarefaAluno {
     public void setSerial(int serial) {
         this.serial = serial;
     }
-    private CheckBox select;
-    private String nomeAluno;
-    private String status;
+
 
     public CheckBox getSelect() {
         return select;
@@ -33,7 +35,7 @@ public class TarefaAluno {
     public void setSelect(CheckBox select) {
         this.select = select;
     }
-    private Date entrega;
+  
 
     public TarefaAluno(int serial,String nomeAluno, String status, Date entrega) {
         this.serial = serial;

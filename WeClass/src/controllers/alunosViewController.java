@@ -80,6 +80,7 @@ public class alunosViewController implements Initializable{
     @FXML
     private Button att;
 
+
     @FXML
     void hlClasses(ActionEvent event) {
         cbTarefa.setItems(null);
@@ -102,6 +103,7 @@ public class alunosViewController implements Initializable{
     
     @FXML
     void select(ActionEvent event) {
+        table.setItems(null);
         listarTarefa(cbTurma.getValue().getIdTurma());
         cbTarefa.setItems(listTarefa);
         lbEscola.setText(cbTurma.getValue().getEscola());
@@ -115,6 +117,10 @@ public class alunosViewController implements Initializable{
             if(a.getSelect().isSelected() && a.getEntrega() == null){
                 TarefaAlunoDao dao = new TarefaAlunoDao();
                 dao.entregarTarefa(a.getSerial());
+            }
+            else if(a.getSelect().isSelected() == false){
+                TarefaAlunoDao dao = new TarefaAlunoDao();
+                dao.reverterTarefa(a);
             }
         }
         listarTable(cbTarefa.getValue().getId());
@@ -156,6 +162,8 @@ public class alunosViewController implements Initializable{
     void att(ActionEvent event) {
         listarTurma();
         cbTurma.setItems(listTurma);
+        cbTarefa.setItems(null);
+        table.setItems(null);
     }
 
     
@@ -191,4 +199,5 @@ public class alunosViewController implements Initializable{
         TarefaAlunoDao dao =new TarefaAlunoDao();
         this.listTable = FXCollections.observableArrayList(dao.listarPorTarefa(id));
     }
+    
 }

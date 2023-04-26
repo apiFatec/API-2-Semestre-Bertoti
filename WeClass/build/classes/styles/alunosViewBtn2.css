@@ -1,0 +1,14 @@
+.button{
+   -fx-background-color:  #fff;
+   -fx-text-fill:  #1590c4;
+   -fx-border-color: #1590c4;
+   -fx-border-radius: 10px;
+   -fx-border-width: 2px;
+}
+
+.button:hover{
+-fx-background-color:  #1590c4;
+-fx-background-radius: 10px;
+-fx-text-fill: #fff;
+
+}
