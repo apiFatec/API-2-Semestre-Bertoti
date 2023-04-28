@@ -65,6 +65,7 @@
                   <TextField layoutX="36.0" layoutY="3.0" prefHeight="25.0" prefWidth="344.0" promptText="Selecionar Turma" style="-fx-background-color: #ffff;" />
                </children>
             </Pane>
+            <Button id="btnEntrega" fx:id="btnAtualizar" layoutX="684.0" layoutY="9.0" mnemonicParsing="false" onAction="#btnAtualizar" stylesheets="@../styles/alunosView.css" text="Atualizar" textFill="WHITE" />
          </children>
       </Pane>
       <TableView fx:id="tableTurma" layoutX="159.0" layoutY="387.0" prefHeight="199.0" prefWidth="765.0" style="-fx-background-color: #fff;">

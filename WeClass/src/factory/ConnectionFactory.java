@@ -19,7 +19,7 @@ public class ConnectionFactory {
             return conn;
             
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro de Conex„o "+e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro de Conex√£o "+e.getMessage());
         }
         return null;
     }

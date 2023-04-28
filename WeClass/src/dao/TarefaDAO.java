@@ -152,13 +152,15 @@ public ArrayList<Tarefa> listarTarefas() throws SQLException {
 }
 
 public void tarefaAluno(Aluno aluno, int id, Tarefa tarefa){
-    String sql = "INSERT INTO `weclass`.`alunotarefa` (`nota`, `Aluno_idAluno`, `Tarefa_idTarefa`, NomeAluno) VALUES (?, ?, ?, ?);";
+    String sql = "INSERT INTO `weclass`.`alunotarefa` (`status`, `nota`, `Aluno_RA`, `Aluno_Turma_idTurma`, `Tarefa_idTarefa`, `DataEntrega`, `NomeAluno`) VALUES ('Não Entregue', ?, ?, ?, ?, ?, ?);";
     try {
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setInt(1, tarefa.getNota());
         stmt.setInt(2, aluno.getRa());
-        stmt.setInt(3, id);
-        stmt.setString(4, aluno.getNome());
+        stmt.setInt(3, tarefa.getIdTurma());
+        stmt.setInt(4, id);
+        stmt.setDate(5, null);
+        stmt.setString(6, aluno.getNome());
         stmt.execute();
         stmt.close();
     } catch (SQLException e) {
