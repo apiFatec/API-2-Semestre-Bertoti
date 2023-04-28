@@ -56,6 +56,10 @@ public class MainController implements Initializable {
 
     @FXML
     private TableColumn<Turma, String> TurmaCol;
+    
+    @FXML
+    private Button btnAtualizar;
+    
     @FXML
     private Hyperlink hlClasses;
 
@@ -117,6 +121,23 @@ public class MainController implements Initializable {
         public void listarTarefa() throws SQLException{
         TarefaDAO dao = new TarefaDAO();
         this.listTarefa = FXCollections.observableArrayList(dao.listarTarefas());
+    }
+        
+    @FXML
+    void btnAtualizar(ActionEvent event) {
+        listarTurma();
+         try {
+             listarTarefa();
+         } catch (SQLException ex) {
+             Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        AtividadeCol.setCellValueFactory(new PropertyValueFactory<>("nomeTarefa"));
+        entregaCol.setCellValueFactory(new PropertyValueFactory<>("dataFim"));
+        
+        tableAtividade.setItems(listTarefa);
+        
+        TurmaCol.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+        tableTurma.setItems(listTurma);
     }
 
 }

@@ -79,8 +79,31 @@ public class FormTarefaController implements Initializable {
     private Spinner<Integer> spNota;
     
     @FXML
+    private Button btnAtualizar;
+    
+    @FXML
+    void btnAtualizar(ActionEvent event) {
+        listaDeTurma();
+        for(int i = 0; i<turmas.size();i++){
+        CheckBox ch = new CheckBox("");
+        turmas.get(i).setSelect(ch);
+        }
+         
+        tableTurma.setItems(turmas);
+        
+        selectCol.setCellValueFactory(new PropertyValueFactory<Turma, CheckBox>("select"));
+        
+        nomeCol.setCellValueFactory(new PropertyValueFactory<Turma, String>("Nome"));
+        
+        escolaCol.setCellValueFactory(new PropertyValueFactory<Turma, String>("Escola"));
+        
+         SpinnerValueFactory<Integer> valueFactory = //
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(1,10,1);
+         spNota.setValueFactory(valueFactory);
+    }
+    @FXML
     void btnCancel(MouseEvent event) {
-
+        
     }
 
     @FXML

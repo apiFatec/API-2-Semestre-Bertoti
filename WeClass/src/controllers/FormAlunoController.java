@@ -51,6 +51,15 @@ public class FormAlunoController implements Initializable {
 
     @FXML
     private TextField txtRa;
+    
+    @FXML
+    private Button btnAtualizar;
+    
+    @FXML
+    void btnAtualizar(ActionEvent event) {
+        listaTurma();
+        cbTurma.setItems(list);
+    }
 
     @FXML
     void btnCriar(ActionEvent event) {

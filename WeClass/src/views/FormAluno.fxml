@@ -99,6 +99,7 @@
                                     <Font size="18.0" />
                                  </font>
                               </Button>
+                              <Button id="btnEntrega" fx:id="btnAtualizar" layoutX="532.0" layoutY="45.0" mnemonicParsing="false" onAction="#btnAtualizar" stylesheets="@../styles/alunosView.css" text="🔄" textFill="WHITE" />
                            </children>
                         </AnchorPane>
                      </children>
