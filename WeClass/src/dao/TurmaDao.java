@@ -90,7 +90,23 @@ public class TurmaDao {
             JOptionPane.showMessageDialog(null,"Erro ao Buscar Turma" + e.getMessage());
         }
         return null;
-        
-    
+            
 }     
+    public Turma retornaTurma(int id){
+        String sql = "SELECT * FROM weclass.turma WHERE idTurma = ?";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            String nome=rs.getString("nomeTurma");
+            String escola=rs.getString("escola");
+            Turma turma=new Turma();
+            turma.setEscola(escola);
+            turma.setNome(nome);
+            turma.setIdTurma(id);
+            return turma;
+        } catch (SQLException e) {
+        }
+        return null;
+    }
 }

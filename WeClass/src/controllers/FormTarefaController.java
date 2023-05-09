@@ -7,6 +7,7 @@ package controllers;
 import dao.AlunoDao;
 import dao.TarefaDAO;
 import dao.TurmaDao;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -16,7 +17,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
@@ -29,10 +34,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import models.Aluno;
 import models.Turma;
 import models.Tarefa;
-import views.WeClass;
 
 /**
  * FXML Controller class
@@ -80,6 +85,10 @@ public class FormTarefaController implements Initializable {
     
     @FXML
     private Button btnAtualizar;
+    
+    private Parent root;
+    private Scene scene;
+    private Stage stage;
     
     @FXML
     void btnAtualizar(ActionEvent event) {
@@ -160,9 +169,15 @@ public class FormTarefaController implements Initializable {
         
     }
     
+
+    
     @FXML
-    void btnVoltar(ActionEvent event) {
-        WeClass.mudarTela("main");
+    void btnVoltar(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/Main.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
         
         
