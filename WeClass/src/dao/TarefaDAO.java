@@ -67,7 +67,17 @@ public class TarefaDAO {
     }
 
     public void excluirTarefa(Tarefa tarefa) throws SQLException {
-        String sql = "DELETE FROM tarefa WHERE idTarefa = ?";
+        String sql = "DELETE FROM `weclass`.`alunotarefa` WHERE `Tarefa_idTarefa` = ?;";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, tarefa.getId());
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Erro ao deletar tarefa "+ e.getMessage());
+        }
+        
+        sql = "DELETE FROM tarefa WHERE idTarefa = ?";
         try {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, tarefa.getId());

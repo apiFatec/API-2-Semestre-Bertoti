@@ -110,6 +110,7 @@
                         <ComboBox id="cbTurma" fx:id="cbTurma" layoutX="61.0" layoutY="6.0" onAction="#select" prefHeight="30.0" prefWidth="137.0" promptText="selecionar turma" stylesheets="@../styles/alunosView.css" />
                         <ComboBox id="cbTarefa" fx:id="cbTarefa" layoutX="211.0" layoutY="6.0" onAction="#showTarefas" prefHeight="30.0" prefWidth="145.0" promptText="selecionar Tarefa" stylesheets="@../styles/alunosView.css" />
                         <Button id="btnAtt" fx:id="att" layoutX="8.0" layoutY="6.0" mnemonicParsing="false" onAction="#att" prefHeight="31.0" prefWidth="53.0" stylesheets="@../styles/alunosView.css" text="🔄" />
+                        <Button fx:id="btnEditTarefa" layoutX="654.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnEditTarefa" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #0000;" text="Editar Tarefa" />
                      </children>
                   </Pane>
                   <TableView fx:id="table" layoutX="65.0" layoutY="146.0" prefHeight="200.0" prefWidth="756.0">

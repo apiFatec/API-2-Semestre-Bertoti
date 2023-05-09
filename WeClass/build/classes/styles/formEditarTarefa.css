@@ -1,0 +1,15 @@
+#btnDeletar{
+   -fx-background-color:  #fff;
+   -fx-text-fill:  #FF2E24;
+   -fx-border-color: #FF2E24;
+   -fx-border-radius: 10px;
+   -fx-border-width: 2px;
+   -fx-background-radius: 10px;
+}
+
+#btnDeletar:hover{
+-fx-background-color:  FF2E24;
+-fx-background-radius: 10px;
+-fx-text-fill: #fff;
+
+}

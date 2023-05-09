@@ -13,18 +13,23 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import views.WeClass;
-import controllers.alunosViewController;
 import dao.TarefaDAO;
 import dao.TurmaDao;
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import models.Tarefa;
 import models.Turma;
 
@@ -71,26 +76,45 @@ public class MainController implements Initializable {
 
     @FXML
     private Label lblTurmas;
+    
+    private Parent root;
+    private Scene scene;
+    private Stage stage;
 
     @FXML
-    void hlClasses(ActionEvent event) {
-        WeClass.mudarTela("viewAlunos");
+    void hlClasses(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/alunosView.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
-    void hlHome(ActionEvent event) {
-         WeClass.mudarTela("main");
-        
+    void hlHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/Main.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
     
     @FXML
-    void btnTurma(ActionEvent event) {
-        WeClass.mudarTela("formTurma");
+    void btnTurma(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/FormTurma.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
     
     @FXML
-    void btnTarefa(ActionEvent event) {
-        WeClass.mudarTela("formTarefa");
+    void btnTarefa(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/FormTarefa.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
     
     ObservableList<Turma> listTurma;
