@@ -51,14 +51,13 @@ public class Tarefa {
         this.descricao = descricao;
     }
 
-    public void setNota(int nota) {
-        this.nota = nota;
-    }
-
     public int getNota() {
         return nota;
     }
 
+    public void setNota(int nota) {
+        this.nota = nota;
+    }
 
     public Date getDataInicio() {
         return dataInicio;
@@ -83,6 +82,7 @@ public class Tarefa {
     public void setIdTurma(int idTurma) {
         this.idTurma = idTurma;
     }
+
 
     @Override
     public String toString() {
