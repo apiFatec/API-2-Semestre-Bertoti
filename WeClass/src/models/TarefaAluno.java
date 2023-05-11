@@ -18,6 +18,11 @@ public class TarefaAluno {
     private CheckBox select;
     private String nomeAluno;
     private String status;
+    private Double progresso;
+
+    public TarefaAluno() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     public int getSerial() {
         return serial;
@@ -66,6 +71,20 @@ public class TarefaAluno {
 
     public void setEntrega(Date entrega) {
         this.entrega = entrega;
+    }
+    
+    public Double getProgresso(){
+        return progresso;
+    }
+    
+    public void setProgresso(Double progresso){
+        this.progresso = progresso;
+    }
+    
+    public TarefaAluno(String nomeAluno, String status, Double progresso){
+        this.nomeAluno = nomeAluno;
+        this.status = status;
+        this.progresso = progresso;
     }
     
 }

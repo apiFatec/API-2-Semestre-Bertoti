@@ -47,17 +47,19 @@ public class TarefaDAO {
     }
 
     public void atualizarTarefa(Tarefa tarefa) throws SQLException {
-        String sql = "UPDATE `weclass`.`tarefa` SET `nomeTarefa` = ?, `desc` = ?, `nota` = ?, `data_fim` = ? WHERE (`idTarefa` = ?) and (`Turma_idTurma` = ?);";
+        String sql = "UPDATE tarefa SET nomeTarefa = ?, desc = ?, nota = ?, "
+                     + "data_inicio = ?, data_fim = ?, Turma_idTurma = ? WHERE idTarefa = ?";
         try {
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, tarefa.getNomeTarefa());
-            stmt.setString(2, tarefa.getDescricao());
-            stmt.setInt(3, tarefa.getNota());
-            stmt.setDate(4, (Date) tarefa.getDataFim());
-            stmt.setInt(5, tarefa.getId());
-            stmt.setInt(6, tarefa.getIdTurma());
-            stmt.execute();
-            stmt.close();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, tarefa.getNomeTarefa());
+            statement.setString(2, tarefa.getDescricao());
+            statement.setInt(3, tarefa.getNota());
+            statement.setDate(4, (Date) tarefa.getDataInicio());
+            statement.setDate(5, (Date) tarefa.getDataFim());
+            statement.setInt(6, tarefa.getIdTurma());
+            statement.setInt(7, tarefa.getId());
+            statement.execute();
+            statement.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,"Erro ao Atualizar Tarefa "+ e.getMessage());
         }
@@ -191,7 +193,8 @@ public ArrayList<Tarefa> tarefaPorTurma(int id){
             int nota = rs.getInt("nota");
             Date dataInicio = rs.getDate("data_inicio");
             Date dataFim = rs.getDate("data_fim");
-            Tarefa tarefa = new Tarefa(idTarefa, nomeTarefa, descricao, nota, dataInicio, dataFim, id);
+            int idTurma = rs.getInt("Turma_idTurma");
+            Tarefa tarefa = new Tarefa(idTarefa, nomeTarefa, descricao, nota, dataInicio, dataFim, idTurma);
             list.add(tarefa);
         }
         return list;
