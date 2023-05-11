@@ -13,6 +13,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import models.TarefaAluno;
 
 /**
@@ -73,4 +74,34 @@ public class TarefaAlunoDao {
         } catch (SQLException e) {
         }
     }
+    
+    public TarefaAluno ProgressoAluno(int ra){
+        String nome = "";
+        String status = "Entregue";
+        Double progresso = 0.0;
+        Double entregas = 0.0;
+        Double total = 0.0;
+        String sql = "SELECT * FROM weclass.alunotarefa WHERE Aluno_RA = ?;";
+        try{
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, ra);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                nome = rs.getString("NomeAluno");
+                String comp = rs.getString("status");
+                if(comp.equals("Não entregue")){
+                    status = "Pendente";
+                } else {
+                    entregas = entregas + 1;
+                }
+                total = total + 1;
+            }
+            progresso = (entregas / total) * 100;
+            TarefaAluno tarefa = new TarefaAluno(nome, status, progresso);
+            return tarefa;
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage());
+        }
+        return null;
+    } 
 }

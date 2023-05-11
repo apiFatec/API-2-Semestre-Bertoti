@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import models.Aluno;
 
 /**
  *
@@ -106,6 +107,26 @@ public class TurmaDao {
             turma.setIdTurma(id);
             return turma;
         } catch (SQLException e) {
+        }
+        return null;
+    }
+    
+    public ArrayList<Aluno> alunosSala(int id){
+        String sql = "SELECT * FROM weclass.aluno WHERE Turma_idTurma = ?";
+        ArrayList<Aluno> alunos = new ArrayList<>();
+        try{
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                String nome = rs.getString("nome");
+                int ra = rs.getInt("RA");
+                Aluno aluno = new Aluno(ra, nome,id);
+                alunos.add(aluno);
+            }
+            return alunos;
+        } catch(SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
         return null;
     }

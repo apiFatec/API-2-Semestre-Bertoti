@@ -95,28 +95,8 @@ public class FormEditarTarefaController implements Initializable {
     }
     
     @FXML
-    void btnAtualizar(ActionEvent event) throws SQLException, IOException{
-        TarefaDAO dao = new TarefaDAO();
-        this.tarefa.setNomeTarefa(txtNome.getText());
-        this.tarefa.setDescricao(txtDesc.getText());
-        this.tarefa.setNota(spNota.getValue());
-        this.tarefa.setDataFim(java.sql.Date.valueOf(pickerEnt.getValue()));
-        dao.atualizarTarefa(tarefa);
-        
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/alunosView.fxml"));
-        root =loader.load();
-        
-        alunosViewController alunosView = loader.getController();
-        alunosView.att(event);
-        
-        
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        
-        
-        
+    void btnAtualizar(ActionEvent event){
+        TurmaDao turmadao = new TurmaDao();
     }
 
     /**
