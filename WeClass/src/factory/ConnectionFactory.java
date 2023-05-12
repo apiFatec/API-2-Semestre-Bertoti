@@ -15,7 +15,7 @@ public class ConnectionFactory {
    public Connection getConnection(){
         String url = "jdbc:mysql://localhost/weclass";
         try {
-            Connection conn = DriverManager.getConnection(url, "root", "g09a07r98");
+            Connection conn = DriverManager.getConnection(url, "root", "");
             return conn;
             
         } catch (SQLException e) {
