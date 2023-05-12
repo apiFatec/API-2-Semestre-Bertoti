@@ -88,7 +88,7 @@ public class alunosViewController implements Initializable{
     private TableColumn<TarefaAluno, Date> entregaCol;
 
     @FXML
-    private TableView<TarefaAluno> table;
+    private TableView<TarefaAluno> table2;
     
     @FXML
     private Button att;
@@ -133,7 +133,7 @@ public class alunosViewController implements Initializable{
 
     @FXML
     void selectTurma(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/alunosView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/views/SalaView.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -145,13 +145,27 @@ public class alunosViewController implements Initializable{
     ObservableList<TarefaAluno> listTable;
     
     @FXML
-    void select(ActionEvent event) {
-        table.setItems(null);
+    void select(ActionEvent event) throws IOException {
+        Turma turma = new Turma();
+        turma = cbTurma.getValue();
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/SalaView.fxml"));
+        root = loader.load();
+        SalaViewController controller = loader.getController();
+        controller.setTurma(turma);
+        controller.showTurma(event);
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    void select2(){
+        table2.setItems(null);
         listarTarefa(cbTurma.getValue().getIdTurma());
         cbTarefa.setItems(listTarefa);
         lbEscola.setText(cbTurma.getValue().getEscola());
         lbTurma.setText(cbTurma.getValue().getNome());
-        
     }
     
       @FXML
@@ -179,7 +193,7 @@ public class alunosViewController implements Initializable{
         statusCol.setCellValueFactory(new PropertyValueFactory<>("Status"));
         nomeCol.setCellValueFactory(new PropertyValueFactory<>("NomeAluno"));
         
-        table.setItems(listTable);
+        table2.setItems(listTable);
     }
 
     @FXML
@@ -197,7 +211,8 @@ public class alunosViewController implements Initializable{
         statusCol.setCellValueFactory(new PropertyValueFactory<>("Status"));
         nomeCol.setCellValueFactory(new PropertyValueFactory<>("NomeAluno"));
         
-        table.setItems(listTable);
+
+        table2.setItems(listTable);
         popularGrafico(cbTarefa.getValue().getId());
     }
     
@@ -218,6 +233,8 @@ public class alunosViewController implements Initializable{
         barChart.getData().addAll(series1);
         
         // Adding series in bar chart
+
+        table2.setItems(listTable);
         
     }
     
@@ -226,7 +243,7 @@ public class alunosViewController implements Initializable{
         listarTurma();
         cbTurma.setItems(listTurma);
         cbTarefa.setItems(null);
-        table.setItems(null);
+        table2.setItems(null);
     }
 
     
@@ -265,4 +282,11 @@ public class alunosViewController implements Initializable{
         this.listTable = FXCollections.observableArrayList(dao.listarPorTarefa(id));
     }
     
+    void setTurma(Turma turma){
+        cbTurma.setValue(turma);
+    }
+    
+    void setTarefa(Tarefa tarefa){
+        cbTarefa.setValue(tarefa);
+    }
 }

@@ -30,7 +30,7 @@ import models.Turma;
 import views.WeClass;
 
 public class SalaViewController {
-
+    
     @FXML
     private Button att;
 
@@ -114,10 +114,27 @@ public class SalaViewController {
     }
 
     @FXML
-    void showTarefas(ActionEvent event) {
-
+    void showTarefas(ActionEvent event) throws IOException {
+        Tarefa tarefa = new Tarefa();
+        Turma turma = new Turma();
+        
+        tarefa = cbTarefa.getValue();
+        turma = cbTurma.getValue();
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/alunosView.fxml"));
+        root = loader.load();
+        alunosViewController controller = loader.getController();
+        controller.setTurma(turma);
+        controller.setTarefa(tarefa);
+        controller.select2();
+        controller.showTarefas(event);
+        
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
-
+    
     @FXML
     void showTurma(ActionEvent event) {
         listarTarefa(cbTurma.getValue().getIdTurma());
@@ -159,6 +176,10 @@ public class SalaViewController {
     public void listarTable(int id){
         TarefaAlunoDao dao =new TarefaAlunoDao();
         this.listTable = FXCollections.observableArrayList(dao.listarPorTarefa(id));
+    }
+    
+    void setTurma(Turma turma){
+        cbTurma.setValue(turma);
     }
 
 }
