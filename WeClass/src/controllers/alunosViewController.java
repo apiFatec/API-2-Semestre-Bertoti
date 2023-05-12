@@ -10,6 +10,7 @@ import dao.TurmaDao;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +21,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -29,6 +32,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import models.GraficoMediaTarefa;
 import models.Tarefa;
 import models.TarefaAluno;
 import models.Turma;
@@ -39,6 +43,9 @@ import views.WeClass;
  * @author Mateus
  */
 public class alunosViewController implements Initializable{
+    
+    @FXML
+    private BarChart barChart;
     
     @FXML
     private Label lbEscola;
@@ -191,6 +198,26 @@ public class alunosViewController implements Initializable{
         nomeCol.setCellValueFactory(new PropertyValueFactory<>("NomeAluno"));
         
         table.setItems(listTable);
+        popularGrafico(cbTarefa.getValue().getId());
+    }
+    
+    void popularGrafico(int id) {
+        
+        TurmaDao dao = new TurmaDao();
+
+        ArrayList<GraficoMediaTarefa> mediaTarefa = new ArrayList<>();
+        mediaTarefa = dao.getNotaPorPrazo(id);
+        
+        // Creating Series instance
+       
+        XYChart.Series series1 = new XYChart.Series();
+        for (GraficoMediaTarefa media:mediaTarefa) {  
+            series1.getData().add(new XYChart.Data(media.getSituacao(), media.getMedia())); 
+            System.out.println(media.getSituacao() + " "+ media.getMedia());
+        }
+        barChart.getData().addAll(series1);
+        
+        // Adding series in bar chart
         
     }
     
@@ -220,6 +247,8 @@ public class alunosViewController implements Initializable{
         listarTurma();
         cbTurma.setItems(listTurma);
     } 
+    
+    
     
     public void listarTurma(){
         TurmaDao dao = new TurmaDao();
