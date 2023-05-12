@@ -1,0 +1,19 @@
+#btnSalvar{
+    -fx-text-fill: #fff;
+    -fx-background-color:#86CEE5;
+    -fx-background-radius: 5px;
+}
+
+#btnSalvar:hover{
+    -fx-background-color: #1590c4;
+}
+#btnCancelar{
+    -fx-background-color: #ffffff;
+    -fx-background-radius:5px;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5px;
+}
+
+#btnCancelar:hover{
+    -fx-background-color: #f5f5f5;
+}

@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import models.Aluno;
+import models.GraficoMediaTarefa;
 
 /**
  *
@@ -129,5 +130,28 @@ public class TurmaDao {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
         return null;
+    }
+    
+    public ArrayList<GraficoMediaTarefa> getNotaPorPrazo(int id) {
+        String sql = "SELECT CASE WHEN DataEntrega < data_fim THEN 'Antes do prazo' WHEN DataEntrega = data_fim THEN 'No prazo' ELSE 'Depois do prazo' END AS situacao_entrega, AVG(alunotarefa.nota) AS media FROM alunotarefa JOIN tarefa ON alunotarefa.Tarefa_idTarefa = tarefa.idTarefa WHERE tarefa.idTarefa = ? GROUP BY situacao_entrega;";
+        ArrayList<GraficoMediaTarefa> mediaTarefa =new ArrayList<>(); 
+       
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id); 
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()) {
+                String situacao = rs.getString("situacao_entrega");
+                int media = rs.getInt("media");
+                GraficoMediaTarefa tarefa = new GraficoMediaTarefa(situacao, media);
+                mediaTarefa.add(tarefa);
+            }              
+            return mediaTarefa;
+                   
+        } catch (SQLException e) {
+            
+        }
+        return null;
+        
     }
 }
