@@ -62,13 +62,14 @@ public class TarefaAlunoDao {
         }
     }
     
-    public void entregarTarefa(int id){
-        String sql = "UPDATE `weclass`.`alunotarefa` SET `status` = 'Entregue', `DataEntrega` = ? WHERE (`serial` = ? );";
+    public void entregarTarefa(TarefaAluno tarefa){
+        String sql = "UPDATE `weclass`.`alunotarefa` SET `status` = 'Entregue', `DataEntrega` = ?, `nota` = ? WHERE (`serial` = ? );";
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
             LocalDate data= LocalDate.now();
-            stmt.setDate(1, java.sql.Date.valueOf(data));
-            stmt.setInt(2, id);
+            stmt.setDate(1, tarefa.getEntrega());
+            stmt.setInt(2, tarefa.getNota());
+            stmt.setInt(3, tarefa.getSerial());
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {

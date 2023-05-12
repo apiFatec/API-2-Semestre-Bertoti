@@ -19,6 +19,21 @@ public class TarefaAluno {
     private String nomeAluno;
     private String status;
     private Double progresso;
+    private int nota;
+
+    public int getNota() {
+        return nota;
+    }
+
+    public void setNota(int nota) {
+        this.nota = nota;
+    }
+
+    public TarefaAluno(int serial, Date entrega, int nota) {
+        this.serial = serial;
+        this.entrega = entrega;
+        this.nota = nota;
+    }
 
     public TarefaAluno() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

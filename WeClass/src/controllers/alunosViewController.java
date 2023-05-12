@@ -10,8 +10,11 @@ import dao.TurmaDao;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -152,6 +155,7 @@ public class alunosViewController implements Initializable{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/SalaView.fxml"));
         root = loader.load();
         SalaViewController controller = loader.getController();
+        controller.iniciar();
         controller.setTurma(turma);
         controller.showTurma(event);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -173,7 +177,7 @@ public class alunosViewController implements Initializable{
         for(TarefaAluno a : listTable){
             if(a.getSelect().isSelected() && a.getEntrega() == null){
                 TarefaAlunoDao dao = new TarefaAlunoDao();
-                dao.entregarTarefa(a.getSerial());
+                dao.entregarTarefa(a);
             }
             else if(a.getSelect().isSelected() == false){
                 TarefaAlunoDao dao = new TarefaAlunoDao();
@@ -194,6 +198,7 @@ public class alunosViewController implements Initializable{
         nomeCol.setCellValueFactory(new PropertyValueFactory<>("NomeAluno"));
         
         table2.setItems(listTable);
+        showTarefas(event);
     }
 
     @FXML
@@ -201,6 +206,29 @@ public class alunosViewController implements Initializable{
         listarTable(cbTarefa.getValue().getId());
         for(int i = 0; i<listTable.size(); i++){
             CheckBox cb = new CheckBox("");
+            int serial = listTable.get(i).getSerial();
+            int id = cbTarefa.getValue().getId();
+            //PopUp
+            cb.setOnMouseClicked(e ->{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/PopupEntrega.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(alunosViewController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                PopupEntregaController controller = loader.getController();
+                try {
+                    controller.setTarefaAluno(serial,id);
+                } catch (SQLException ex) {
+                    Logger.getLogger(alunosViewController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                Stage stage2 = new Stage();
+                Scene scene = new Scene(root);
+                stage2.setScene(scene);
+                stage2.show();
+            });
+            
             listTable.get(i).setSelect(cb);
             if(listTable.get(i).getEntrega() != null){
                 listTable.get(i).getSelect().setSelected(true);
