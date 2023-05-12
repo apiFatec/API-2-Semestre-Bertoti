@@ -113,7 +113,7 @@
                         <Button fx:id="btnEditTarefa" layoutX="654.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnEditTarefa" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #0000;" text="Editar Tarefa" />
                      </children>
                   </Pane>
-                  <TableView fx:id="table" layoutX="65.0" layoutY="146.0" prefHeight="200.0" prefWidth="756.0">
+                  <TableView fx:id="table2" layoutX="65.0" layoutY="146.0" prefHeight="200.0" prefWidth="756.0">
                     <columns>
                       <TableColumn fx:id="selectCol" prefWidth="51.0" style="-fx-background-color: #fff;" text="" />
                       <TableColumn fx:id="nomeCol" prefWidth="355.0" style="-fx-background-color: #fff;" text="Nome" />
