@@ -85,13 +85,17 @@ public class FormAlunoController implements Initializable {
     }
     
         @FXML
-    void btnvVoltar(ActionEvent event) {
-            WeClass.mudarTela("viewAlunos");
+    void btnvVoltar(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/SalaView.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
     void hlClasses(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/alunosView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/views/SalaView.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
