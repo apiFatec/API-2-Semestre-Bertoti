@@ -42,7 +42,9 @@ public class TarefaAlunoDao {
                 String nome = rs.getString("NomeAluno");
                 String status = rs.getString("status");
                 Date data = rs.getDate("DataEntrega");
-                TarefaAluno tarefaAluno = new TarefaAluno(serial,nome, status, (java.sql.Date) data);
+                int nota = rs.getInt("nota");
+                TarefaAluno tarefaAluno = new TarefaAluno(serial, nome, status, (java.sql.Date) data);
+                tarefaAluno.setNota(nota);
                 list.add(tarefaAluno);
             }
             return list;

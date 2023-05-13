@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -81,6 +82,9 @@ public class alunosViewController implements Initializable{
     @FXML
     private Button btnEntrega;
     
+    @FXML 
+    private TableColumn<TarefaAluno, Integer> notaCol;
+    
     @FXML
     private TableColumn<TarefaAluno, String> nomeCol;
 
@@ -95,7 +99,18 @@ public class alunosViewController implements Initializable{
     
     @FXML
     private Button att;
-
+    
+    @FXML
+    private Label lblPrazo;
+    
+    private Stage stage2;
+    private Parent root;
+    private Stage stage;
+    private Scene scene;
+    
+    ObservableList<Turma> listTurma;
+    ObservableList<Tarefa> listTarefa;
+    ObservableList<TarefaAluno> listTable;
 
     @FXML
     void hlClasses(ActionEvent event) {
@@ -103,9 +118,7 @@ public class alunosViewController implements Initializable{
         this.listTable = null;
     }
     
-    private Parent root;
-    private Stage stage;
-    private Scene scene;
+    
 
     public void setCbTurma(Turma turma){
         cbTurma.setValue(turma);
@@ -143,9 +156,7 @@ public class alunosViewController implements Initializable{
         stage.show();
     }
     
-    ObservableList<Turma> listTurma;
-    ObservableList<Tarefa> listTarefa;
-    ObservableList<TarefaAluno> listTable;
+    
     
     @FXML
     void select(ActionEvent event) throws IOException {
@@ -196,6 +207,7 @@ public class alunosViewController implements Initializable{
         entregaCol.setCellValueFactory(new PropertyValueFactory<>("entrega"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("Status"));
         nomeCol.setCellValueFactory(new PropertyValueFactory<>("NomeAluno"));
+        notaCol.setCellValueFactory(new PropertyValueFactory<>("nota"));
         
         table2.setItems(listTable);
         showTarefas(event);
@@ -204,6 +216,7 @@ public class alunosViewController implements Initializable{
     @FXML
     void showTarefas(ActionEvent event) {
         listarTable(cbTarefa.getValue().getId());
+        lblPrazo.setText("Prazo de entrega: "+cbTarefa.getValue().getDataFim().toString());
         for(int i = 0; i<listTable.size(); i++){
             CheckBox cb = new CheckBox("");
             int serial = listTable.get(i).getSerial();
@@ -219,14 +232,12 @@ public class alunosViewController implements Initializable{
                 PopupEntregaController controller = loader.getController();
                 try {
                     controller.setTarefaAluno(serial,id);
+                    controller.aparecerPopUp(root);
                 } catch (SQLException ex) {
                     Logger.getLogger(alunosViewController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
-                Stage stage2 = new Stage();
-                Scene scene = new Scene(root);
-                stage2.setScene(scene);
-                stage2.show();
+                
             });
             
             listTable.get(i).setSelect(cb);
@@ -238,10 +249,56 @@ public class alunosViewController implements Initializable{
         entregaCol.setCellValueFactory(new PropertyValueFactory<>("entrega"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("Status"));
         nomeCol.setCellValueFactory(new PropertyValueFactory<>("NomeAluno"));
-        
+        notaCol.setCellValueFactory(new PropertyValueFactory<>("nota"));
 
         table2.setItems(listTable);
         popularGrafico(cbTarefa.getValue().getId());
+    }
+    
+    void mostrarTarefasTabela(){
+        listarTable(cbTarefa.getValue().getId());
+        lblPrazo.setText("Prazo de entrega: "+cbTarefa.getValue().getDataFim().toString());
+        for(int i = 0; i<listTable.size(); i++){
+            CheckBox cb = new CheckBox("");
+            int serial = listTable.get(i).getSerial();
+            int id = cbTarefa.getValue().getId();
+            //PopUp
+            cb.setOnMouseClicked(e ->{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/PopupEntrega.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(alunosViewController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                PopupEntregaController controller = loader.getController();
+                try {
+                    controller.setTarefaAluno(serial,id);
+                    controller.aparecerPopUp(root);
+                } catch (SQLException ex) {
+                    Logger.getLogger(alunosViewController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+            });
+            
+            listTable.get(i).setSelect(cb);
+            if(listTable.get(i).getEntrega() != null){
+                listTable.get(i).getSelect().setSelected(true);
+            }
+        }
+        selectCol.setCellValueFactory(new PropertyValueFactory<>("select"));
+        entregaCol.setCellValueFactory(new PropertyValueFactory<>("entrega"));
+        statusCol.setCellValueFactory(new PropertyValueFactory<>("Status"));
+        nomeCol.setCellValueFactory(new PropertyValueFactory<>("NomeAluno"));
+        notaCol.setCellValueFactory(new PropertyValueFactory<>("nota"));
+
+        table2.setItems(listTable);
+        popularGrafico(cbTarefa.getValue().getId());
+    }
+    void fecharPopup(){
+        stage2.close();
+        Platform.exit();
+        System.exit(0);
     }
     
     void popularGrafico(int id) {
@@ -268,12 +325,19 @@ public class alunosViewController implements Initializable{
     
     @FXML
     void att(ActionEvent event) {
-        listarTurma();
-        cbTurma.setItems(listTurma);
-        cbTarefa.setItems(null);
+        select2();
         table2.setItems(null);
+        barChart.getData().clear();
+        popularGrafico(cbTarefa.getValue().getId());
+        showTarefas(event);
     }
 
+    void atualizarTela(){
+        select2();
+        table2.setItems(null);
+        popularGrafico(cbTarefa.getValue().getId());
+        mostrarTarefasTabela();
+    }
     
     @FXML
     void btnNovaTarefa(ActionEvent event) {

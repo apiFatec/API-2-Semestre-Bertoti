@@ -6,15 +6,19 @@ package controllers;
 
 import dao.TarefaAlunoDao;
 import dao.TarefaDAO;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Spinner;
@@ -46,11 +50,15 @@ public class PopupEntregaController implements Initializable {
     private int serialTarefa;
     private int idTarefa;
     private Tarefa tarefa;
+    
+    private Parent root;
     private Stage stage;
+    private Scene scene;
     
     @FXML
-    void btnCancelar(ActionEvent event) {
-
+    void btnCancelar(ActionEvent event) throws IOException {
+        stage.close();
+        
     }
 
     @FXML
@@ -58,17 +66,9 @@ public class PopupEntregaController implements Initializable {
         Date entrega = java.sql.Date.valueOf(pickerEntrega.getValue());
         int nota = spNota.getValue();
         tarefaAluno = new TarefaAluno(serialTarefa, entrega, nota);
-        
         TarefaAlunoDao dao = new TarefaAlunoDao();
         dao.entregarTarefa(tarefaAluno);
-        
-        FXMLLoader loader =new FXMLLoader(getClass().getResource("/views/alunosView.fxml"));
-        alunosViewController controlador = loader.getController();
-        controlador.select2();
-        controlador.showTarefas(event);
-        controlador.popularGrafico(idTarefa);
         stage.close();
-        
     }
     /**
      * Initializes the controller class.
@@ -87,5 +87,11 @@ public class PopupEntregaController implements Initializable {
         SpinnerValueFactory<Integer> valueFactory = //
         new SpinnerValueFactory.IntegerSpinnerValueFactory(1,tarefa.getNota(),1);
         spNota.setValueFactory(valueFactory);
+    }
+    void aparecerPopUp(Parent root){
+        stage = new Stage();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

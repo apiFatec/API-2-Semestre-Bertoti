@@ -104,9 +104,10 @@
                   <TableView fx:id="table2" layoutX="65.0" layoutY="146.0" prefHeight="200.0" prefWidth="756.0">
                     <columns>
                       <TableColumn fx:id="selectCol" prefWidth="51.0" style="-fx-background-color: #fff;" text="" />
-                      <TableColumn fx:id="nomeCol" prefWidth="355.0" style="-fx-background-color: #fff;" text="Nome" />
-                      <TableColumn fx:id="statusCol" prefWidth="154.0" style="-fx-background-color: #fff;" text="Status" />
-                      <TableColumn fx:id="entregaCol" prefWidth="195.0" style="-fx-background-color: #fff;" text="Data de Entrega" />
+                      <TableColumn fx:id="nomeCol" prefWidth="291.0" style="-fx-background-color: #fff;" text="Nome" />
+                      <TableColumn fx:id="statusCol" prefWidth="155.0" style="-fx-background-color: #fff;" text="Status" />
+                      <TableColumn fx:id="entregaCol" prefWidth="177.0" style="-fx-background-color: #fff;" text="Data de Entrega" />
+                      <TableColumn fx:id="notaCol" maxWidth="81.0" prefWidth="81.0" style="-fx-background-color: #fff;" text="Nota" />
                     </columns>
                   </TableView>
                   <Label fx:id="lbEscola" alignment="CENTER" contentDisplay="CENTER" layoutX="139.0" layoutY="48.0" prefHeight="27.0" prefWidth="600.0" text="escola">
@@ -128,6 +129,11 @@
                       <NumberAxis label="Média" side="LEFT" />
                     </yAxis>
                   </BarChart>
+                  <Label fx:id="lblPrazo" layoutX="612.0" layoutY="79.0" text="Prazo de entrega">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children>

@@ -25,6 +25,14 @@ public class TarefaAluno {
         return nota;
     }
 
+    public TarefaAluno(int serial, Date entrega, String nomeAluno, String status, int nota) {
+        this.serial = serial;
+        this.entrega = entrega;
+        this.nomeAluno = nomeAluno;
+        this.status = status;
+        this.nota = nota;
+    }
+
     public void setNota(int nota) {
         this.nota = nota;
     }

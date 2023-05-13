@@ -163,7 +163,7 @@ public void tarefaAluno(Aluno aluno, int id, Tarefa tarefa){
     String sql = "INSERT INTO `weclass`.`alunotarefa` (`status`, `nota`, `Aluno_RA`, `Aluno_Turma_idTurma`, `Tarefa_idTarefa`, `DataEntrega`, `NomeAluno`) VALUES ('Não Entregue', ?, ?, ?, ?, ?, ?);";
     try {
         PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, tarefa.getNota());
+        stmt.setInt(1, 0);
         stmt.setInt(2, aluno.getRa());
         stmt.setInt(3, tarefa.getIdTurma());
         stmt.setInt(4, id);
