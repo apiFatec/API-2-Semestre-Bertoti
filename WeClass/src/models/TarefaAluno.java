@@ -6,6 +6,7 @@ package models;
 
 import java.sql.Date;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ProgressBar;
 
 
 /**
@@ -19,6 +20,7 @@ public class TarefaAluno {
     private String nomeAluno;
     private String status;
     private Double progresso;
+    private ProgressBar barraDeProgresso;
     private int nota;
 
     public int getNota() {
@@ -104,10 +106,18 @@ public class TarefaAluno {
         this.progresso = progresso;
     }
     
-    public TarefaAluno(String nomeAluno, String status, Double progresso){
+    public ProgressBar getBarraDeProgresso(){
+        return barraDeProgresso;
+    }
+    
+    public void setBarraDeProgresso(ProgressBar barraDeProgresso){
+        this.barraDeProgresso = barraDeProgresso;
+    }
+    
+    public TarefaAluno(String nomeAluno, String status, ProgressBar barraDeProgresso){
         this.nomeAluno = nomeAluno;
         this.status = status;
-        this.progresso = progresso;
+        this.barraDeProgresso = barraDeProgresso;
     }
     
 }

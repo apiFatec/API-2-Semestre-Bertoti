@@ -21,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -68,7 +69,7 @@ public class SalaViewController {
     private TableColumn<TarefaAluno, String> nomeCol;
 
     @FXML
-    private TableColumn<TarefaAluno, Double> progressoCol;
+    private TableColumn<TarefaAluno, ProgressBar> progressoCol;
 
     @FXML
     private TableColumn<TarefaAluno, String> statusCol;
@@ -154,13 +155,14 @@ public class SalaViewController {
         }
         this.listTable = FXCollections.observableArrayList(listaTarefa);
         statusCol.setCellValueFactory(new PropertyValueFactory<TarefaAluno, String>("status"));
-        progressoCol.setCellValueFactory(new PropertyValueFactory<TarefaAluno, Double>("progresso"));
+        progressoCol.setCellValueFactory(new PropertyValueFactory<TarefaAluno, ProgressBar>("barraDeProgresso"));
         nomeCol.setCellValueFactory(new PropertyValueFactory<TarefaAluno, String>("NomeAluno"));
         table.setItems(listTable);
         
         popularGraficoTarefas(cbTurma.getValue().getIdTurma());
     }
        void popularGraficoTarefas(int id){
+        barChartTarefa.getData().clear();
         TurmaDao dao = new TurmaDao();
         
         GraficoTarefaEntregue entrega = new GraficoTarefaEntregue();

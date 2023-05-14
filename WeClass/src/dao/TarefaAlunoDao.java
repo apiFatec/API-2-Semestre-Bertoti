@@ -13,6 +13,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import javafx.scene.control.ProgressBar;
 import javax.swing.JOptionPane;
 import models.TarefaAluno;
 
@@ -92,15 +93,17 @@ public class TarefaAlunoDao {
             while(rs.next()){
                 nome = rs.getString("NomeAluno");
                 String comp = rs.getString("status");
-                if(comp.equals("Não entregue")){
+                if(comp.equals("Não entregue") || comp.equals("Não Entregue")){
                     status = "Pendente";
                 } else {
                     entregas = entregas + 1;
                 }
                 total = total + 1;
             }
-            progresso = (entregas / total) * 100;
-            TarefaAluno tarefa = new TarefaAluno(nome, status, progresso);
+            progresso = (entregas / total);
+            ProgressBar barraDeProgresso = new ProgressBar();
+            barraDeProgresso.setProgress(progresso);
+            TarefaAluno tarefa = new TarefaAluno(nome, status, barraDeProgresso);
             return tarefa;
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage());
