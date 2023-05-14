@@ -15,6 +15,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
@@ -24,6 +26,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.Aluno;
+import models.GraficoTarefaEntregue;
 import models.Tarefa;
 import models.TarefaAluno;
 import models.Turma;
@@ -73,6 +76,8 @@ public class SalaViewController {
     @FXML
     private TableView<TarefaAluno> table;
     
+    @FXML
+    private BarChart barChartTarefa;
     
     private Parent root;
     private Stage stage;
@@ -152,8 +157,24 @@ public class SalaViewController {
         progressoCol.setCellValueFactory(new PropertyValueFactory<TarefaAluno, Double>("progresso"));
         nomeCol.setCellValueFactory(new PropertyValueFactory<TarefaAluno, String>("NomeAluno"));
         table.setItems(listTable);
+        
+        popularGraficoTarefas(cbTurma.getValue().getIdTurma());
     }
-    
+       void popularGraficoTarefas(int id){
+        TurmaDao dao = new TurmaDao();
+        
+        GraficoTarefaEntregue entrega = new GraficoTarefaEntregue();
+        entrega = dao.getGraficoTarefa(id);
+        
+        XYChart.Series series2 = new XYChart.Series<>();
+        
+        if(entrega.getNumEntregas() > 0){
+        series2.getData().add(new XYChart.Data<>("Entregues", entrega.getNumEntregas())); }
+        if(entrega.getNumNaoEntregue()>0){
+        series2.getData().add(new XYChart.Data<>("Não Entregues", entrega.getNumNaoEntregue())); }
+        
+        barChartTarefa.getData().addAll(series2);
+    }
     
     void iniciar() {
         TurmaDao turmas = new TurmaDao();

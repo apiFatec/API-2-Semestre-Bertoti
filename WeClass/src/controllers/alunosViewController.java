@@ -37,6 +37,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.GraficoMediaTarefa;
+import models.GraficoTarefaEntregue;
 import models.Tarefa;
 import models.TarefaAluno;
 import models.Turma;
@@ -47,6 +48,9 @@ import views.WeClass;
  * @author Mateus
  */
 public class alunosViewController implements Initializable{
+    
+    @FXML
+    private BarChart barChartTarefa;
     
     @FXML
     private BarChart barChart;
@@ -253,6 +257,7 @@ public class alunosViewController implements Initializable{
 
         table2.setItems(listTable);
         popularGrafico(cbTarefa.getValue().getId());
+        popularGraficoTarefas(cbTarefa.getValue().getId());
     }
     
     void mostrarTarefasTabela(){
@@ -294,6 +299,7 @@ public class alunosViewController implements Initializable{
 
         table2.setItems(listTable);
         popularGrafico(cbTarefa.getValue().getId());
+       
     }
     void fecharPopup(){
         stage2.close();
@@ -321,6 +327,23 @@ public class alunosViewController implements Initializable{
 
         table2.setItems(listTable);
         
+        
+        
+    }
+    void popularGraficoTarefas(int id){
+        TurmaDao dao = new TurmaDao();
+        
+        GraficoTarefaEntregue entrega = new GraficoTarefaEntregue();
+        entrega = dao.getGraficoTarefaporAtividade(id);
+        
+        XYChart.Series series2 = new XYChart.Series<>();
+        
+        if(entrega.getNumEntregas() > 0){
+        series2.getData().add(new XYChart.Data<>("Entregues", entrega.getNumEntregas())); }
+        if(entrega.getNumNaoEntregue()>0){
+        series2.getData().add(new XYChart.Data<>("Não Entregues", entrega.getNumNaoEntregue())); }
+        
+        barChartTarefa.getData().addAll(series2);
     }
     
     @FXML
