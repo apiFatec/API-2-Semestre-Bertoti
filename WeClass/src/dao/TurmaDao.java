@@ -165,7 +165,7 @@ public class TurmaDao {
             stmt.setInt(1, idTurma);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
-                if( rs.getString("status").equals("Entregue")){
+                if( rs.getString("status").equals("Entregue") || rs.getString("status").equals("entregue")){
                     TarefasEntregues= TarefasEntregues+1;
                 }
                 else{
@@ -189,7 +189,7 @@ public class TurmaDao {
             stmt.setInt(1, idTurma);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
-                if( rs.getString("status").equals("Entregue")){
+                if( rs.getString("status").equals("Entregue") || rs.getString("status").equals("entregue")){
                     TarefasEntregues= TarefasEntregues+1;
                 }
                 else{

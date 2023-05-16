@@ -82,9 +82,7 @@ public class alunosViewController implements Initializable{
     
     @FXML
     private TableColumn<TarefaAluno, String> selectCol;
-    
-    @FXML
-    private Button btnEntrega;
+
     
     @FXML 
     private TableColumn<TarefaAluno, Integer> notaCol;
@@ -186,36 +184,6 @@ public class alunosViewController implements Initializable{
         lbEscola.setText(cbTurma.getValue().getEscola());
         lbTurma.setText(cbTurma.getValue().getNome());
     }
-    
-      @FXML
-    void btnEntrega(ActionEvent event) {
-        for(TarefaAluno a : listTable){
-            if(a.getSelect().isSelected() && a.getEntrega() == null){
-                TarefaAlunoDao dao = new TarefaAlunoDao();
-                dao.entregarTarefa(a);
-            }
-            else if(a.getSelect().isSelected() == false){
-                TarefaAlunoDao dao = new TarefaAlunoDao();
-                dao.reverterTarefa(a);
-            }
-        }
-        listarTable(cbTarefa.getValue().getId());
-        for(int i = 0; i<listTable.size(); i++){
-            CheckBox cb = new CheckBox("");
-            listTable.get(i).setSelect(cb);
-            if(listTable.get(i).getEntrega() != null){
-                listTable.get(i).getSelect().setSelected(true);
-            }
-        }
-        selectCol.setCellValueFactory(new PropertyValueFactory<>("select"));
-        entregaCol.setCellValueFactory(new PropertyValueFactory<>("entrega"));
-        statusCol.setCellValueFactory(new PropertyValueFactory<>("Status"));
-        nomeCol.setCellValueFactory(new PropertyValueFactory<>("NomeAluno"));
-        notaCol.setCellValueFactory(new PropertyValueFactory<>("nota"));
-        
-        table2.setItems(listTable);
-        showTarefas(event);
-    }
 
     @FXML
     void showTarefas(ActionEvent event) {
@@ -308,7 +276,7 @@ public class alunosViewController implements Initializable{
     }
     
     void popularGrafico(int id) {
-        
+        barChart.getData().clear();
         TurmaDao dao = new TurmaDao();
 
         ArrayList<GraficoMediaTarefa> mediaTarefa = new ArrayList<>();
@@ -331,6 +299,7 @@ public class alunosViewController implements Initializable{
         
     }
     void popularGraficoTarefas(int id){
+        barChartTarefa.getData().clear();
         TurmaDao dao = new TurmaDao();
         
         GraficoTarefaEntregue entrega = new GraficoTarefaEntregue();

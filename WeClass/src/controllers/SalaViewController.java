@@ -91,7 +91,8 @@ public class SalaViewController {
 
     @FXML
     void att(ActionEvent event) {
-        
+        barChartTarefa.getData().clear();
+        iniciar();
     }
 
     @FXML
@@ -144,6 +145,8 @@ public class SalaViewController {
     @FXML
     void showTurma(ActionEvent event) {
         listarTarefa(cbTurma.getValue().getIdTurma());
+        lblEscola.setText(cbTurma.getValue().getEscola());
+        lblTurma.setText(cbTurma.getValue().getNome());
         cbTarefa.setItems(listTarefa);
         TurmaDao turmaDao = new TurmaDao();
         ArrayList<Aluno> listaAluno = new ArrayList<>();
@@ -170,10 +173,10 @@ public class SalaViewController {
         
         XYChart.Series series2 = new XYChart.Series<>();
         
-        if(entrega.getNumEntregas() > 0){
-        series2.getData().add(new XYChart.Data<>("Entregues", entrega.getNumEntregas())); }
-        if(entrega.getNumNaoEntregue()>0){
-        series2.getData().add(new XYChart.Data<>("Não Entregues", entrega.getNumNaoEntregue())); }
+        entrega.getNumEntregas();
+        series2.getData().add(new XYChart.Data<>("Entregues", entrega.getNumEntregas()));
+        entrega.getNumNaoEntregue();
+        series2.getData().add(new XYChart.Data<>("Não Entregues", entrega.getNumNaoEntregue())); 
         
         barChartTarefa.getData().addAll(series2);
     }
