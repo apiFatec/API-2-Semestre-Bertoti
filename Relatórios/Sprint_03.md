@@ -46,6 +46,16 @@
     <td>Figma</td>
     <td>Java</td>
   </tbody>
-
 </table>
+
+<h3>Tela de Editar Tarefa</h3>
+<img src="https://github.com/apiFatec/API-2-Semestre-Bertoti/assets/111647763/b32b8e72-76f6-402a-b469-b0b9fd7bd4aa"</img>
+
+
+<h3>Tela de progresso dos alunos e da sala</h3>
+<img src="https://github.com/apiFatec/API-2-Semestre-Bertoti/assets/111647763/24f8fdac-2b19-42c3-a661-333b56bb518c"</img>
+
+<h3>Tela do progresso da sala em relação a uma atividade</h3>
+<img src="https://github.com/apiFatec/API-2-Semestre-Bertoti/assets/111647763/0ccbdc68-ad2c-43ae-a70f-ab7e3c7e2785"</img>
+
 
