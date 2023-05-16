@@ -11,6 +11,7 @@
       <li>Criação da feature de atualizar tarefa;</li>
   </ul>
 <h2>Backlog da Sprint 3</h2>
-<img style="width: 800px; height:400px" src="https://github.com/apiFatec/API-2-Semestre-Bertoti/assets/111647763/25511a6a-6d24-4f9d-87a4-b74689286b8f.jpg
-"</img>
+<img style="width: 800px; height:400px" src="https://github.com/apiFatec/API-2-Semestre-Bertoti/assets/111647763/3618e3c2-37f0-4525-b489-3b69ff4d6811"</img>
+<h2>Burndown</h2>
+<img style="width: 800px; height:400px" src="https://github.com/apiFatec/API-2-Semestre-Bertoti/assets/111647763/7988b10c-6e75-42d1-a9f7-72eaf8e9c293"</img>
 
