@@ -13,36 +13,48 @@
 - [Relatório das sprints](#relatório-das-sprints)
 
 ## O que é
- A API é um projeto idealizado pela Fatec de São José dos Campos que visa a integração da grade curricular ao desenvolvimento do aluno através de um projeto real de tecnologia. Nesse sentido, a API do segundo semestre de Análise e Desenvolvimento de Sistemas é voltada para a criação de um sistema java desktop, cujo propósito é facilitar o controle de rendimento do corpo discente de um colégio.
+ O API é um projeto idealizado pela Fatec de São José dos Campos que visa a integração da grade curricular ao desenvolvimento do aluno através de um projeto real de tecnologia. Nesse sentido, a API do segundo semestre de Análise e Desenvolvimento de Sistemas é voltada para a criação de um sistema java desktop, cujo propósito é facilitar o controle de rendimento do corpo discente de um colégio.
 <p></p>
 
 
 ## Solução de proposta
-A problemática, sobretudo, é esboçar o meio mais intuitivo de interação do usuário dentro do sistema. Pensando nisso, propusemos um sistema com navegação lateral (sidebar), dashboard, manuseio de notas e atividades dos alunos da instituição. 
+ 
+Sabe-se que o controle de rendimento de qualquer objeto é uma tarefa complexa. Sob essa ótica, propomos a criação de uma aplicação de fácil consulta, intuitiva e efetiva. À vista disso, o projeto abriga um sistema de navegação lateral (sidebar), dashboard, gerenciamento de notas, atividades e alunos da instituição.
+
+
 ### features
 <ul>
-  <li>navegação via sidebar</li>
-  <li>Dashboard para demontrar médias gerais</li>
-  <li>Manuseio de notas dos alunos</li>
-  <li>Manuseio das entregas de atividade dos alunos</li>
+  <li>Navegação via sidebar.</li>
+  <li>Dashboard para demontrar médias gerais.</li>
+  <li>Manuseio de notas dos alunos.</li>
+  <li>Manuseio das entregas de atividade dos alunos.</li>
 
 </ul>
 
 ## Benefícios
-O sistema facilitará o controle de rendimento, vínculado a possibilidade de visualizar os aspectos gerais de uma classe ou de um aluno.  
-<ul>
-  <li></li>
+ <ul>
+
+  <li>Acesso rápido e fácil as informações.</li>
+  <li>Cadastro simplificado de alunos e salas.</li>
+  <li>Aplicação offline.</li>
+  <li>Controle simplificado de notas e tarefas.</li>
 
 </ul>
 
+## Protótipo
+![giffatec](https://user-images.githubusercontent.com/112128418/229379893-c1b6dad3-675a-4d1e-9046-973c1842a30b.gif)
+<a href="https://www.youtube.com/watch?v=zVpzRRMtF34" target="_blank">Link para a visualização mais detalhada do protótipo</a>
 
 ## Planejamento das sprints
 
-  <img src= alt="planejamento sprints"/>
+![Untitled (4)](https://user-images.githubusercontent.com/112128418/229379231-41a15faf-a3e5-40be-aa63-c3bfe15cd7d0.png)
+
+
   
 ## Backlog do projeto
+![backlogtotal (1)](https://user-images.githubusercontent.com/112128418/229377033-4b580304-8879-42bf-b32a-08989be9bf18.jpg)
 
-  <img src=alt="backlog-produto"/>
+
 
 ## Tecnologias utilizadas
 
@@ -54,12 +66,17 @@ O sistema facilitará o controle de rendimento, vínculado a possibilidade de vi
     title="Optional title"
     style="display: inline-block; margin: 0 auto; width: 60px"></th>
     <th><img
-    src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FJavaFX&psig=AOvVaw2FHVEjJ2karwmnuzreJVps&ust=1680267535078000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCOiyrMDag_4CFQAAAAAdAAAAABAD"
+    src="https://user-images.githubusercontent.com/112170274/228851590-eed20d78-d1ed-475f-a41e-633acb03b46f.png"
     alt="Alt text"
     title="Optional title"
     style="display: inline-block; margin: 0 auto; width: 60px"></th>
     <th><img
     src="https://user-images.githubusercontent.com/89823203/190877360-8c7f93cf-5f62-4f49-8641-3b605deb513e.png"
+    alt="Alt text"
+    title="Optional title"
+    style="display: inline-block; margin: 0 auto; width: 60px"></th>
+    <th><img
+    src="https://user-images.githubusercontent.com/112170274/229099588-dac6db0c-ef9c-418a-b18c-0f4f962a487a.png"
     alt="Alt text"
     title="Optional title"
     style="display: inline-block; margin: 0 auto; width: 60px"></th>
@@ -69,6 +86,7 @@ O sistema facilitará o controle de rendimento, vínculado a possibilidade de vi
     <td>MySQL</td>
     <td>JavaFX</td>
     <td>Figma</td>
+    <td>Java</td>
   </tbody>
 
 </table>
@@ -93,12 +111,12 @@ O sistema facilitará o controle de rendimento, vínculado a possibilidade de vi
     <td><a href="https://www.linkedin.com/in/giovani-carvalho-avila-80593a224/">LinkedIn</a></td>
     </tr>
     <tr>
-    <td>Mateus Raimundo</td>
+    <td>Mateus Raimundo  (Scrum Master)</td>
     <td><a href="https://github.com/MateusdiSousa">Github</a></td>
     <td><a href="https://www.linkedin.com/in/mateus-sousa-ba976423a">LinkedIn</a></td>
     </tr>
     <tr>
-    <td>Phelipe Pinheiro  (Scrum Master)</td>
+    <td>Phelipe Pinheiro</td>
     <td><a href="https://github.com/Phelipepinheiro">Github</a></td>
     <td><a href="https://www.linkedin.com/in/phelipe-pinheiro-da-silva-28320824a/">LinkedIn</a></td>
     </tr>
@@ -119,8 +137,8 @@ O sistema facilitará o controle de rendimento, vínculado a possibilidade de vi
     </tr>
     <tr>
     <td>Gisele Alves dos Reis</td>
-    <td><a href="#">Github</a></td>
-    <td><a href="#">LinkedIn</a></td>
+    <td><a href="https://github.com/gisele-reis">Github</a></td>
+    <td><a href="https://www.linkedin.com/in/giselealvesreis">LinkedIn</a></td>
     </tr>
   </tbody>
 </table>
@@ -135,8 +153,8 @@ O sistema facilitará o controle de rendimento, vínculado a possibilidade de vi
 ## Relatório das sprints
 
 <ol>
-  <li><a href="#">Sprint 01 - 02/04/2023</a></li>
-  <li><a href="#">Sprint 02 - 23/04/2023</a></li>
-  <li><a href="#">Sprint 03 - 14/05/2023</a></li>
-  <li><a href="#">Sprint 04 - 04/06/2023</a></li>
+  <li><a href="./Relatórios/Sprint_01.md">Sprint 01 - 02/04/2023</a></li>
+  <li><a href="./Relatórios/Sprint_02.md">Sprint 02 - 23/04/2023</a></li>
+  <li><a href="./Relatórios/Sprint_03.md">Sprint 03 - 14/05/2023</a></li>
+  <li><a href="./Relatórios/Sprint_04.md">Sprint 04 - 04/06/2023</a></li>
 </ol>
