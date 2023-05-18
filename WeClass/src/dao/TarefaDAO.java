@@ -46,7 +46,7 @@ public class TarefaDAO {
 
     }
 
-    public void atualizarTarefa(Tarefa tarefa) throws SQLException {
+   public void atualizarTarefa(Tarefa tarefa) throws SQLException {
         String sql = "UPDATE `weclass`.`tarefa` SET `nomeTarefa` = ?, `desc` = ?, `nota` = ?, `data_fim` = ? WHERE (`idTarefa` = ?) and (`Turma_idTurma` = ?);";
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -163,7 +163,7 @@ public void tarefaAluno(Aluno aluno, int id, Tarefa tarefa){
     String sql = "INSERT INTO `weclass`.`alunotarefa` (`status`, `nota`, `Aluno_RA`, `Aluno_Turma_idTurma`, `Tarefa_idTarefa`, `DataEntrega`, `NomeAluno`) VALUES ('Não Entregue', ?, ?, ?, ?, ?, ?);";
     try {
         PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, tarefa.getNota());
+        stmt.setInt(1, 0);
         stmt.setInt(2, aluno.getRa());
         stmt.setInt(3, tarefa.getIdTurma());
         stmt.setInt(4, id);
@@ -191,7 +191,8 @@ public ArrayList<Tarefa> tarefaPorTurma(int id){
             int nota = rs.getInt("nota");
             Date dataInicio = rs.getDate("data_inicio");
             Date dataFim = rs.getDate("data_fim");
-            Tarefa tarefa = new Tarefa(idTarefa, nomeTarefa, descricao, nota, dataInicio, dataFim, id);
+            int idTurma = rs.getInt("Turma_idTurma");
+            Tarefa tarefa = new Tarefa(idTarefa, nomeTarefa, descricao, nota, dataInicio, dataFim, idTurma);
             list.add(tarefa);
         }
         return list;

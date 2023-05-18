@@ -173,7 +173,7 @@ public class FormTarefaController implements Initializable {
     
     @FXML
     void btnVoltar(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/Main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/views/SalaView.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

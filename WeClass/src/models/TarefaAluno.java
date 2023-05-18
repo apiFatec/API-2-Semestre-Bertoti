@@ -6,6 +6,7 @@ package models;
 
 import java.sql.Date;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ProgressBar;
 
 
 /**
@@ -18,6 +19,35 @@ public class TarefaAluno {
     private CheckBox select;
     private String nomeAluno;
     private String status;
+    private Double progresso;
+    private ProgressBar barraDeProgresso;
+    private int nota;
+
+    public int getNota() {
+        return nota;
+    }
+
+    public TarefaAluno(int serial, Date entrega, String nomeAluno, String status, int nota) {
+        this.serial = serial;
+        this.entrega = entrega;
+        this.nomeAluno = nomeAluno;
+        this.status = status;
+        this.nota = nota;
+    }
+
+    public void setNota(int nota) {
+        this.nota = nota;
+    }
+
+    public TarefaAluno(int serial, Date entrega, int nota) {
+        this.serial = serial;
+        this.entrega = entrega;
+        this.nota = nota;
+    }
+
+    public TarefaAluno() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     public int getSerial() {
         return serial;
@@ -66,6 +96,28 @@ public class TarefaAluno {
 
     public void setEntrega(Date entrega) {
         this.entrega = entrega;
+    }
+    
+    public Double getProgresso(){
+        return progresso;
+    }
+    
+    public void setProgresso(Double progresso){
+        this.progresso = progresso;
+    }
+    
+    public ProgressBar getBarraDeProgresso(){
+        return barraDeProgresso;
+    }
+    
+    public void setBarraDeProgresso(ProgressBar barraDeProgresso){
+        this.barraDeProgresso = barraDeProgresso;
+    }
+    
+    public TarefaAluno(String nomeAluno, String status, ProgressBar barraDeProgresso){
+        this.nomeAluno = nomeAluno;
+        this.status = status;
+        this.barraDeProgresso = barraDeProgresso;
     }
     
 }

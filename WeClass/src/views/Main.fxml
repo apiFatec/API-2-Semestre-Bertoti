@@ -99,7 +99,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <BarChart layoutX="415.0" layoutY="415.0" prefHeight="275.0" prefWidth="400.0">
+                  <BarChart fx:id="graficoEntrega" layoutX="415.0" layoutY="415.0" prefHeight="275.0" prefWidth="400.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>

@@ -11,6 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import models.Aluno;
+import models.GraficoMediaTarefa;
+import models.GraficoTarefaEntregue;
 
 /**
  *
@@ -106,6 +109,97 @@ public class TurmaDao {
             turma.setIdTurma(id);
             return turma;
         } catch (SQLException e) {
+        }
+        return null;
+    }
+    
+    public ArrayList<Aluno> alunosSala(int id){
+        String sql = "SELECT * FROM weclass.aluno WHERE Turma_idTurma = ?";
+        ArrayList<Aluno> alunos = new ArrayList<>();
+        try{
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                String nome = rs.getString("nome");
+                int ra = rs.getInt("RA");
+                Aluno aluno = new Aluno(ra, nome,id);
+                alunos.add(aluno);
+            }
+            return alunos;
+        } catch(SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return null;
+    }
+    
+    public ArrayList<GraficoMediaTarefa> getNotaPorPrazo(int id) {
+        String sql = "SELECT CASE WHEN DataEntrega < data_fim THEN 'Antes do prazo' WHEN DataEntrega = data_fim THEN 'No prazo' ELSE 'Depois do prazo' END AS situacao_entrega, AVG(alunotarefa.nota) AS media FROM alunotarefa JOIN tarefa ON alunotarefa.Tarefa_idTarefa = tarefa.idTarefa WHERE tarefa.idTarefa = ? GROUP BY situacao_entrega;";
+        ArrayList<GraficoMediaTarefa> mediaTarefa =new ArrayList<>(); 
+       
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id); 
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()) {
+                String situacao = rs.getString("situacao_entrega");
+                int media = rs.getInt("media");
+                GraficoMediaTarefa tarefa = new GraficoMediaTarefa(situacao, media);
+                mediaTarefa.add(tarefa);
+            }              
+            return mediaTarefa;
+                   
+        } catch (SQLException e) {
+            
+        }
+        return null;
+        
+    }
+    
+    public GraficoTarefaEntregue getGraficoTarefa(int idTurma){
+        String sql = "SELECT * FROM weclass.alunotarefa where Aluno_Turma_idTurma = ?;";
+        int TarefasEntregues = 0;
+        int TarefasNaoEntregues = 0;
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, idTurma);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                if( rs.getString("status").equals("Entregue") || rs.getString("status").equals("entregue")){
+                    TarefasEntregues= TarefasEntregues+1;
+                }
+                else{
+                    TarefasNaoEntregues = TarefasNaoEntregues+1;
+                }
+            }
+            GraficoTarefaEntregue grafico = new GraficoTarefaEntregue(TarefasEntregues, TarefasNaoEntregues);
+            return grafico;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Erro ao montar o gráfico de entregas de atividades "+ e.getMessage());
+        }
+        return null;
+    }
+    
+    public GraficoTarefaEntregue getGraficoTarefaporAtividade(int idTurma){
+        String sql = "SELECT * FROM weclass.alunotarefa where Tarefa_idTarefa = ?;";
+        int TarefasEntregues = 0;
+        int TarefasNaoEntregues = 0;
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, idTurma);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                if( rs.getString("status").equals("Entregue") || rs.getString("status").equals("entregue")){
+                    TarefasEntregues= TarefasEntregues+1;
+                }
+                else{
+                    TarefasNaoEntregues = TarefasNaoEntregues+1;
+                }
+            }
+            GraficoTarefaEntregue grafico = new GraficoTarefaEntregue(TarefasEntregues, TarefasNaoEntregues);
+            return grafico;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Erro ao montar o gráfico de entregas de atividades "+ e.getMessage());
         }
         return null;
     }

@@ -13,6 +13,9 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import javafx.scene.control.ProgressBar;
+import javax.swing.JOptionPane;
+import models.GraficoTarefaEntregue;
 import models.TarefaAluno;
 
 /**
@@ -41,7 +44,9 @@ public class TarefaAlunoDao {
                 String nome = rs.getString("NomeAluno");
                 String status = rs.getString("status");
                 Date data = rs.getDate("DataEntrega");
-                TarefaAluno tarefaAluno = new TarefaAluno(serial,nome, status, (java.sql.Date) data);
+                int nota = rs.getInt("nota");
+                TarefaAluno tarefaAluno = new TarefaAluno(serial, nome, status, (java.sql.Date) data);
+                tarefaAluno.setNota(nota);
                 list.add(tarefaAluno);
             }
             return list;
@@ -61,16 +66,70 @@ public class TarefaAlunoDao {
         }
     }
     
-    public void entregarTarefa(int id){
-        String sql = "UPDATE `weclass`.`alunotarefa` SET `status` = 'Entregue', `DataEntrega` = ? WHERE (`serial` = ? );";
+    public void entregarTarefa(TarefaAluno tarefa){
+        String sql = "UPDATE `weclass`.`alunotarefa` SET `status` = 'Entregue', `DataEntrega` = ?, `nota` = ? WHERE (`serial` = ? );";
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
             LocalDate data= LocalDate.now();
-            stmt.setDate(1, java.sql.Date.valueOf(data));
-            stmt.setInt(2, id);
+            stmt.setDate(1, tarefa.getEntrega());
+            stmt.setInt(2, tarefa.getNota());
+            stmt.setInt(3, tarefa.getSerial());
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
         }
+    }
+    
+    public TarefaAluno ProgressoAluno(int ra){
+        String nome = "";
+        String status = "Entregue";
+        Double progresso = 0.0;
+        Double entregas = 0.0;
+        Double total = 0.0;
+        String sql = "SELECT * FROM weclass.alunotarefa WHERE Aluno_RA = ?;";
+        try{
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, ra);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                nome = rs.getString("NomeAluno");
+                String comp = rs.getString("status");
+                if(comp.equals("Não entregue") || comp.equals("Não Entregue")){
+                    status = "Pendente";
+                } else {
+                    entregas = entregas + 1;
+                }
+                total = total + 1;
+            }
+            progresso = (entregas / total);
+            ProgressBar barraDeProgresso = new ProgressBar();
+            barraDeProgresso.setProgress(progresso);
+            TarefaAluno tarefa = new TarefaAluno(nome, status, barraDeProgresso);
+            return tarefa;
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage());
+        }
+        return null;
+    } 
+    
+    public GraficoTarefaEntregue graficoMain(){
+        String sql = "SELECT * FROM weclass.alunotarefa;";
+        int entregue = 0;
+        int naoEntregue = 0;
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                String status = rs.getString("status");
+                if(status.equals("Entregue") || status.equals("entregue")){
+                    entregue = entregue +1;
+                }else{naoEntregue = naoEntregue+1;}
+            }
+            GraficoTarefaEntregue grafico = new GraficoTarefaEntregue(entregue, naoEntregue);
+            return grafico;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar gráfico "+e.getMessage());
+        }
+        return null;
     }
 }

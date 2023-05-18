@@ -10,7 +10,12 @@ import dao.TurmaDao;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,6 +25,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -29,6 +36,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import models.GraficoMediaTarefa;
+import models.GraficoTarefaEntregue;
 import models.Tarefa;
 import models.TarefaAluno;
 import models.Turma;
@@ -39,6 +48,12 @@ import views.WeClass;
  * @author Mateus
  */
 public class alunosViewController implements Initializable{
+    
+    @FXML
+    private BarChart barChartTarefa;
+    
+    @FXML
+    private BarChart barChart;
     
     @FXML
     private Label lbEscola;
@@ -67,9 +82,10 @@ public class alunosViewController implements Initializable{
     
     @FXML
     private TableColumn<TarefaAluno, String> selectCol;
+
     
-    @FXML
-    private Button btnEntrega;
+    @FXML 
+    private TableColumn<TarefaAluno, Integer> notaCol;
     
     @FXML
     private TableColumn<TarefaAluno, String> nomeCol;
@@ -81,11 +97,22 @@ public class alunosViewController implements Initializable{
     private TableColumn<TarefaAluno, Date> entregaCol;
 
     @FXML
-    private TableView<TarefaAluno> table;
+    private TableView<TarefaAluno> table2;
     
     @FXML
     private Button att;
-
+    
+    @FXML
+    private Label lblPrazo;
+    
+    private Stage stage2;
+    private Parent root;
+    private Stage stage;
+    private Scene scene;
+    
+    ObservableList<Turma> listTurma;
+    ObservableList<Tarefa> listTarefa;
+    ObservableList<TarefaAluno> listTable;
 
     @FXML
     void hlClasses(ActionEvent event) {
@@ -93,9 +120,7 @@ public class alunosViewController implements Initializable{
         this.listTable = null;
     }
     
-    private Parent root;
-    private Stage stage;
-    private Scene scene;
+    
 
     public void setCbTurma(Turma turma){
         cbTurma.setValue(turma);
@@ -126,60 +151,67 @@ public class alunosViewController implements Initializable{
 
     @FXML
     void selectTurma(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/alunosView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/views/SalaView.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
     
-    ObservableList<Turma> listTurma;
-    ObservableList<Tarefa> listTarefa;
-    ObservableList<TarefaAluno> listTable;
+    
     
     @FXML
-    void select(ActionEvent event) {
-        table.setItems(null);
+    void select(ActionEvent event) throws IOException {
+        Turma turma = new Turma();
+        turma = cbTurma.getValue();
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/SalaView.fxml"));
+        root = loader.load();
+        SalaViewController controller = loader.getController();
+        controller.iniciar();
+        controller.setTurma(turma);
+        controller.showTurma(event);
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    void select2(){
+        table2.setItems(null);
         listarTarefa(cbTurma.getValue().getIdTurma());
         cbTarefa.setItems(listTarefa);
         lbEscola.setText(cbTurma.getValue().getEscola());
         lbTurma.setText(cbTurma.getValue().getNome());
-        
-    }
-    
-      @FXML
-    void btnEntrega(ActionEvent event) {
-        for(TarefaAluno a : listTable){
-            if(a.getSelect().isSelected() && a.getEntrega() == null){
-                TarefaAlunoDao dao = new TarefaAlunoDao();
-                dao.entregarTarefa(a.getSerial());
-            }
-            else if(a.getSelect().isSelected() == false){
-                TarefaAlunoDao dao = new TarefaAlunoDao();
-                dao.reverterTarefa(a);
-            }
-        }
-        listarTable(cbTarefa.getValue().getId());
-        for(int i = 0; i<listTable.size(); i++){
-            CheckBox cb = new CheckBox("");
-            listTable.get(i).setSelect(cb);
-            if(listTable.get(i).getEntrega() != null){
-                listTable.get(i).getSelect().setSelected(true);
-            }
-        }
-        selectCol.setCellValueFactory(new PropertyValueFactory<>("select"));
-        entregaCol.setCellValueFactory(new PropertyValueFactory<>("entrega"));
-        statusCol.setCellValueFactory(new PropertyValueFactory<>("Status"));
-        nomeCol.setCellValueFactory(new PropertyValueFactory<>("NomeAluno"));
-        
-        table.setItems(listTable);
     }
 
     @FXML
     void showTarefas(ActionEvent event) {
         listarTable(cbTarefa.getValue().getId());
+        lblPrazo.setText("Prazo de entrega: "+cbTarefa.getValue().getDataFim().toString());
         for(int i = 0; i<listTable.size(); i++){
             CheckBox cb = new CheckBox("");
+            int serial = listTable.get(i).getSerial();
+            int id = cbTarefa.getValue().getId();
+            //PopUp
+            cb.setOnMouseClicked(e ->{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/PopupEntrega.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(alunosViewController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                PopupEntregaController controller = loader.getController();
+                try {
+                    controller.setTarefaAluno(serial,id);
+                    controller.aparecerPopUp(root);
+                } catch (SQLException ex) {
+                    Logger.getLogger(alunosViewController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+            });
+            
             listTable.get(i).setSelect(cb);
             if(listTable.get(i).getEntrega() != null){
                 listTable.get(i).getSelect().setSelected(true);
@@ -189,19 +221,115 @@ public class alunosViewController implements Initializable{
         entregaCol.setCellValueFactory(new PropertyValueFactory<>("entrega"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("Status"));
         nomeCol.setCellValueFactory(new PropertyValueFactory<>("NomeAluno"));
+        notaCol.setCellValueFactory(new PropertyValueFactory<>("nota"));
+
+        table2.setItems(listTable);
+        popularGrafico(cbTarefa.getValue().getId());
+        popularGraficoTarefas(cbTarefa.getValue().getId());
+    }
+    
+    void mostrarTarefasTabela(){
+        listarTable(cbTarefa.getValue().getId());
+        lblPrazo.setText("Prazo de entrega: "+cbTarefa.getValue().getDataFim().toString());
+        for(int i = 0; i<listTable.size(); i++){
+            CheckBox cb = new CheckBox("");
+            int serial = listTable.get(i).getSerial();
+            int id = cbTarefa.getValue().getId();
+            //PopUp
+            cb.setOnMouseClicked(e ->{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/PopupEntrega.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(alunosViewController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                PopupEntregaController controller = loader.getController();
+                try {
+                    controller.setTarefaAluno(serial,id);
+                    controller.aparecerPopUp(root);
+                } catch (SQLException ex) {
+                    Logger.getLogger(alunosViewController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+            });
+            
+            listTable.get(i).setSelect(cb);
+            if(listTable.get(i).getEntrega() != null){
+                listTable.get(i).getSelect().setSelected(true);
+            }
+        }
+        selectCol.setCellValueFactory(new PropertyValueFactory<>("select"));
+        entregaCol.setCellValueFactory(new PropertyValueFactory<>("entrega"));
+        statusCol.setCellValueFactory(new PropertyValueFactory<>("Status"));
+        nomeCol.setCellValueFactory(new PropertyValueFactory<>("NomeAluno"));
+        notaCol.setCellValueFactory(new PropertyValueFactory<>("nota"));
+
+        table2.setItems(listTable);
+        popularGrafico(cbTarefa.getValue().getId());
+       
+    }
+    void fecharPopup(){
+        stage2.close();
+        Platform.exit();
+        System.exit(0);
+    }
+    
+    void popularGrafico(int id) {
+        barChart.getData().clear();
+        TurmaDao dao = new TurmaDao();
+
+        ArrayList<GraficoMediaTarefa> mediaTarefa = new ArrayList<>();
+        mediaTarefa = dao.getNotaPorPrazo(id);
         
-        table.setItems(listTable);
+        // Creating Series instance
+       
+        XYChart.Series series1 = new XYChart.Series();
+        for (GraficoMediaTarefa media:mediaTarefa) {  
+            series1.getData().add(new XYChart.Data(media.getSituacao(), media.getMedia())); 
+            System.out.println(media.getSituacao() + " "+ media.getMedia());
+        }
+        barChart.getData().addAll(series1);
         
+        // Adding series in bar chart
+
+        table2.setItems(listTable);
+        
+        
+        
+    }
+    void popularGraficoTarefas(int id){
+        barChartTarefa.getData().clear();
+        TurmaDao dao = new TurmaDao();
+        
+        GraficoTarefaEntregue entrega = new GraficoTarefaEntregue();
+        entrega = dao.getGraficoTarefaporAtividade(id);
+        
+        XYChart.Series series2 = new XYChart.Series<>();
+        
+        if(entrega.getNumEntregas() > 0){
+        series2.getData().add(new XYChart.Data<>("Entregues", entrega.getNumEntregas())); }
+        if(entrega.getNumNaoEntregue()>0){
+        series2.getData().add(new XYChart.Data<>("Não Entregues", entrega.getNumNaoEntregue())); }
+        
+        barChartTarefa.getData().addAll(series2);
     }
     
     @FXML
     void att(ActionEvent event) {
-        listarTurma();
-        cbTurma.setItems(listTurma);
-        cbTarefa.setItems(null);
-        table.setItems(null);
+        select2();
+        table2.setItems(null);
+        barChart.getData().clear();
+        popularGrafico(cbTarefa.getValue().getId());
+        showTarefas(event);
     }
 
+    void atualizarTela(){
+        select2();
+        table2.setItems(null);
+        popularGrafico(cbTarefa.getValue().getId());
+        mostrarTarefasTabela();
+    }
     
     @FXML
     void btnNovaTarefa(ActionEvent event) {
@@ -221,6 +349,8 @@ public class alunosViewController implements Initializable{
         cbTurma.setItems(listTurma);
     } 
     
+    
+    
     public void listarTurma(){
         TurmaDao dao = new TurmaDao();
         this.listTurma = FXCollections.observableArrayList(dao.listTurma());
@@ -236,4 +366,11 @@ public class alunosViewController implements Initializable{
         this.listTable = FXCollections.observableArrayList(dao.listarPorTarefa(id));
     }
     
+    void setTurma(Turma turma){
+        cbTurma.setValue(turma);
+    }
+    
+    void setTarefa(Tarefa tarefa){
+        cbTarefa.setValue(tarefa);
+    }
 }

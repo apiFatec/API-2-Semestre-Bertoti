@@ -8,6 +8,7 @@ import dao.TarefaDAO;
 import dao.TurmaDao;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -96,27 +97,28 @@ public class FormEditarTarefaController implements Initializable {
     
     @FXML
     void btnAtualizar(ActionEvent event) throws SQLException, IOException{
+        TurmaDao turmadao = new TurmaDao();
+        Turma turma = new Turma();
+        turma = turmadao.retornaTurma(tarefa.getIdTurma());
+        
         TarefaDAO dao = new TarefaDAO();
         this.tarefa.setNomeTarefa(txtNome.getText());
         this.tarefa.setDescricao(txtDesc.getText());
         this.tarefa.setNota(spNota.getValue());
         this.tarefa.setDataFim(java.sql.Date.valueOf(pickerEnt.getValue()));
         dao.atualizarTarefa(tarefa);
+
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/alunosView.fxml"));
-        root =loader.load();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewa/alunosView.fxml"));
+        root = loader.load();
         
-        alunosViewController alunosView = loader.getController();
-        alunosView.att(event);
-        
+        alunosViewController controlador = loader.getController();
+        controlador.showTarefas(event);
         
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        
-        
-        
     }
 
     /**
