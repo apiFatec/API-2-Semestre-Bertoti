@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javafx.scene.control.ProgressBar;
 import javax.swing.JOptionPane;
+import models.GraficoTarefaEntregue;
 import models.TarefaAluno;
 
 /**
@@ -110,4 +111,25 @@ public class TarefaAlunoDao {
         }
         return null;
     } 
+    
+    public GraficoTarefaEntregue graficoMain(){
+        String sql = "SELECT * FROM weclass.alunotarefa;";
+        int entregue = 0;
+        int naoEntregue = 0;
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                String status = rs.getString("status");
+                if(status.equals("Entregue") || status.equals("entregue")){
+                    entregue = entregue +1;
+                }else{naoEntregue = naoEntregue+1;}
+            }
+            GraficoTarefaEntregue grafico = new GraficoTarefaEntregue(entregue, naoEntregue);
+            return grafico;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar gráfico "+e.getMessage());
+        }
+        return null;
+    }
 }

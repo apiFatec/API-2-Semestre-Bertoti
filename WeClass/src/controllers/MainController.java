@@ -4,6 +4,7 @@
  */
 package controllers;
 
+import dao.TarefaAlunoDao;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -26,10 +27,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import models.GraficoTarefaEntregue;
 import models.Tarefa;
 import models.Turma;
 
@@ -41,11 +45,14 @@ import models.Turma;
  */
 public class MainController implements Initializable {
     
-     @FXML
+    @FXML
     private Button btnTarefa;
 
     @FXML
     private Button btnTurma;
+    
+    @FXML
+    private BarChart<?, ?> graficoEntrega;
 
     @FXML
     private TableView<Tarefa> tableAtividade;
@@ -80,6 +87,7 @@ public class MainController implements Initializable {
     private Parent root;
     private Scene scene;
     private Stage stage;
+    private GraficoTarefaEntregue grafico;
 
     @FXML
     void hlClasses(ActionEvent event) throws IOException {
@@ -138,6 +146,15 @@ public class MainController implements Initializable {
         
         TurmaCol.setCellValueFactory(new PropertyValueFactory<>("Nome"));
         tableTurma.setItems(listTurma);
+        
+        TarefaAlunoDao daoTarefa = new TarefaAlunoDao();
+        grafico = daoTarefa.graficoMain();
+        
+        XYChart.Series series2 = new XYChart.Series<>();
+        series2.getData().add(new XYChart.Data<>("Entregues", grafico.getNumEntregas()));
+        series2.getData().add(new XYChart.Data<>("Não Entregues", grafico.getNumNaoEntregue())); 
+        
+        graficoEntrega.getData().addAll(series2);
        
     }    
     
@@ -165,6 +182,17 @@ public class MainController implements Initializable {
         
         TurmaCol.setCellValueFactory(new PropertyValueFactory<>("Nome"));
         tableTurma.setItems(listTurma);
+        
+        TarefaAlunoDao daoTarefa = new TarefaAlunoDao();
+        grafico = daoTarefa.graficoMain();
+        
+        XYChart.Series series2 = new XYChart.Series<>();
+        series2.getData().add(new XYChart.Data<>("Entregues", grafico.getNumEntregas()));
+        series2.getData().add(new XYChart.Data<>("Não Entregues", grafico.getNumNaoEntregue())); 
+        
+        graficoEntrega.getData().clear();
+        graficoEntrega.getData().addAll(series2);
+       
     }
 
 }
