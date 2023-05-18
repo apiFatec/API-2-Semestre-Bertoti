@@ -91,6 +91,15 @@ Sabe-se que o controle de rendimento de qualquer objeto é uma tarefa complexa. 
 
 </table>
 
+## Relatório das sprints
+
+<ol>
+  <li><a href="./Relatórios/Sprint_01.md">Sprint 01 - 02/04/2023</a></li>
+  <li><a href="./Relatórios/Sprint_02.md">Sprint 02 - 23/04/2023</a></li>
+  <li><a href="./Relatórios/Sprint_03.md">Sprint 03 - 14/05/2023</a></li>
+  <li><a href="./Relatórios/Sprint_04.md">Sprint 04 - 04/06/2023</a></li>
+</ol>
+
 ## Time
 
  <table>
@@ -150,11 +159,4 @@ Sabe-se que o controle de rendimento de qualquer objeto é uma tarefa complexa. 
 <li>P2 (PO dos PO's): Prof. Giuliano Araujo Bertoti</li>
 </ul>
 
-## Relatório das sprints
 
-<ol>
-  <li><a href="./Relatórios/Sprint_01.md">Sprint 01 - 02/04/2023</a></li>
-  <li><a href="./Relatórios/Sprint_02.md">Sprint 02 - 23/04/2023</a></li>
-  <li><a href="./Relatórios/Sprint_03.md">Sprint 03 - 14/05/2023</a></li>
-  <li><a href="./Relatórios/Sprint_04.md">Sprint 04 - 04/06/2023</a></li>
-</ol>
