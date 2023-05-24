@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javafx.scene.Cursor;
+import javafx.scene.control.Button;
 import javax.swing.JOptionPane;
 import models.Aluno;
 import models.GraficoMediaTarefa;
@@ -74,21 +76,29 @@ public class TurmaDao {
             PreparedStatement stmt=con.prepareStatement(sql);
             ResultSet rs=stmt.executeQuery();
             while(rs.next()){
+                //salvando os valores do objeto
                 int id=rs.getInt("idTurma");
                 String nome=rs.getString("nomeTurma");
                 String escola=rs.getString("escola");
+                
+                //criando o objeto e adicionando valores aos seus atributos
                 Turma turma=new Turma();
                 turma.setEscola(escola);
                 turma.setNome(nome);
                 turma.setIdTurma(id);
-                list.add(turma);
                 
-          
+                //criando um botão e setando o nome da turma e o estilo
+                Button btn = new Button();
+                btn.setText(nome+" | "+escola);
+                btn.setStyle("-fx-background-color:   #1590c4; -fx-text-fill: #fff");
+                btn.setMinWidth(280);
+                btn.setCursor(Cursor.HAND);
+                
+                //adicionando o button no objeto turma
+                turma.setBtn(btn);
+                list.add(turma);    
             }
             return list;
-            
-                 
-           
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,"Erro ao Buscar Turma" + e.getMessage());
         }
