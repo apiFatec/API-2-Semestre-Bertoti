@@ -180,6 +180,7 @@ public class MainController implements Initializable {
             controller.listarTurma();
             controller.setTurma(a);
             controller.showTurma(event);
+            controller.att(event);
             
             //Fazendo a troca de tela
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();

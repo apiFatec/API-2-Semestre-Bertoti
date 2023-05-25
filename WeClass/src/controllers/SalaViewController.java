@@ -36,6 +36,9 @@ import views.WeClass;
 public class SalaViewController {
     
     @FXML
+    private Button btnEditTurma;
+    
+    @FXML
     private Button att;
 
     @FXML
@@ -96,13 +99,31 @@ public class SalaViewController {
     }
 
     @FXML
-    void btnNovaTarefa(ActionEvent event) {
-        WeClass.mudarTela("formTarefa");
+    void btnNovaTarefa(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FormTarefa.fxml"));
+        root = loader.load();
+        
+        FormTarefaController controller= loader.getController();
+        controller.btnAtualizar(event);
+        
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
-    void btnNovoAluno(ActionEvent event) {
-        WeClass.mudarTela("formAluno");
+    void btnNovoAluno(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FormAluno.fxml"));
+        root = loader.load();
+        
+        FormAlunoController controller= loader.getController();
+        controller.btnAtualizar(event);
+        
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
@@ -154,7 +175,7 @@ public class SalaViewController {
         listaAluno = turmaDao.alunosSala(cbTurma.getValue().getIdTurma());
         TarefaAlunoDao tarefaAluno = new TarefaAlunoDao();
         for(Aluno aluno : listaAluno){
-            listaTarefa.add(tarefaAluno.ProgressoAluno(aluno.getRa()));
+            listaTarefa.add(tarefaAluno.ProgressoAluno(aluno));
         }
         this.listTable = FXCollections.observableArrayList(listaTarefa);
         statusCol.setCellValueFactory(new PropertyValueFactory<TarefaAluno, String>("status"));
@@ -206,6 +227,25 @@ public class SalaViewController {
     
     void setTurma(Turma turma){
         cbTurma.setValue(turma);
+    }
+    
+    @FXML
+    void btnEditTurma(ActionEvent event) throws IOException {
+        Turma turma = new Turma();
+        turma = cbTurma.getValue();
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FormEditarTurma.fxml"));
+        
+        root = loader.load();
+        
+        FormEditarTurmaController controller = loader.getController();
+        controller.iniciarTela(turma);
+        
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene =  new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        
     }
 
 }

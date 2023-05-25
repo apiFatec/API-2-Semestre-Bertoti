@@ -134,6 +134,21 @@ public class TurmaDao {
                 String nome = rs.getString("nome");
                 int ra = rs.getInt("RA");
                 Aluno aluno = new Aluno(ra, nome,id);
+                Button btnEdit = new Button();
+                Button btnDel = new Button();
+                btnEdit.setText("Editar");
+                btnEdit.setStyle("-fx-background-color: #1590c4; -fx-text-fill: #fff");
+                btnEdit.setCursor(Cursor.HAND);
+                btnEdit.setMinWidth(90);
+                
+                btnDel.setText("Deletar");
+                btnDel.setStyle("-fx-text-fill: #fff; -fx-background-color: #FF2E24; ");
+                btnDel.setCursor(Cursor.HAND);
+                btnDel.setMinWidth(90);
+                
+                aluno.setExcluir(btnDel);
+                aluno.setEditar(btnEdit);
+                
                 alunos.add(aluno);
             }
             return alunos;
