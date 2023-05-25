@@ -5,6 +5,7 @@
 package models;
 
 import java.sql.Date;
+import javafx.scene.control.Button;
 
 public class Tarefa {
     private int id;
@@ -14,7 +15,8 @@ public class Tarefa {
     private Date dataInicio;
     private Date dataFim;
     private int idTurma;
-
+    private Button btn;
+    
     public Tarefa() {}
 
     public Tarefa(int id, String nomeTarefa, String descricao, int nota, Date dataInicio, Date dataFim, int idTurma) {
@@ -26,7 +28,7 @@ public class Tarefa {
         this.dataFim = dataFim;
         this.idTurma = idTurma;
     }
-
+    
     public int getId() {
         return id;
     }
@@ -82,6 +84,14 @@ public class Tarefa {
 
     public void setIdTurma(int idTurma) {
         this.idTurma = idTurma;
+    }
+    
+    public Button getBtn(){
+        return btn;
+    }
+    
+    public void setBtn(Button btn){
+        this.btn = btn;
     }
 
     @Override

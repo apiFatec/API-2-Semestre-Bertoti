@@ -188,6 +188,8 @@ public class alunosViewController implements Initializable{
     @FXML
     void showTarefas(ActionEvent event) {
         listarTable(cbTarefa.getValue().getId());
+        lbTurma.setText(cbTarefa.getValue().getNomeTarefa());
+        lbEscola.setText(cbTarefa.getValue().getDescricao());
         lblPrazo.setText("Prazo de entrega: "+cbTarefa.getValue().getDataFim().toString());
         for(int i = 0; i<listTable.size(); i++){
             CheckBox cb = new CheckBox("");
@@ -359,6 +361,7 @@ public class alunosViewController implements Initializable{
     public void listarTarefa(int id){
         TarefaDAO dao = new TarefaDAO();
         this.listTarefa = FXCollections.observableArrayList(dao.tarefaPorTurma(id));
+        cbTarefa.setItems(listTarefa);
     }
     
     public void listarTable(int id){
@@ -372,5 +375,11 @@ public class alunosViewController implements Initializable{
     
     void setTarefa(Tarefa tarefa){
         cbTarefa.setValue(tarefa);
+    }
+    
+    void setLabel(Tarefa tarefa){
+        lbEscola.setText(tarefa.getDescricao());
+        lbTurma.setText(tarefa.getNomeTarefa());
+        lblPrazo.setText(tarefa.getDataFim().toString());
     }
 }

@@ -61,13 +61,13 @@ public class MainController implements Initializable {
     private TableView<Turma> tableTurma;
     
     @FXML
-    private TableColumn<Tarefa, String> AtividadeCol;
+    private TableColumn<Tarefa, Button> AtividadeCol;
     
     @FXML
     private TableColumn<Tarefa, Date> entregaCol;
 
     @FXML
-    private TableColumn<Turma, String> TurmaCol;
+    private TableColumn<Turma, Button> TurmaCol;
     
     @FXML
     private Button btnAtualizar;
@@ -139,12 +139,12 @@ public class MainController implements Initializable {
          } catch (SQLException ex) {
              Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
          }
-        AtividadeCol.setCellValueFactory(new PropertyValueFactory<>("nomeTarefa"));
+        AtividadeCol.setCellValueFactory(new PropertyValueFactory<>("btn"));
         entregaCol.setCellValueFactory(new PropertyValueFactory<>("dataFim"));
         
         tableAtividade.setItems(listTarefa);
         
-        TurmaCol.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+        TurmaCol.setCellValueFactory(new PropertyValueFactory<>("btn"));
         tableTurma.setItems(listTurma);
         
         TarefaAlunoDao daoTarefa = new TarefaAlunoDao();
@@ -161,10 +161,66 @@ public class MainController implements Initializable {
     public void listarTurma(){
         TurmaDao dao = new TurmaDao();
         this.listTurma = FXCollections.observableArrayList(dao.listTurma());
+        
+        //for em todas as turmas do banco
+        for(Turma a : listTurma){
+            
+            //criando um evento para cada botão de acordo com a turma
+            a.getBtn().setOnAction(event->{
+            //Carregando o fxml da salaView
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/SalaView.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            //Carregando o controller da salaView
+            SalaViewController controller = loader.getController();
+            //Utilizando as funções do sala view para preencher as informações de acordo com a turma
+            controller.listarTurma();
+            controller.setTurma(a);
+            controller.showTurma(event);
+            
+            //Fazendo a troca de tela
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            });
+        }
     }
         public void listarTarefa() throws SQLException{
-        TarefaDAO dao = new TarefaDAO();
-        this.listTarefa = FXCollections.observableArrayList(dao.listarTarefas());
+        TarefaDAO tarefaDao = new TarefaDAO();
+        this.listTarefa = FXCollections.observableArrayList(tarefaDao.listarTarefas());
+        TurmaDao turmaDao = new TurmaDao();
+        
+        for(Tarefa a : listTarefa){
+            //criando um evento para cada botão de acordo com a tarefa
+            a.getBtn().setOnAction(event->{
+            //Carregando o fxml do alunosView
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/alunosView.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+       
+                
+            //carregando o controller da tela alunosView
+            alunosViewController controller = loader.getController();
+            controller.listarTurma();
+            
+            controller.setLabel(a);
+            controller.setTarefa(a);
+            controller.listarTarefa(a.getIdTurma());
+            controller.showTarefas(event);
+            
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            });      
+        }
     }
         
     @FXML

@@ -4,6 +4,7 @@
  */
 package models;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 
 
@@ -14,6 +15,7 @@ import javafx.scene.control.CheckBox;
  */
 public class Turma {
     private CheckBox select;
+    private Button btn;
     private int idTurma;
     private String Nome;
     private String Escola;
@@ -22,6 +24,13 @@ public class Turma {
         
     }
 
+    public Button getBtn(){
+        return btn;
+    }
+    public void setBtn(Button btn){
+        this.btn = btn;
+    }
+    
     public Turma(String nome, String escola){
         this.Nome = nome;
         this.Escola = escola;

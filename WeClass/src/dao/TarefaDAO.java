@@ -11,9 +11,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javafx.scene.Cursor;
+import javafx.scene.control.Button;
 import javax.swing.JOptionPane;
 import models.Aluno;
 import models.Tarefa;
+import models.Turma;
 
 public class TarefaDAO {
 
@@ -145,10 +148,17 @@ public ArrayList<Tarefa> listarTarefas() throws SQLException {
         Date dataInicio = resultSet.getDate("data_inicio");
         Date dataFim = resultSet.getDate("data_fim");
         int idTurma = resultSet.getInt("Turma_idTurma");
-
-        Tarefa tarefa = new Tarefa(id, nomeTarefa, descricao, nota, dataInicio, dataFim, idTurma);
-        listaTarefas.add(tarefa);}
         
+        //Creating a button and set task name and style 
+        Button btn = new Button();
+        btn.setText(nomeTarefa);
+        btn.setStyle("-fx-background-color:#1590c4; -fx-text-fill: #fff; ");
+        btn.setMinWidth(190);
+        btn.setCursor(Cursor.HAND);
+        
+        Tarefa tarefa = new Tarefa(id, nomeTarefa, descricao, nota, dataInicio, dataFim, idTurma);
+        tarefa.setBtn(btn);
+        listaTarefas.add(tarefa);}
         resultSet.close();
         statement.close();
         return listaTarefas;

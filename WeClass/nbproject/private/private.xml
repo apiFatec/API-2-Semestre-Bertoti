@@ -3,15 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Mateus/OneDrive/Área%20de%20Trabalho/API-2-Semestre-Bertoti/WeClass/src/controllers/SalaViewController.java</file>
-            <file>file:/C:/Users/Mateus/OneDrive/Área%20de%20Trabalho/API-2-Semestre-Bertoti/WeClass/src/models/TarefaAluno.java</file>
-            <file>file:/C:/Users/Mateus/OneDrive/Área%20de%20Trabalho/API-2-Semestre-Bertoti/WeClass/src/views/alunosView.fxml</file>
+            <file>file:/C:/Users/Mateus/OneDrive/Área%20de%20Trabalho/API-2-Semestre-Bertoti/WeClass/src/dao/TurmaDao.java</file>
             <file>file:/C:/Users/Mateus/OneDrive/Área%20de%20Trabalho/API-2-Semestre-Bertoti/WeClass/src/dao/TarefaDAO.java</file>
-            <file>file:/C:/Users/Mateus/OneDrive/Área%20de%20Trabalho/API-2-Semestre-Bertoti/WeClass/src/models/Tarefa.java</file>
-            <file>file:/C:/Users/Mateus/OneDrive/Área%20de%20Trabalho/API-2-Semestre-Bertoti/WeClass/src/controllers/FormEditarTarefaController.java</file>
-            <file>file:/C:/Users/Mateus/OneDrive/Área%20de%20Trabalho/API-2-Semestre-Bertoti/WeClass/src/controllers/alunosViewController.java</file>
-            <file>file:/C:/Users/Mateus/OneDrive/Área%20de%20Trabalho/API-2-Semestre-Bertoti/WeClass/src/controllers/PopupEntregaController.java</file>
-            <file>file:/C:/Users/Mateus/OneDrive/Área%20de%20Trabalho/API-2-Semestre-Bertoti/WeClass/src/dao/TarefaAlunoDao.java</file>
+            <file>file:/C:/Users/Mateus/OneDrive/Área%20de%20Trabalho/API-2-Semestre-Bertoti/WeClass/src/models/Turma.java</file>
+            <file>file:/C:/Users/Mateus/OneDrive/Área%20de%20Trabalho/API-2-Semestre-Bertoti/WeClass/src/controllers/MainController.java</file>
         </group>
     </open-files>
 </project-private>
