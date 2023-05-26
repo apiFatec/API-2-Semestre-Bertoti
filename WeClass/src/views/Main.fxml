@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.calendarfx.view.YearMonthView?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -108,6 +109,7 @@
                     </yAxis>
                   </BarChart>
                   <Button id="btnEntrega" fx:id="btnAtualizar" layoutX="320.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnAtualizar" stylesheets="@../styles/alunosView.css" text="Atualizar" textFill="WHITE" />
+                  <YearMonthView layoutX="425.0" layoutY="55"  prefHeight="275.0" prefWidth="400.0" showWeekNumbers="false" stylesheets="@../styles/mainCalendar.css" />
                </children>
             </Pane>
          </children>
