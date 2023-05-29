@@ -137,4 +137,17 @@ public class TarefaAlunoDao {
         }
         return null;
     }
+    
+    public void DeletarTarefasAluno(Aluno aluno){
+        String sql = "DELETE FROM `weclass`.`alunotarefa` WHERE (`Aluno_RA` = ? ) and (`Aluno_Turma_idTurma` = ?);";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, aluno.getRa());
+            stmt.setInt(2, aluno.getTurma());
+            stmt.execute();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir as tarefas do aluno "+e.getMessage());
+            
+        }
+    }
 }

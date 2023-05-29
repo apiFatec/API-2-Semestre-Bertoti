@@ -93,9 +93,14 @@
                      </font>
                   </Label>
                   <Pane layoutX="46.0" layoutY="350.0" prefHeight="28.0" prefWidth="726.0" style="-fx-background-color: #86CFE5;" />
-                  <Button id="btnSalvar" layoutX="46.0" layoutY="587.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="726.0" style="-fx-background-color: #1590C5;" stylesheets="@../styles/formeditarturma.css" text="Salvar classe e alunos" textFill="WHITE">
+                  <Button id="btnSalvar" fx:id="btnSalvar" layoutX="46.0" layoutY="587.0" mnemonicParsing="false" onAction="#salvaMudacas" prefHeight="35.0" prefWidth="726.0" style="-fx-background-color: #1590C5;" stylesheets="@../styles/formeditarturma.css" text="Salvar classe e alunos" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button id="btnExcluirTurma" fx:id="btnExcluir" layoutX="673.0" layoutY="62.0" mnemonicParsing="false" onAction="#ExcluirTurma" stylesheets="@../styles/formeditarturma.css" text="Excluir turma">
+                     <font>
+                        <Font size="14.0" />
                      </font>
                   </Button>
                </children>

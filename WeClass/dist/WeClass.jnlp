@@ -8,8 +8,9 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="WeClass.jar" size="77040" download="eager" />
+    <jar href="WeClass.jar" size="80443" download="eager" />
     <jar href="lib\mysql-connector-java-8.0.28.jar" size="2476480" download="eager" />
+    <jar href="lib\view-8.5.0.jar" size="759043" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="views.WeClass"  name="WeClass" />
   <update check="always"/>

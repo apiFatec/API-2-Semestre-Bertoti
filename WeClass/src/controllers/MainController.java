@@ -132,6 +132,8 @@ public class MainController implements Initializable {
     ObservableList<Tarefa> listTarefa;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        btnAtualizar.setVisible(false);
         // TODO
         listarTurma();
          try {
@@ -226,18 +228,19 @@ public class MainController implements Initializable {
         
     @FXML
     void btnAtualizar(ActionEvent event) {
+        graficoEntrega.getData().clear();
         listarTurma();
          try {
              listarTarefa();
          } catch (SQLException ex) {
              Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
          }
-        AtividadeCol.setCellValueFactory(new PropertyValueFactory<>("nomeTarefa"));
+        AtividadeCol.setCellValueFactory(new PropertyValueFactory<>("btn"));
         entregaCol.setCellValueFactory(new PropertyValueFactory<>("dataFim"));
         
         tableAtividade.setItems(listTarefa);
         
-        TurmaCol.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+        TurmaCol.setCellValueFactory(new PropertyValueFactory<>("btn"));
         tableTurma.setItems(listTurma);
         
         TarefaAlunoDao daoTarefa = new TarefaAlunoDao();
@@ -247,7 +250,6 @@ public class MainController implements Initializable {
         series2.getData().add(new XYChart.Data<>("Entregues", grafico.getNumEntregas()));
         series2.getData().add(new XYChart.Data<>("Não Entregues", grafico.getNumNaoEntregue())); 
         
-        graficoEntrega.getData().clear();
         graficoEntrega.getData().addAll(series2);
        
     }
