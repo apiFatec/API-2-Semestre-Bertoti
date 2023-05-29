@@ -58,7 +58,7 @@ public class AlunoDao {
     }
     
     public void deletarAluno(Aluno aluno){
-        String sql = "DELETE weclass.aluno WHERE RA = ? AND WHERE Turma_idTurma = ?";
+        String sql = "DELETE FROM `weclass`.`aluno` WHERE (`RA` = ? ) and (`Turma_idTurma` = ? );";
         try{
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, aluno.getRa());

@@ -1,0 +1,48 @@
+/*
+ *  Copyright (C) 2017 Dirk Lemmermann Software & Consulting (dlsc.com)
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
+/*
+ * --------------------------------------------------------------------------------------------------------------
+ * Base colors for the predefined styles
+ */
+
+* {
+    -fx-font-family: "Arial";
+
+    -style1-color: rgba(119.0, 192.0, 75.0, 0.9);
+    -style2-color: rgba(65.0, 143.0, 203.0, 0.9);
+    -style3-color: rgba(247.0, 209.0, 91.0, 0.9);
+    -style4-color: rgba(157.0, 91.0, 159.0, 0.9);
+    -style5-color: rgba(208.0, 82.0, 95.0, 0.9);
+    -style6-color: rgba(249.0, 132.0, 75.0, 0.9);
+    -style7-color: rgba(174.0, 102.0, 62.0, 0.9);
+
+    -weekend-fill-color: rgb(245.0, 245.0, 245.0);
+    -today-fill-color:  rgb(232, 77, 62);
+    -today-stroke-color:  rgb(232, 77, 62);
+
+    -usage-very-low-color: lightgreen;
+    -usage-low-color: green;
+    -usage-medium-color: gold;
+    -usage-high-color: darkorange;
+    -usage-very-high-color: red;
+
+    -usage-very-low-text-color: green;
+    -usage-low-text-color: lightgreen;
+    -usage-medium-text-color: black;
+    -usage-high-text-color: black;
+    -usage-very-high-text-color: white;
+}

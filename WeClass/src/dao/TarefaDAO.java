@@ -211,4 +211,15 @@ public ArrayList<Tarefa> tarefaPorTurma(int id){
     }
         return null;
 }
+
+public void deletarTarefasDaTurma(Turma turma){
+    String sql = "DELETE FROM weclass.tarefa where (Turma_idTurma = ?)";
+    try {
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, turma.getIdTurma());
+        stmt.execute();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null,"Erro ao deletar todas as tarefas da turma "+ e.getMessage());
+    }
+}
 }
