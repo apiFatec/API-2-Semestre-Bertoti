@@ -16,6 +16,8 @@ import java.sql.ResultSet;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import models.Turma;
+
 /**
  *
  * @author Mateus
@@ -43,13 +45,13 @@ public class AlunoDao {
         }
     }
     
-    public void atualizarAluno(Aluno aluno){
-        String sql = "UPDATE weclass.aluno SET nome = ?, SET Turma_idTurma = ? WHERE RA = ? and WHERE Turma_idTurma = ?";
+    public void atualizarAluno(Aluno aluno, Turma turma){
+        String sql = "UPDATE weclass.aluno SET nome = ? WHERE RA = ? and WHERE Turma_idTurma = ?";
         try{
            PreparedStatement stmt = conn.prepareStatement(sql);
-           stmt.setInt(3, aluno.getRa());
+           stmt.setInt(2, aluno.getRa());
+           stmt.setInt(3, turma.getIdTurma());
            stmt.setString(1, aluno.getNome());
-           stmt.setInt(2, aluno.getTurma());
            stmt.execute();
            stmt.close();
         } catch(SQLException e) {
@@ -141,5 +143,21 @@ public class AlunoDao {
         } catch (SQLException e) {
         }
         return null;
+    }
+
+    public void atualizarAlunoTarefa(Aluno aluno){
+        String sql = "UPDATE weclass.alunotarefa SET  NomeAluno = ? WHERE  (Aluno_RA = ?) and (Aluno_Turma_idTurma = ?)";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, aluno.getNome());
+            stmt.setInt(2, aluno.getRa());
+            stmt.setInt(3, aluno.getTurma());
+
+            stmt.execute();
+            stmt.close();
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "erro ao atualizar aluno" + e.getMessage());
+        }
     }
 }

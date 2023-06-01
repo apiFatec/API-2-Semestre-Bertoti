@@ -4,6 +4,9 @@
  */
 package controllers;
 
+import dao.AlunoDao;
+import dao.TarefaAlunoDao;
+import dao.TarefaDAO;
 import dao.TurmaDao;
 import java.io.IOException;
 import java.net.URL;
@@ -94,10 +97,31 @@ public class FormEditarAlunoController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    
-    @FXML
-    void btnSalvar(ActionEvent event) {
 
+    @FXML
+    void btnSalvar(ActionEvent event) throws IOException{
+        AlunoDao daoAluno = new AlunoDao();
+        TarefaAlunoDao daoTarefa = new TarefaAlunoDao();
+        daoTarefa.DeletarTarefasAluno(aluno);
+        daoAluno.deletarAluno(aluno);
+
+        aluno.setNome(txtNome.getText());
+        aluno.setRa(Integer.parseInt(txtRa.getText()));
+        aluno.setTurma(cbTurma.getValue().getIdTurma());
+
+        daoAluno.adicionarAluno(aluno);
+
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FormEditarTurma.fxml"));
+        root = loader.load();
+
+        FormEditarTurmaController controller = loader.getController();
+        controller.iniciarTela(turma);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
@@ -124,5 +148,6 @@ public class FormEditarAlunoController implements Initializable {
         
         this.listaTurma = FXCollections.observableArrayList(dao.listTurma());
         cbTurma.setItems(listaTurma);
+        cbTurma.setValue(turma2);
     }
 }
