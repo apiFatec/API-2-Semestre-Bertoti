@@ -52,6 +52,7 @@ public class FormEditarTurmaController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Turma turma;
+    
     private ArrayList<Aluno> alunos;
     private ArrayList<Tarefa> tarefasTurma;
     
@@ -158,7 +159,23 @@ public class FormEditarTurmaController implements Initializable {
                     daoAluno.deletarAluno(aluno);
                     iniciarTela(turma);
                 }
-            });           
+            }); 
+            aluno.getEditar().setOnAction(event->{ 
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FormEditarAluno.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(FormEditarTurmaController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                FormEditarAlunoController controller = loader.getController();
+                controller.iniciarTela(aluno, turma);
+                
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+                
+            });
         }
         this.obsListAluno = FXCollections.observableArrayList(alunos);
     }
