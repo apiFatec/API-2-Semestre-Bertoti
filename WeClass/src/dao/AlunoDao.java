@@ -45,20 +45,33 @@ public class AlunoDao {
         }
     }
     
-    public void atualizarAluno(Aluno aluno, Turma turma){
-        String sql = "UPDATE weclass.aluno SET nome = ? WHERE RA = ? and WHERE Turma_idTurma = ?";
+    public void atualizarNomeAluno(Aluno aluno){
+        String sql = "UPDATE `weclass`.`aluno` SET `nome` = ? WHERE (`RA` = ?) and (`Turma_idTurma` = ?);";
         try{
            PreparedStatement stmt = conn.prepareStatement(sql);
-           stmt.setInt(2, aluno.getRa());
-           stmt.setInt(3, turma.getIdTurma());
            stmt.setString(1, aluno.getNome());
+           stmt.setInt(2, aluno.getRa());
+           stmt.setInt(3, aluno.getTurma());
            stmt.execute();
            stmt.close();
         } catch(SQLException e) {
            JOptionPane.showMessageDialog(null, "Erro ao atualizar aluno " + e.getMessage());
         }
     }
-    
+
+    public void AtualizarNomeAlunoTarefas(Aluno aluno){
+        String sql = "UPDATE weclass.alunotarefa set NomeAluno = \"?\" where Aluno_RA = ? and Aluno_Turma_idTurma = ?;";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, aluno.getNome());
+            stmt.setInt(2, aluno.getRa());
+            stmt.setInt(3, aluno.getTurma());
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Erro ao atualizar o nome do aluno nas tarefas"+ e.getMessage());
+        }
+    }
     public void deletarAluno(Aluno aluno){
         String sql = "DELETE FROM `weclass`.`aluno` WHERE (`RA` = ? ) and (`Turma_idTurma` = ? );";
         try{

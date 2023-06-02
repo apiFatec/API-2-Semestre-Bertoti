@@ -196,6 +196,7 @@ public class FormEditarTurmaController implements Initializable {
         
         SalaViewController controller = loader.getController();
         controller.att(event);
+        controller.setTurma(turma);
         
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

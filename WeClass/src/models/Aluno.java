@@ -18,6 +18,10 @@ public class Aluno {
     private Button excluir;
     private Button editar;
 
+    public Aluno() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public Button getExcluir() {
         return excluir;
     }

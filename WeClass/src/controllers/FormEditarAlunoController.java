@@ -102,26 +102,40 @@ public class FormEditarAlunoController implements Initializable {
     void btnSalvar(ActionEvent event) throws IOException{
         AlunoDao daoAluno = new AlunoDao();
         TarefaAlunoDao daoTarefa = new TarefaAlunoDao();
-        daoTarefa.DeletarTarefasAluno(aluno);
-        daoAluno.deletarAluno(aluno);
+        
+        //Se for trocar de sala
+        if(!cbTurma.getValue().equals(turma)){
+            daoTarefa.DeletarTarefasAluno(aluno);
+            daoAluno.deletarAluno(aluno);
 
-        aluno.setNome(txtNome.getText());
-        aluno.setRa(Integer.parseInt(txtRa.getText()));
-        aluno.setTurma(cbTurma.getValue().getIdTurma());
+            aluno.setNome(txtNome.getText());
+            aluno.setRa(Integer.parseInt(txtRa.getText()));
+            aluno.setTurma(cbTurma.getValue().getIdTurma());
+            daoAluno.adicionarAluno(aluno);   
+        }
+        
+        else{
+            int ra = Integer.parseInt(txtRa.getText());
+            int idTurma = cbTurma.getValue().getIdTurma();
+            String nome = txtNome.getText();
+            
+            aluno.setRa(ra);
+            aluno.setTurma(idTurma);
+            aluno.setNome(nome);
+            
+            daoAluno.atualizarNomeAluno(aluno);
+            daoAluno.atualizarAlunoTarefa(aluno);
+        }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FormEditarTurma.fxml"));
+            root = loader.load();
 
-        daoAluno.adicionarAluno(aluno);
+            FormEditarTurmaController controller = loader.getController();
+            controller.iniciarTela(turma);
 
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FormEditarTurma.fxml"));
-        root = loader.load();
-
-        FormEditarTurmaController controller = loader.getController();
-        controller.iniciarTela(turma);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
     }
 
     @FXML
@@ -139,6 +153,7 @@ public class FormEditarAlunoController implements Initializable {
     }
     
     void iniciarTela(Aluno aluno2, Turma turma2){
+        txtRa.setEditable(false);
         this.turma = turma2;
         this.aluno = aluno2;
         txtNome.setText(aluno2.getNome());
