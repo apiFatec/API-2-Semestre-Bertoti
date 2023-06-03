@@ -4,6 +4,8 @@
  */
 package models;
 
+import javafx.scene.control.Button;
+
 /**
  *
  * @author Mateus
@@ -13,6 +15,28 @@ public class Aluno {
     private int ra;
     private String nome;
     private int turma;
+    private Button excluir;
+    private Button editar;
+
+    public Aluno() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Button getExcluir() {
+        return excluir;
+    }
+
+    public void setExcluir(Button excluir) {
+        this.excluir = excluir;
+    }
+
+    public Button getEditar() {
+        return editar;
+    }
+
+    public void setEditar(Button editar) {
+        this.editar = editar;
+    }
     
     public Aluno(int ra, String nome, int turma) {
         this.ra = ra;

@@ -13,11 +13,11 @@
 }
 
 #btnEdit{
-    -fx-background-color: #ff0000;
+    -fx-background-color: #0000
 }
 
 #btnEdit:hover{
-    -fx-backgrounf-color: #1590c4;
+    -fx-background-color: #1590c4;
 }
 
 #btnTarefa:hover{

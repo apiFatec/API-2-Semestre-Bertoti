@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javafx.scene.control.ProgressBar;
 import javax.swing.JOptionPane;
+import models.Aluno;
 import models.GraficoTarefaEntregue;
 import models.TarefaAluno;
 
@@ -80,8 +81,8 @@ public class TarefaAlunoDao {
         }
     }
     
-    public TarefaAluno ProgressoAluno(int ra){
-        String nome = "";
+    public TarefaAluno ProgressoAluno(Aluno aluno){
+        String nome = aluno.getNome();
         String status = "Entregue";
         Double progresso = 0.0;
         Double entregas = 0.0;
@@ -89,10 +90,9 @@ public class TarefaAlunoDao {
         String sql = "SELECT * FROM weclass.alunotarefa WHERE Aluno_RA = ?;";
         try{
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, ra);
+            stmt.setInt(1, aluno.getRa());
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
-                nome = rs.getString("NomeAluno");
                 String comp = rs.getString("status");
                 if(comp.equals("Não entregue") || comp.equals("Não Entregue")){
                     status = "Pendente";
@@ -100,6 +100,11 @@ public class TarefaAlunoDao {
                     entregas = entregas + 1;
                 }
                 total = total + 1;
+            }
+            if(total == 0){
+                status = "Não possui tarefas para entregar";
+                TarefaAluno tarefa = new TarefaAluno(nome, status, null);
+                return tarefa;
             }
             progresso = (entregas / total);
             ProgressBar barraDeProgresso = new ProgressBar();
@@ -131,5 +136,18 @@ public class TarefaAlunoDao {
             JOptionPane.showMessageDialog(null, "Erro ao carregar gráfico "+e.getMessage());
         }
         return null;
+    }
+    
+    public void DeletarTarefasAluno(Aluno aluno){
+        String sql = "DELETE FROM `weclass`.`alunotarefa` WHERE (`Aluno_RA` = ? ) and (`Aluno_Turma_idTurma` = ?);";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, aluno.getRa());
+            stmt.setInt(2, aluno.getTurma());
+            stmt.execute();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir as tarefas do aluno "+e.getMessage());
+            
+        }
     }
 }
