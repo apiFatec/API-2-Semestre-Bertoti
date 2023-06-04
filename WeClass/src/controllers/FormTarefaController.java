@@ -35,6 +35,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import models.Aluno;
 import models.Turma;
 import models.Tarefa;
@@ -117,6 +118,8 @@ public class FormTarefaController implements Initializable {
 
     @FXML
     void btnSalvar(ActionEvent event) throws SQLException {
+        String desc = txtDesc.getText();
+        if(!txtNome.getText().equals("") && desc.length() < 120 ){
         for(Turma a : tableTurma.getItems()){
             if(a.getSelect().isSelected()){
                 Tarefa tarefa = new Tarefa();
@@ -143,6 +146,10 @@ public class FormTarefaController implements Initializable {
         txtNome.setText("");
         pickerEnt.setValue(LocalDate.now());        
    
+    }
+        else{
+            JOptionPane.showMessageDialog(null, "existem campos faltando ou descrição muito longa");
+        }
     }
     ObservableList<Turma> turmas;
     

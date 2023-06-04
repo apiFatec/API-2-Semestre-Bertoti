@@ -182,7 +182,7 @@ public class MainController implements Initializable {
             controller.listarTurma();
             controller.setTurma(a);
             controller.showTurma(event);
-            controller.att(event);
+            controller.popularGraficoTarefas(a.getIdTurma());
             
             //Fazendo a troca de tela
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
