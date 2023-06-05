@@ -14,7 +14,7 @@
   <h2>Backlog da 4º Sprint</h2>
       <img style="width: 800px; height:400px" src="https://github.com/apiFatec/API-2-Semestre-Bertoti/assets/111647763/c94726ab-587b-4887-9b57-29d72422e495"</img>
   <h2>Burndown</h2>
-    <img style="width: 800px; height:400px" src="https://github.com/apiFatec/API-2-Semestre-Bertoti/assets/111647763/b2c757ef-14a7-4026-bfa6-b59ccc705498"</img>
+    <img style="width: 800px; height:400px" src="https://github.com/apiFatec/API-2-Semestre-Bertoti/assets/111647763/9f1c8a33-0aaa-4cdb-8bd2-a00b25cb6e73"</img>
     
   <h2>Tecnologias Utilizadas</h2>
 <table>
@@ -48,3 +48,14 @@
     <td>Java</td>
   </tbody>
 </table>
+
+
+<h3>Navegação rápida com a tela main</h3>
+<img src="https://github.com/apiFatec/API-2-Semestre-Bertoti/assets/111647763/42311939-a0ab-4664-8297-4c74906f970f"</img>
+
+
+<h3>Tela de editar turma</h3>
+<img src="https://github.com/apiFatec/API-2-Semestre-Bertoti/assets/111647763/1b2c7e55-5cc8-4b81-b60f-4fe5b106b36b"</img>
+
+<h3>Tela editar aluno</h3>
+<img src="https://github.com/apiFatec/API-2-Semestre-Bertoti/assets/111647763/ef6fcb35-625d-45c9-ba88-61177c676404"</img>
