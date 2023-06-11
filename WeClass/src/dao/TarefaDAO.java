@@ -151,8 +151,12 @@ public ArrayList<Tarefa> listarTarefas() throws SQLException {
         
         //Creating a button and set task name and style 
         Button btn = new Button();
+        String HOVERED_BUTTON_STYLE = "-fx-border-color: #1590c4";
+        String IDLE_BUTTON_STYLE = "-fx-background-color: transparent; -fx-border-color: none";
         btn.setText(nomeTarefa);
-        btn.setStyle("-fx-background-color:#1590c4; -fx-text-fill: #fff; ");
+        btn.setStyle("-fx-background-color: none; -fx-text-fill: #000; ");
+        btn.setOnMouseEntered(e -> btn.setStyle(HOVERED_BUTTON_STYLE));
+        btn.setOnMouseExited(e -> btn.setStyle(IDLE_BUTTON_STYLE));
         btn.setMinWidth(190);
         btn.setCursor(Cursor.HAND);
         
