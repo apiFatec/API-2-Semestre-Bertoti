@@ -89,8 +89,12 @@ public class TurmaDao {
                 
                 //criando um botão e setando o nome da turma e o estilo
                 Button btn = new Button();
+                String HOVERED_BUTTON_STYLE = "-fx-border-color: #1590c4";
+                String IDLE_BUTTON_STYLE = "-fx-background-color: transparent; -fx-border-color: none";
                 btn.setText(nome+" | "+escola);
-                btn.setStyle("-fx-background-color:   #1590c4; -fx-text-fill: #fff");
+                btn.setStyle("-fx-background-color:   none; -fx-text-fill: #000");
+                btn.setOnMouseEntered(e -> btn.setStyle(HOVERED_BUTTON_STYLE));
+                btn.setOnMouseExited(e -> btn.setStyle(IDLE_BUTTON_STYLE));
                 btn.setMinWidth(280);
                 btn.setCursor(Cursor.HAND);
                 
